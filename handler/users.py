@@ -35,7 +35,7 @@ class UsersHandler:
             user = self.build_user_dict(row)
             return jsonify(User=user)
 
-    def searchUsers(self, args): #TODO: EXPAND 
+    def searchUsers(self, args): #TODO: EXPAND
         firstName = args.get('uFname')
         lastName = args.get('uLname')
         dao = UsersDAO()
