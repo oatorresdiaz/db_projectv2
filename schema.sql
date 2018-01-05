@@ -24,17 +24,17 @@ create table suppliers(suppID serial primary key, uID integer references users(u
 -- Requesters table
 create table requesters(reqID serial primary key, uID integer references users(uID));
 
--- Market table
-create table market(mID serial primary key, suppID integer references suppliers(suppID), mDate date, mQty integer, mReserved integer, mAvaiable integer, invPrice float);
+-- Inventory table
+create table inventory(invID serial primary key, suppID integer references suppliers(suppID), mDate date, mQty integer, mReserved integer, mAvaiable integer, invPrice float);
 
 -- Price History table
-create table priceHistory(phID serial primary key, mID integer references market(suppID), startDate date, thruDate date, priceAtMoment float);
+create table priceHistory(phID serial primary key, mID integer references inventory(invID), startDate date, thruDate date, priceAtMoment float);
 
 -- Purchases table
-create table purchases(reqID integer references requesters(reqID), mID integer references market(mID), purchaseDate date, purchaseAmount float, primary key (reqID, mID));
+create table purchases(reqID integer references requesters(reqID), mID integer references inventory(invID), purchaseDate date, purchaseAmount float, primary key (reqID, mID));
 
 -- Reserves table
-create table reserves(reqID integer references requesters(reqID), mID integer references market(mID), resQty integer, resDate date, resExpDate date, primary key (reqID, mID));
+create table reserves(reqID integer references requesters(reqID), mID integer references inventory(invID), resQty integer, resDate date, resExpDate date, primary key (reqID, mID));
 
 -- Resources table
 create table resources(resID serial primary key, resCategory varchar(20));
@@ -43,7 +43,7 @@ create table resources(resID serial primary key, resCategory varchar(20));
 create table requests(reqID integer references requesters(reqID), resID integer references resources(resID), requestQty integer, requestDate date, primary key(reqID, resID));
 
 -- Sells table
-create table sells(mID integer references market(mID), resID integer references resources(resID), primary key (mID, resID));
+create table sells(mID integer references inventory(invID), resID integer references resources(resID), primary key (mID, resID));
 
 -- Food table
 create table food(fID serial primary key, resID integer references resources(resID), fCategory varchar(20), fExpDate date);
