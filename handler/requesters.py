@@ -21,7 +21,7 @@ class RequestersHandler:
         dao = RequestersDAO()
         row = dao.getRequesterById(reqID)
         if not row:
-            return jsonify(Error="User not found"), 404
+            return jsonify(Error="Requester not found"), 404
         else:
             requester = self.build_requester_dict(row)
             return jsonify(Requester=requester)

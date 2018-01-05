@@ -26,7 +26,7 @@ class InventoryHandler:
         dao = InventoryDAO()
         row = dao.getInventoryById(invID)
         if not row:
-            return jsonify(Error="User not found"), 404
+            return jsonify(Error="Inventory not found"), 404
         else:
             inventory = self.build_inventory_dict(row)
             return jsonify(Inventory=inventory)

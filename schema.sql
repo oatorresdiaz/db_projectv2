@@ -28,13 +28,13 @@ create table requesters(reqID serial primary key, uID integer references users(u
 create table inventory(invID serial primary key, suppID integer references suppliers(suppID), mDate date, mQty integer, mReserved integer, mAvaiable integer, invPrice float);
 
 -- Price History table
-create table priceHistory(phID serial primary key, mID integer references inventory(invID), startDate date, thruDate date, priceAtMoment float);
+create table priceHistory(phID serial primary key, invID integer references inventory(invID), startDate date, thruDate date, priceAtMoment float);
 
 -- Purchases table
-create table purchases(reqID integer references requesters(reqID), mID integer references inventory(invID), purchaseDate date, purchaseAmount float, primary key (reqID, mID));
+create table purchases(reqID integer references requesters(reqID), invID integer references inventory(invID), purchaseDate date, purchaseAmount float, primary key (reqID, invID));
 
 -- Reserves table
-create table reserves(reqID integer references requesters(reqID), mID integer references inventory(invID), resQty integer, resDate date, resExpDate date, primary key (reqID, mID));
+create table reserves(reqID integer references requesters(reqID), invID integer references inventory(invID), resQty integer, resDate date, resExpDate date, primary key (reqID, invID));
 
 -- Resources table
 create table resources(resID serial primary key, resCategory varchar(20));
@@ -43,7 +43,7 @@ create table resources(resID serial primary key, resCategory varchar(20));
 create table requests(reqID integer references requesters(reqID), resID integer references resources(resID), requestQty integer, requestDate date, primary key(reqID, resID));
 
 -- Sells table
-create table sells(mID integer references inventory(invID), resID integer references resources(resID), primary key (mID, resID));
+create table sells(invID integer references inventory(invID), resID integer references resources(resID), primary key (invID, resID));
 
 -- Food table
 create table food(fID serial primary key, resID integer references resources(resID), fCategory varchar(20), fExpDate date);
