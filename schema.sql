@@ -46,16 +46,16 @@ create table requests(reqID integer references requesters(reqID), resID integer 
 create table sells(invID integer references inventory(invID), resID integer references resources(resID), primary key (invID, resID));
 
 -- Food table
-create table food(fID serial primary key, resID integer references resources(resID), fCategory varchar(20), fExpDate date);
+create table foods(fID serial primary key, resID integer references resources(resID), fCategory varchar(20), fExpDate date);
 
 -- Baby Food table
-create table babyFood(bfID serial primary key, fID integer references food(fID), bfName varchar(20), bfBrand varchar(20), bfOz float);
+create table babyFoods(bfID serial primary key, fID integer references food(fID), bfName varchar(20), bfBrand varchar(20), bfOz float);
 
 -- Canned Food table
-create table cannedFood(cfID serial primary key, fID integer references food(fID), cfName varchar(20), cfBrand varchar(20), cfOz float);
+create table cannedFoods(cfID serial primary key, fID integer references food(fID), cfName varchar(20), cfBrand varchar(20), cfOz float);
 
 -- Dry Food table
-create table dryFood(dfID serial primary key, fID integer references food(fID), dfName varchar(20), dfBrand varchar(20), dfOz float);
+create table dryFoods(dfID serial primary key, fID integer references food(fID), dfName varchar(20), dfBrand varchar(20), dfOz float);
 
 -- Medications table
 create table medications(medID serial primary key, resID integer references resources(resID), medName varchar(20), medBrand varchar(20), medType varchar(20), medOz float, medExpDate date);

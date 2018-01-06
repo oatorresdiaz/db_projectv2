@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e1075fe-0f84-4a33-ac70-2c290d1ad2fe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/batteries.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/clothing.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/heavyequipment.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/ice.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/medicaldevices.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/medications.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/powergenerators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/tools.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/batteries.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/clothing.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/heavyequipment.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/ice.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/medicaldevices.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/medications.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/powergenerators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/tools.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/foods.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/fuel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/water.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/foods.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/fuel.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/water.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema.sql" afterPath="$PROJECT_DIR$/schema.sql" />
     </list>
@@ -47,8 +37,8 @@
       <file leaf-file-name="schema.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/schema.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="69" column="30" lean-forward="false" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="30" />
+            <state relative-caret-position="186">
+              <caret line="57" column="21" lean-forward="false" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -79,14 +69,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/dbconfig.py" />
-        <option value="$PROJECT_DIR$/dao/requests.py" />
-        <option value="$PROJECT_DIR$/dao/inventory.py" />
-        <option value="$PROJECT_DIR$/dao/admins.py" />
-        <option value="$PROJECT_DIR$/dao/resources.py" />
-        <option value="$PROJECT_DIR$/dao/reserves.py" />
-        <option value="$PROJECT_DIR$/handler/admins.py" />
-        <option value="$PROJECT_DIR$/handler/reserves.py" />
         <option value="$PROJECT_DIR$/handler/requests.py" />
         <option value="$PROJECT_DIR$/dao/users.py" />
         <option value="$PROJECT_DIR$/dao/requesters.py" />
@@ -121,7 +103,6 @@
         <option value="$PROJECT_DIR$/dao/ice.py" />
         <option value="$PROJECT_DIR$/dao/medications.py" />
         <option value="$PROJECT_DIR$/handler/batteries.py" />
-        <option value="$PROJECT_DIR$/schema.sql" />
         <option value="$PROJECT_DIR$/dao/clothing.py" />
         <option value="$PROJECT_DIR$/handler/powergenerators.py" />
         <option value="$PROJECT_DIR$/handler/clothing.py" />
@@ -130,6 +111,15 @@
         <option value="$PROJECT_DIR$/handler/medicaldevices.py" />
         <option value="$PROJECT_DIR$/handler/medications.py" />
         <option value="$PROJECT_DIR$/handler/tools.py" />
+        <option value="$PROJECT_DIR$/handler/food.py" />
+        <option value="$PROJECT_DIR$/dao/fuel.py" />
+        <option value="$PROJECT_DIR$/dao/water.py" />
+        <option value="$PROJECT_DIR$/schema.sql" />
+        <option value="$PROJECT_DIR$/dao/food.py" />
+        <option value="$PROJECT_DIR$/dao/foods.py" />
+        <option value="$PROJECT_DIR$/handler/foods.py" />
+        <option value="$PROJECT_DIR$/handler/fuel.py" />
+        <option value="$PROJECT_DIR$/handler/water.py" />
       </list>
     </option>
   </component>
@@ -316,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1515190217509</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Created handlers and dao for medications, ice, tools, clothing, power generators, batteries, medical devices, &amp; heavy equipment.">
+      <created>1515260070929</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1515260070929</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -360,7 +357,8 @@
     <MESSAGE value="Modified the Procfile AGAIN for Heroku integration. But I have no idea if this will work." />
     <MESSAGE value="Erased the Procfile and requirements.txt because I gave up." />
     <MESSAGE value="Created handlers and dao for addresses, telephone numbers, credentials, credit cards, price history, &amp; sells." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created handlers and dao for addresses, telephone numbers, credentials, credit cards, price history, &amp; sells." />
+    <MESSAGE value="Created handlers and dao for medications, ice, tools, clothing, power generators, batteries, medical devices, &amp; heavy equipment." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created handlers and dao for medications, ice, tools, clothing, power generators, batteries, medical devices, &amp; heavy equipment." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -369,65 +367,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/reserves.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#37#0" expanded="false" />
-            <marker date="1515007266216" expanded="true" signature="359:381" ph="select * fro... reserves" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/requests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#37#0" expanded="false" />
-            <marker date="1515006346908" expanded="true" signature="359:381" ph="select * fro... requests" />
-            <marker date="1515006346908" expanded="true" signature="605:644" ph="select * fro... requests" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/werkzeug/routing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="602" column="0" lean-forward="false" selection-start-line="602" selection-start-column="0" selection-end-line="602" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/requesters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="41" lean-forward="false" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#37#0" expanded="false" />
-            <marker date="1515011028992" expanded="true" signature="363:377" ph="select * fro... users" />
-            <marker date="1515011028992" expanded="true" signature="363:387" ph="select * fro... requesters" />
-            <marker date="1515011028992" expanded="true" signature="613:654" ph="select * fro... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handler/suppliers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -767,19 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/medications.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <marker date="1515258113391" expanded="true" signature="365:379" ph="select * fro... medicaldevices" />
-            <marker date="1515258113391" expanded="true" signature="365:390" ph="select * fro... medications" />
-            <marker date="1515258113391" expanded="true" signature="617:659" ph="select * fro... medicaldevices" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dao/clothing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -840,36 +766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/powergenerators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handler/medicaldevices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handler/medications.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handler/tools.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -888,10 +784,119 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/handler/powergenerators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/medicaldevices.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/medications.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="22" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1515258113391" expanded="true" signature="365:379" ph="select * fro... medicaldevices" />
+            <marker date="1515258113391" expanded="true" signature="365:390" ph="select * fro... medications" />
+            <marker date="1515258113391" expanded="true" signature="617:659" ph="select * fro... medicaldevices" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/fuel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1515262082655" expanded="true" signature="351:369" ph="select * fro... fuel" />
+            <marker date="1515262082655" expanded="true" signature="591:627" ph="select * fro... fuel" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/water.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1515262117149" expanded="true" signature="353:372" ph="select * fro... water" />
+            <marker date="1515262117149" expanded="true" signature="592:626" ph="select * fro... water" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/foods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1515262179251" expanded="true" signature="353:372" ph="select * fro... foods" />
+            <marker date="1515262179251" expanded="true" signature="591:625" ph="select * fro... foods" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/medications.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/water.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/fuel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/foods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="69" column="30" lean-forward="false" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="30" />
+        <state relative-caret-position="186">
+          <caret line="57" column="21" lean-forward="false" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
           <folding />
         </state>
       </provider>
