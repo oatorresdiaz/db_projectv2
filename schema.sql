@@ -67,7 +67,7 @@ create table ice(iceID serial primary key, resID integer references resources(re
 create table tools(tID serial primary key, resID integer references resources(resID), tName varchar(20), tType varchar(20), tWeight float, tSize float);
 
 -- Clothing table
-create table clothing(cID serial primary key, resID integer references resources(resID), clothGenger char(1), tType varchar(20), clothBrand varchar(20), clothSize varchar(10), clothColor varchar(20), clothDesignPatterns varchar(20));
+create table clothings(clothID serial primary key, resID integer references resources(resID), clothGenger char(1), tType varchar(20), clothBrand varchar(20), clothSize varchar(10), clothColor varchar(20), clothDesignPatterns varchar(20));
 
 -- Water table
 create table water(wID serial primary key, resID integer references resources(resID), wCategory varchar(20), wExpDate date);
@@ -88,7 +88,7 @@ create table batteries(bID serial primary key, resID integer references resource
 create table medicalDevices(mdID serial primary key, resID integer references resources(resID), mdName varchar(20), mdType varchar(20), mdWeight float, mdSize float);
 
 -- Heavy Equipment table
-create table heavyEquipment(heID serial primary key, resID integer references resources(resID), heName varchar(20), heType varchar(20), heWeight float, heSize float);
+create table heavyEquipments(heID serial primary key, resID integer references resources(resID), heName varchar(20), heType varchar(20), heWeight float, heSize float);
 
 -- Fuel table
 create table fuel(fuelID serial primary key, resID integer references resources(resID), fuelCategory varchar(10));
