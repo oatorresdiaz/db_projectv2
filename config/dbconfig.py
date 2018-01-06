@@ -1,7 +1,7 @@
 #Database configuration information
 
 pg_config = {
-    'user' : 'appusr',
+    'user' : 'ppusr',
     'passwd' : 'dbshit1',
     'dbname' : 'appdb'
 }
