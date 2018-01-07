@@ -5,16 +5,10 @@ class UsersHandler:
     def build_user_dict(self, row):
         result = {}
         result['uID'] = row[0]
-        result['uFname'] = row[1]
-        result['uLname'] = row[2]
+        result['uFirstName'] = row[1]
+        result['uLastName'] = row[2]
         result['uGender'] = row[3]
         result['uBirthDate'] = row[4]
-        result['uCity'] = row[5]
-        result['uStreet'] = row[6]
-        result['uCountry'] = row[7]
-        result['uZipCode'] = row[8]
-        result['username'] = row[9]
-        result['password'] = row[10]
         return result
 
     def getAllUsers(self):
