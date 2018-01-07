@@ -1,5 +1,6 @@
 from flask import jsonify
 from dao.suppliers import SuppliersDAO
+from dao.users import UsersDAO
 
 class SuppliersHandler:
     def build_supplier_dict(self, row):
@@ -27,7 +28,7 @@ class SuppliersHandler:
             return jsonify(Supplier=supplier)
 
 
-    def insertRequester(self, form):
+    def insertSupplier(self, form):
         if len(form) != 1:
             return jsonify(Error = "Malformed post request"), 400
         else:
@@ -35,13 +36,14 @@ class SuppliersHandler:
             row = UsersDAO.getUserById(uid)
             if not row:
                 return jsonify(Error="User not found"), 404
-            if uid:
-                dao = AdminsDAO()
-                adminid = dao.insert(uid)
-                result = self.build_admin_attributes(adminid, uid)
-                return jsonify(Admin=result), 201
             else:
-                return jsonify(Error="Unexpected attributes in post request"), 400
+                if uid:
+                    dao = SuppliersDAO()
+                    suppid = dao.insert(uid)
+                    result = self.build_supplier_attributes(suppid, uid)       #A~adir buil attributes
+                    return jsonify(Admin=result), 201
+                else:
+                    return jsonify(Error="Unexpected attributes in post request"), 400
 
     def searchSuppliers(self, args):
         pass

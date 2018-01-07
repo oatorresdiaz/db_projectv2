@@ -35,13 +35,14 @@ class AdminsHandler:
             row = UsersDAO.getUserById(uid)
             if not row:
                 return jsonify(Error="User not found"), 404
-            if uid:
-                dao = AdminsDAO()
-                adminid = dao.insert(uid)
-                result = self.build_admin_attributes(adminid, uid)
-                return jsonify(Admin=result), 201
             else:
-                return jsonify(Error="Unexpected attributes in post request"), 400
+                if uid:
+                    dao = AdminsDAO()
+                    adminid = dao.insert(uid)
+                    result = self.build_admin_attributes(adminid, uid)
+                    return jsonify(Admin=result), 201
+                else:
+                    return jsonify(Error="Unexpected attributes in post request"), 400
 
     def searchAdmins(self, args):
         pass
