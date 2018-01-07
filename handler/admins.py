@@ -1,5 +1,6 @@
 from flask import jsonify
 from dao.admins import AdminsDAO
+from dao.users import UsersDAO
 
 class AdminsHandler:
     def build_admin_dict(self, row):
@@ -25,6 +26,22 @@ class AdminsHandler:
         else:
             admin = self.build_admin_dict(row)
             return jsonify(Admin=admin)
+
+    def insertAdmin(self, form):
+        if len(form) != 1:
+            return jsonify(Error = "Malformed post request"), 400
+        else:
+            uid = form['uid']
+            row = UsersDAO.getUserById(uid)
+            if not row:
+                return jsonify(Error="User not found"), 404
+            if uid:
+                dao = AdminsDAO()
+                adminid = dao.insert(uid)
+                result = self.build_admin_attributes(adminid, uid)
+                return jsonify(Admin=result), 201
+            else:
+                return jsonify(Error="Unexpected attributes in post request"), 400
 
     def searchAdmins(self, args):
         pass

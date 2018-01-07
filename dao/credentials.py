@@ -21,3 +21,18 @@ class CredentialsDAO:
         cursor.execute(query, (cID,))
         result = cursor.fetchone()
         return result
+
+    def login(self, uname, passwd):
+        cursor = self.conn.cursor()
+        cursor.execute("select * from credentials Where username = %s And password = %s;", (uname, passwd))
+        try:
+            if cursor.fetchone():
+                print("Login successful")
+                result = "true"
+                return result
+            else:
+                print("Wrong credentials. Login failed.")
+                result = "false"
+                return result
+        except Exception as e:
+            print("DB Error.")
