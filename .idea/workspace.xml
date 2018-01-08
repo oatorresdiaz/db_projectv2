@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6e1075fe-0f84-4a33-ac70-2c290d1ad2fe" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/admins.py" afterPath="$PROJECT_DIR$/dao/admins.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/requesters.py" afterPath="$PROJECT_DIR$/dao/requesters.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/suppliers.py" afterPath="$PROJECT_DIR$/dao/suppliers.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/users.py" afterPath="$PROJECT_DIR$/dao/users.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handler/users.py" afterPath="$PROJECT_DIR$/handler/users.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handler/admins.py" afterPath="$PROJECT_DIR$/handler/admins.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handler/requesters.py" afterPath="$PROJECT_DIR$/handler/requesters.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handler/suppliers.py" afterPath="$PROJECT_DIR$/handler/suppliers.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema.sql" afterPath="$PROJECT_DIR$/schema.sql" />
     </list>
@@ -16,7 +21,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/db_project$db_project.coverage" NAME="db_project Coverage Results" MODIFIED="1515424513870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/db_project$db_project.coverage" NAME="db_project Coverage Results" MODIFIED="1515435970137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -34,47 +39,10 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="21" column="41" lean-forward="false" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+            <state relative-caret-position="249">
+              <caret line="91" column="34" lean-forward="false" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/users.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="66" column="39" lean-forward="false" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dao/users.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="58" column="145" lean-forward="true" selection-start-line="58" selection-start-column="145" selection-end-line="58" selection-end-column="145" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-                <marker date="1515424513863" expanded="true" signature="407:426" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="407:434" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="407:446" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="407:500" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="407:506" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="407:510" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="407:522" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="741:869" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="1067:1086" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="1067:1204" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="1449:1585" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="1852:2008" ph="select * fro... users" />
-                <marker date="1515424513863" expanded="true" signature="2470:2592" ph="select * fro... users" />
               </folding>
             </state>
           </provider>
@@ -83,8 +51,105 @@
       <file leaf-file-name="schema.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/schema.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1069">
-              <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+            <state relative-caret-position="285">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="suppliers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/suppliers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requesters.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/requesters.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="25" column="33" lean-forward="false" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/users.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-315">
+              <caret line="19" column="132" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="132" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+                <marker date="1515431737019" expanded="true" signature="407:426" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="407:434" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="407:446" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="407:500" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="407:506" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="407:510" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="407:522" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="741:869" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="1067:1086" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="1067:1204" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="1449:1585" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="1852:2008" ph="select * fro... users" />
+                <marker date="1515431737019" expanded="true" signature="2470:2592" ph="select * fro... users" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requesters.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/requesters.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="94">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+                <marker date="1515435937250" expanded="true" signature="417:562" ph="select * fro... requesters" />
+                <marker date="1515435937250" expanded="true" signature="788:950" ph="select * fro... requesters" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/handler/users.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="930">
+              <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="suppliers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/suppliers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="10" column="132" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="132" />
+              <folding>
+                <marker date="1515435620575" expanded="true" signature="415:550" ph="select * fro... users" />
+                <marker date="1515435620575" expanded="true" signature="415:559" ph="select * fro... users" />
+                <marker date="1515435620575" expanded="true" signature="785:947" ph="select * fro... users" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admins.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/handler/admins.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -115,12 +180,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/handler/pricehistory.py" />
-        <option value="$PROJECT_DIR$/handler/creditcards.py" />
         <option value="$PROJECT_DIR$/handler/credentials.py" />
         <option value="$PROJECT_DIR$/handler/addresses.py" />
         <option value="$PROJECT_DIR$/handler/inventory.py" />
-        <option value="$PROJECT_DIR$/handler/requesters.py" />
         <option value="$PROJECT_DIR$/handler/resources.py" />
         <option value="$PROJECT_DIR$/handler/powerGenerators.py" />
         <option value="$PROJECT_DIR$/handler/batteries.py" />
@@ -139,12 +201,10 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8f36d80e-fbc4-4d7a-9cd5-ab46e6b5db06/console.sql" />
         <option value="$PROJECT_DIR$/config/dbconfig.py" />
         <option value="$PROJECT_DIR$/dao/water.py" />
-        <option value="$PROJECT_DIR$/dao/requesters.py" />
         <option value="$PROJECT_DIR$/dao/requests.py" />
         <option value="$PROJECT_DIR$/dao/reserves.py" />
         <option value="$PROJECT_DIR$/dao/resources.py" />
         <option value="$PROJECT_DIR$/dao/sells.py" />
-        <option value="$PROJECT_DIR$/dao/suppliers.py" />
         <option value="$PROJECT_DIR$/dao/telephonenumbers.py" />
         <option value="$PROJECT_DIR$/dao/tools.py" />
         <option value="$PROJECT_DIR$/dao/pricehistory.py" />
@@ -158,14 +218,19 @@
         <option value="$PROJECT_DIR$/dao/medications.py" />
         <option value="$PROJECT_DIR$/dao/powergenerators.py" />
         <option value="$PROJECT_DIR$/dao/addresses.py" />
-        <option value="$PROJECT_DIR$/dao/admins.py" />
         <option value="$PROJECT_DIR$/dao/batteries.py" />
         <option value="$PROJECT_DIR$/dao/clothing.py" />
         <option value="$PROJECT_DIR$/dao/credentials.py" />
-        <option value="$PROJECT_DIR$/schema.sql" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/handler/users.py" />
         <option value="$PROJECT_DIR$/dao/users.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/schema.sql" />
+        <option value="$PROJECT_DIR$/handler/admins.py" />
+        <option value="$PROJECT_DIR$/dao/admins.py" />
+        <option value="$PROJECT_DIR$/dao/suppliers.py" />
+        <option value="$PROJECT_DIR$/handler/suppliers.py" />
+        <option value="$PROJECT_DIR$/handler/requesters.py" />
+        <option value="$PROJECT_DIR$/dao/requesters.py" />
       </list>
     </option>
   </component>
@@ -408,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1515273499660</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Created getUsersByArguments in users handler &amp; DAO.">
+      <created>1515424718843</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1515424718843</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -460,7 +532,8 @@
     <MESSAGE value="Modified requirements.txt." />
     <MESSAGE value="Setup dbconfig for heroku database access." />
     <MESSAGE value="Modified ALL DAOs in order to access heroku database." />
-    <option name="LAST_COMMIT_MESSAGE" value="Modified ALL DAOs in order to access heroku database." />
+    <MESSAGE value="Created getUsersByArguments in users handler &amp; DAO." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created getUsersByArguments in users handler &amp; DAO." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -469,14 +542,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/handler/reserves.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="22" column="33" lean-forward="false" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handler/sells.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -605,20 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/water.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="54" lean-forward="false" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/requesters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="54" lean-forward="false" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dao/requests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -634,13 +685,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/sells.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="54" lean-forward="false" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/telephonenumbers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="54" lean-forward="false" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
@@ -700,6 +744,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="54" lean-forward="false" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1515273467020" expanded="true" signature="415:438" ph="select * fro... inventory" />
+            <marker date="1515273467020" expanded="true" signature="664:704" ph="select * fro... inventory" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -728,18 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="54" lean-forward="false" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/admins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="54" lean-forward="false" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <marker date="1515273467049" expanded="true" signature="409:429" ph="select * fro... admins" />
-            <marker date="1515273467049" expanded="true" signature="651:688" ph="select * fro... admins" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -772,33 +809,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/suppliers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <marker date="1515273467061" expanded="true" signature="415:463" ph="select * fro... users" />
-            <marker date="1515273467061" expanded="true" signature="689:755" ph="select * fro... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/dbconfig.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/handler/admins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -813,63 +828,138 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/suppliers.py">
+    <entry file="file://$PROJECT_DIR$/dao/telephonenumbers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        <state relative-caret-position="90">
+          <caret line="6" column="54" lean-forward="false" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1515273467038" expanded="true" signature="429:459" ph="select * fro... telephonenumbers" />
+            <marker date="1515273467038" expanded="true" signature="689:734" ph="select * fro... telephonenumbers" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schema.sql">
+    <entry file="file://$PROJECT_DIR$/dao/water.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1069">
-          <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="86">
+          <caret line="6" column="54" lean-forward="false" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1515273467055" expanded="true" signature="407:426" ph="select * fro... water" />
+            <marker date="1515273467055" expanded="true" signature="646:680" ph="select * fro... water" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/admins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="159" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="159" />
+          <folding>
+            <marker date="1515435558123" expanded="true" signature="409:550" ph="select * fro... admins" />
+            <marker date="1515435558123" expanded="true" signature="772:930" ph="select * fro... admins" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="21" column="41" lean-forward="false" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+        <state relative-caret-position="249">
+          <caret line="91" column="34" lean-forward="false" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/users.py">
+    <entry file="file://$PROJECT_DIR$/handler/suppliers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/admins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/suppliers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="132" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="132" />
+          <folding>
+            <marker date="1515435620575" expanded="true" signature="415:550" ph="select * fro... users" />
+            <marker date="1515435620575" expanded="true" signature="415:559" ph="select * fro... users" />
+            <marker date="1515435620575" expanded="true" signature="785:947" ph="select * fro... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/requesters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
-          <caret line="66" column="39" lean-forward="false" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+          <caret line="25" column="33" lean-forward="false" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/users.py">
+    <entry file="file://$PROJECT_DIR$/dao/requesters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="58" column="145" lean-forward="true" selection-start-line="58" selection-start-column="145" selection-end-line="58" selection-end-column="145" />
+        <state relative-caret-position="94">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <marker date="1515424513863" expanded="true" signature="407:426" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="407:434" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="407:446" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="407:500" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="407:506" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="407:510" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="407:522" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="741:869" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="1067:1086" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="1067:1204" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="1449:1585" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="1852:2008" ph="select * fro... users" />
-            <marker date="1515424513863" expanded="true" signature="2470:2592" ph="select * fro... users" />
+            <marker date="1515435937250" expanded="true" signature="417:562" ph="select * fro... requesters" />
+            <marker date="1515435937250" expanded="true" signature="788:950" ph="select * fro... requesters" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/users.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-315">
+          <caret line="19" column="132" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="132" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1515431737019" expanded="true" signature="407:426" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="407:434" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="407:446" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="407:500" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="407:506" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="407:510" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="407:522" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="741:869" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="1067:1086" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="1067:1204" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="1449:1585" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="1852:2008" ph="select * fro... users" />
+            <marker date="1515431737019" expanded="true" signature="2470:2592" ph="select * fro... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/users.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>

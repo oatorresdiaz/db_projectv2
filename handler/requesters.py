@@ -4,8 +4,26 @@ from dao.requesters import RequestersDAO
 class RequestersHandler:
     def build_requester_dict(self, row):
         result = {}
-        result['reqID'] = row[0]
-        result['uID'] = row[1]
+        result['uID'] = row[0]
+        result['uFirstName'] = row[1]
+        result['uLastName'] = row[2]
+        result['uGender'] = row[3]
+        result['uBirthDate'] = row[4]
+        result['addID'] = row[5]
+        result['city'] = row[6]
+        result['street'] = row[7]
+        result['country'] = row[8]
+        result['zipcode'] = row[9]
+        result['cID'] = row[10]
+        result['username'] = row[11]
+        result['password'] = row[12]
+        result['email'] = row[13]
+        result['tID'] = row[14]
+        result['homeNumber'] = row[15]
+        result['mobileNumber'] = row[16]
+        result['workNumber'] = row[17]
+        result['otherNumber'] = row[18]
+        result['reqID'] = row[19]
         return result
 
     def getAllRequesters(self):

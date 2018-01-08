@@ -58,7 +58,6 @@ class UsersDAO:
         arguments = arguments[:-5]  + ";" #Remove the last ' and '
         query = "select * from users natural inner join addresses natural inner join credentials natural inner join telephonenumbers where " + arguments
         cursor.execute(query, values)
-        print(cursor.query)
         result = []
         for row in cursor:
             result.append(row)
