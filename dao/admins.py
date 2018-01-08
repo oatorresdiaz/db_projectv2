@@ -15,9 +15,16 @@ class AdminsDAO:
             result.append(row)
         return result
 
-    def getAdminById(self, admID):
+    def getAdminById(self, adminID):
         cursor = self.conn.cursor()
-        query = "select * from users natural inner join addresses natural inner join credentials natural inner join telephonenumbers natural inner join admins where admID = %s;"
-        cursor.execute(query, (admID,))
+        query = "select * from admins where adminID = %s;"
+        cursor.execute(query, (adminID,))
+        result = cursor.fetchone()
+        return result
+
+    def getAdminByUserId(self, uID):
+        cursor = self.conn.cursor()
+        query = "select * from admins where uID = %s;"
+        cursor.execute(query, (uID,))
         result = cursor.fetchone()
         return result

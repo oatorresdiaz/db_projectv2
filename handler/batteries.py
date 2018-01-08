@@ -6,8 +6,9 @@ class BatteriesHandler:
         result = {}
         result['bID'] = row[0]
         result['resID'] = row[1]
-        result['bType'] = row[2]
-        result['bBrand'] = row[3]
+        result['catID'] = row[2]
+        result['bType'] = row[3]
+        result['bBrand'] = row[4]
         return result
 
     def getAllBatteries(self):
@@ -26,4 +27,43 @@ class BatteriesHandler:
             return jsonify(Error="Battery not found"), 404
         else:
             battery = self.build_battery_dict(row)
-            return jsonify(Batteery=battery)
+            return jsonify(Battery=battery)
+
+    def getBatteryByResourceId(self, resID):
+        dao = BatteriesDAO()
+        row = dao.getBatteryByResourceId(resID)
+        if not row:
+            return jsonify(Error="Battery not found"), 404
+        else:
+            battery = self.build_battery_dict(row)
+            return jsonify(Battery=battery)
+
+    def getBatteryByCategoryId(self, catID):
+        dao = BatteriesDAO()
+        row = dao.getBatteryByCategoryId(catID)
+        if not row:
+            return jsonify(Error="Battery not found"), 404
+        else:
+            battery = self.build_battery_dict(row)
+            return jsonify(Battery=battery)
+
+    def getBatteryByType(self, bType):
+        dao = BatteriesDAO()
+        row = dao.getBatteryByType(bType)
+        if not row:
+            return jsonify(Error="Battery not found"), 404
+        else:
+            battery = self.build_battery_dict(row)
+            return jsonify(Battery=battery)
+
+    def getBatteryByBrand(self, bBrand):
+        dao = BatteriesDAO()
+        row = dao.getBatteryByBrand(bBrand)
+        if not row:
+            return jsonify(Error="Battery not found"), 404
+        else:
+            battery = self.build_battery_dict(row)
+            return jsonify(Battery=battery)
+
+    def searchBatteries(self, args):
+            pass
