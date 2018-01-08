@@ -19,7 +19,8 @@ def getAllUsers():
     if not request.args:
         return UsersHandler().getAllUsers()
     else:
-        return UsersHandler().searchUsers(request.args)
+        return UsersHandler().searchUsersByArguments(request.args)
+        #return UsersHandler().searchUsers(request.args)
 
 @app.route('/db_project/users/<int:uID>')
 def getUserById(uID):
@@ -46,6 +47,10 @@ def getAllSuppliers():
 @app.route('/db_project/suppliers/<int:suppID>')
 def getSupplierById(suppID):
     return SuppliersHandler().getSupplierById(suppID)
+
+@app.route('/db_project/suppliers/<int:suppID>/inventory') #Encontrar productos de un suplidor
+def getSupplierInventory(suppID):
+    return SuppliersHandler().getSupplierInventory(suppID)
 
 @app.route('/db_project/requesters')
 def getAllRequesters():
@@ -79,6 +84,10 @@ def getAllInventory():
 @app.route('/db_project/inventory/<int:invID>')
 def getInventoryById(invID):
     return InventoryHandler().getInventoryById(invID)
+
+@app.route('/db_project/inventory/<int:invID>/suppliers') #Encontrar suplidores para un producto dado
+def getResourceSuppliers(invID):
+    return ResourcesHandler().getResourceSuppliers(invID)
 
 @app.route('/db_project/reserves')
 def getAllReserves():

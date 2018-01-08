@@ -22,7 +22,7 @@ class ResourcesHandler:
         dao = ResourcesDAO()
         row = dao.getResourceById(resID)
         if not row:
-            return jsonify(Error="User not found"), 404
+            return jsonify(Error="Resource not found"), 404
         else:
             resource = self.build_resource_dict(row)
             return jsonify(Resource=resource)
