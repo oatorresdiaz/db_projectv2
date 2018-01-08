@@ -28,12 +28,17 @@ class SuppliersHandler:
 
     def build_inv_dict(self, row):
         result = {}
-        result['invID'] = row[0]
-        result['invDate'] = row[1]
-        result['invQty'] = row[2]
-        result['invReserved'] = row[3]
-        result['invAvailable'] = row[4]
-        result['invPrice'] = row[5]
+        result['catID'] = row[0]
+        result['resID'] = row[1]
+        result['invID'] = row[2]
+        result['suppID'] = row[3]
+        result['invDate'] = row[4]
+        result['invQty'] = row[5]
+        result['invReserved'] = row[6]
+        result['invAvailable'] = row[7]
+        result['invPrice'] = row[8]
+        result['resName'] = row[9]
+        result['catName'] = row[10]
         return result
 
     def getAllSuppliers(self):

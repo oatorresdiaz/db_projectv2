@@ -85,9 +85,13 @@ def getAllInventory():
 def getInventoryById(invID):
     return InventoryHandler().getInventoryById(invID)
 
-@app.route('/db_project/inventory/<int:invID>/suppliers') #Encontrar suplidores para un producto dado
-def getResourceSuppliers(invID):
-    return ResourcesHandler().getResourceSuppliers(invID)
+@app.route('/db_project/inventory/<int:invID>/suppliers')
+def getSupplierByInventoryId(invID):
+    return InventoryHandler().getSupplierByInventoryId(invID)
+
+@app.route('/db_project/resources/<string:resName>/suppliers') #Encontrar suplidores para un producto dado
+def getSuppliersByResourceName(resName):
+    return InventoryHandler().getSuppliersByResourceName(resName)
 
 @app.route('/db_project/reserves')
 def getAllReserves():

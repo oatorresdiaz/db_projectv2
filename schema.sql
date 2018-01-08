@@ -37,7 +37,7 @@ create table purchases(reqID integer references requesters(reqID), invID integer
 create table reserves(reqID integer references requesters(reqID), invID integer references inventory(invID), resQty integer, resDate date, resExpDate date, primary key (reqID, invID));
 
 --Category table
-create table Category(catID serial primary key, catName varchar(20));
+create table categories(catID serial primary key, catName varchar(20));
 
 -- Resources table
 create table resources(resID serial primary key, resName varchar(20), catID integer references category(catID));
@@ -49,7 +49,7 @@ create table requests(reqID integer references requesters(reqID), resID integer 
 create table sells(invID integer references inventory(invID), resID integer references resources(resID), primary key (invID, resID));
 
 --FoodSubCategory
-create table foodSubCategory(fscID serial primary key, fscName varchar(20));
+create table foodSubCategories(fscID serial primary key, fscName varchar(20));
 
 -- Food table
 create table foods(fID serial primary key, catID integer references category(catID), fsc integer references foodSubCategory(fscID), resID integer references resources(resID), fBrand varchar(20), fOz float, fExpDate date);
@@ -61,13 +61,13 @@ create table medications(medID serial primary key, catID integer references cate
 create table ice(iceID serial primary key, resID integer references resources(resID), catID integer references category(catID), iceWeight float, iceContainer varchar(20));
 
 -- Tools table
-create table tools(tID serial primary key, resID integer references resources(resID), catID integer references category(catID), tType varchar(20), tWeight float, tSize float, tFuel varchar(20));
+create table tools(tID serial primary key, resID integer references resources(resID), catID integer references category(catID), tType varchar(20), tWeight float, tSize varchar(20), tFuel varchar(20));
 
 -- Clothing table
 create table clothings(clothID serial primary key, resID integer references resources(resID), catID integer references category(catID), clothGender char(1), clothBrand varchar(20), clothSize varchar(10), clothColor varchar(20), clothDesignPatterns varchar(20));
 
 --waterSubCategory
-create table waterSubCategory(wscID serial primary key, wscName varchar(20));
+create table waterSubCategories(wscID serial primary key, wscName varchar(20));
 
 -- Water table
 create table water(wID serial primary key, resID integer references resources(resID), catID integer references category(catID), wscID integer references waterSubCategory(wscID), wBrand varchar(20), wExpDate date);
@@ -85,7 +85,7 @@ create table medicalDevices(mdID serial primary key, resID integer references re
 create table heavyEquipments(heID serial primary key, resID integer references resources(resID), catID integer references category(catID), heType varchar(20), heWeight float, heSize float);
 
 --fuelSubCategory
-create table fuelSubCategory(fuscID serial primary key, fuscName varchar(20));
+create table fuelSubCategories(fuscID serial primary key, fuscName varchar(20));
 
 -- Fuel table
 create table fuel(fuelID serial primary key, resID integer references resources(resID), catID integer references category(catID), fuscID integer references fuelSubCategory(fuscID));

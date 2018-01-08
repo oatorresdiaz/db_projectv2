@@ -24,7 +24,7 @@ class SuppliersDAO:
 
     def getInventoryBySupplierId(self, suppID):
         cursor = self.conn.cursor()
-        query = "select invID, invDate, invQty, invReserved, invAvailable, invPrice from suppliers natural inner join inventory where suppID = %s;"
+        query = "select catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, catName from suppliers natural inner join inventory natural inner join sells natural inner join resources natural inner join categories where suppID = %s;"
         cursor.execute(query, (suppID,))
         result = []
         for row in cursor:
