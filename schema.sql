@@ -4,7 +4,7 @@
 create table users(uID serial primary key, uFirstName varchar(20), uLastName varchar(20), uGender char(1), uBirthDate date);
 
 -- Addresses table
-create table addresses(addID serial primary key, uID integer references users(uID), city varchar(20), street varchar(30), country varchar(20), zipCode integer);
+create table addresses(addID serial primary key, uID integer references users(uID), city varchar(20), street varchar(30), country varchar(20), zipCode varchar(10));
 
 -- Credentials table
 create table credentials(cid serial primary key, uID integer references users(uID), username varchar(20), password varchar(20), email varchar(20));
@@ -25,7 +25,7 @@ create table suppliers(suppID serial primary key, uID integer references users(u
 create table requesters(reqID serial primary key, uID integer references users(uID));
 
 -- Inventory table
-create table inventory(invID serial primary key, suppID integer references suppliers(suppID), invDate date, invQty integer, invReserved integer, invAvaiable integer, invPrice float);
+create table inventory(invID serial primary key, suppID integer references suppliers(suppID), invDate date, invQty integer, invReserved integer, invAvailable integer, invPrice float);
 
 -- Price History table
 create table priceHistory(phID serial primary key, invID integer references inventory(invID), startDate date, thruDate date, priceAtMoment float);

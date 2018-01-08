@@ -26,6 +26,16 @@ class SuppliersHandler:
         result['suppID'] = row[19]
         return result
 
+    def build_inv_dict(self, row):
+        result = {}
+        result['invID'] = row[0]
+        result['invDate'] = row[1]
+        result['invQty'] = row[2]
+        result['invReserved'] = row[3]
+        result['invAvailable'] = row[4]
+        result['invPrice'] = row[5]
+        return result
+
     def getAllSuppliers(self):
         dao = SuppliersDAO()
         suppliers_list = dao.getAllSuppliers()
@@ -44,5 +54,13 @@ class SuppliersHandler:
             supplier = self.build_supplier_dict(row)
             return jsonify(Supplier=supplier)
 
-    def searchSuppliers(self, args):
-        pass
+    def getInventoryBySupplierId(self, suppID):
+        dao = SuppliersDAO()
+        if not dao.getSupplierById(suppID):
+            return jsonify(Error="Supplier Not Found"), 404
+        inventory_list = dao.getInventoryBySupplierId(suppID)
+        result_list = []
+        for row in inventory_list:
+            result = self.build_inv_dict(row)
+            result_list.append(result)
+        return jsonify(SupplierInventory=result_list)

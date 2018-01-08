@@ -21,3 +21,12 @@ class SuppliersDAO:
         cursor.execute(query, (suppID,))
         result = cursor.fetchone()
         return result
+
+    def getInventoryBySupplierId(self, suppID):
+        cursor = self.conn.cursor()
+        query = "select invID, invDate, invQty, invReserved, invAvailable, invPrice from suppliers natural inner join inventory where suppID = %s;"
+        cursor.execute(query, (suppID,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
