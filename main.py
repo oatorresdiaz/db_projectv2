@@ -19,7 +19,8 @@ def getAllUsers():
     if not request.args:
         return UsersHandler().getAllUsers()
     else:
-        return UsersHandler().searchUsers(request.args)
+        return UsersHandler().searchUsersByArguments(request.args)
+        #return UsersHandler().searchUsers(request.args)
 
 @app.route('/db_project/users/<int:uID>')
 def getUserById(uID):
