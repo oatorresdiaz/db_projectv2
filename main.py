@@ -7,13 +7,16 @@ from handler.resources import ResourcesHandler
 from handler.inventory import InventoryHandler
 from handler.reserves import ReservesHandler
 from handler.requests import RequestsHandler
+from handler.credentials import CredentialsHandler
 
 app = Flask(__name__)
 
+#Base route
 @app.route('/')
 def greeting():
     return 'Hello, this is the parts DB App!'
 
+#Shows all users
 @app.route('/db_project/users')
 def getAllUsers():
     if not request.args:
@@ -22,28 +25,39 @@ def getAllUsers():
         return UsersHandler().searchUsersByArguments(request.args)
         #return UsersHandler().searchUsers(request.args)
 
+#Shows user by ID
 @app.route('/db_project/users/<int:uID>')
 def getUserById(uID):
     return UsersHandler().getUserById(uID)
 
-@app.route('/db_project/admins')
+#Shows all admins
+@app.route('/db_project/admins', methods=['GET', 'POST' ])
 def getAllAdmins():
-    if not request.args:
-        return AdminsHandler().getAllAdmins()
+    if request.method == 'POST':
+        return AdminsHandler.insertAdmin(request.form)
     else:
-        return AdminsHandler().searchAdmins(request.args)
+        if not request.args:
+            return AdminsHandler().getAllAdmins()
+        else:
+            return AdminsHandler().searchAdmins(request.args)
 
+#Show admin by ID
 @app.route('/db_project/admins/<int:adminID>')
 def getAdminById(adminID):
     return AdminsHandler().getAdminById(adminID)
 
-@app.route('/db_project/suppliers')
+#Show all suppliers
+@app.route('/db_project/suppliers', methods=['GET', 'POST' ])
 def getAllSuppliers():
-    if not request.args:
-        return SuppliersHandler().getAllSuppliers()
+    if request.method == 'POST':
+        return SuppliersHandler.insertAdmin(request.form)
     else:
-        return SuppliersHandler().searchSuppliers(request.args)
+        if not request.args:
+            return SuppliersHandler().getAllSuppliers()
+        else:
+            return SuppliersHandler().searchSuppliers(request.args)
 
+#Show supplier by ID
 @app.route('/db_project/suppliers/<int:suppID>')
 def getSupplierById(suppID):
     return SuppliersHandler().getSupplierById(suppID)
@@ -53,11 +67,16 @@ def getInventoryBySupplierId(suppID):
     return SuppliersHandler().getInventoryBySupplierId(suppID)
 
 @app.route('/db_project/requesters')
+#Show all requesters
+@app.route('/db_project/requesters', methods=['GET', 'POST' ])
 def getAllRequesters():
-    if not request.args:
-        return RequestersHandler().getAllRequesters()
+    if request.method == 'POST':
+        return RequestersHandler.insertRequester(request.form)
     else:
-        return RequestersHandler().searchRequesters(request.args)
+        if not request.args:
+            return RequestersHandler().getAllRequesters()
+        else:
+            return RequestersHandler().searchRequesters(request.args)
 
 @app.route('/db_project/requesters/<int:reqID>')
 def getRequesterById(reqID):
@@ -106,6 +125,26 @@ def getAllRequests():
         return RequestsHandler().getAllRequests()
     else:
         return RequestsHandler().searchRequests(request.args)
+
+@app.route('/db_project/available')
+def getAllAvailableResources():
+    if not request.args:
+        return ResourcesHandler().getAllAvailableResources()
+    else:
+        return ResourcesHandler().searchResources(request.args)
+
+@app.route('/db_project/login')
+def login():
+     print("Welcome to the user program")
+     uname = input("Enter username: ")
+     print("Value entered: " + str(uname))
+
+     upasswd = input("Enter password: ")
+     print("Value entered: " + str(upasswd))
+     if not request.args:
+         return CredentialsHandler().login(uname, upasswd)
+     else:
+         return CredentialsHandler().searchCredentials(request.args)
 
 if __name__ == '__main__':
     app.run()

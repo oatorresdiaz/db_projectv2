@@ -21,3 +21,18 @@ class ResourcesDAO:
         cursor.execute(query, (resID,))
         result = cursor.fetchone()
         return result
+
+    def getAllAvailableResources(self):
+        cursor = self.conn.cursor()
+        query = "Select * " \
+                "From Resources " \
+                "Where resID IN (Select resID" \
+                                " From Inventory " \
+                                "NATURAL INNER JOIN Resources Where inventory.mavaiable > 0)" \
+
+            #"select resID from inventory NATURAL INNER JOIN sells NATURAL INNER JOIN resources Where mavaiable > 0"
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
