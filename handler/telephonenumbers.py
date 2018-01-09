@@ -30,7 +30,7 @@ class TelephoneNumbersHandler:
             telephoneNumber = self.build_telephoneNumber_dict(row)
             return jsonify(TelephoneNumber=telephoneNumber)
 
-    def searchUsers(self, args): #TODO: EXPAND
+    def searchUsers(self, args):
         firstName = args.get('uFname')
         lastName = args.get('uLname')
         dao = UsersDAO()

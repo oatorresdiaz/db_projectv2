@@ -21,3 +21,31 @@ class BatteriesDAO:
         cursor.execute(query, (bID,))
         result = cursor.fetchone()
         return result
+
+    def getBatteryByResourceId(self, resID):
+        cursor = self.conn.cursor()
+        query = "select * from batteries where resID = %s;"
+        cursor.execute(query, (resID,))
+        result = cursor.fetchone()
+        return result
+
+    def getBatteryByCategoryId(self, catID):
+        cursor = self.conn.cursor()
+        query = "select * from batteries where catID = %s;"
+        cursor.execute(query, (catID,))
+        result = cursor.fetchone()
+        return result
+
+    def getBatteryByType(self, bType):
+        cursor = self.conn.cursor()
+        query = "select * from batteries where bType = %s;"
+        cursor.execute(query, (bType,))
+        result = cursor.fetchone()
+        return result
+
+    def getBatteryByBrand(self, bBrand):
+        cursor = self.conn.cursor()
+        query = "select * from batteries where bBrand = %s;"
+        cursor.execute(query, (bBrand,))
+        result = cursor.fetchone()
+        return result

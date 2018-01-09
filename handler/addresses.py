@@ -1,7 +1,9 @@
 from flask import jsonify
 from dao.addresses import AddressesDAO
 
+
 class AddressesHandler:
+
     def build_address_dict(self, row):
         result = {}
         result['addID'] = row[0]
@@ -24,6 +26,51 @@ class AddressesHandler:
     def getAddressById(self, addID):
         dao = AddressesDAO()
         row = dao.getAddressById(addID)
+        if not row:
+            return jsonify(Error="Address not found"), 404
+        else:
+            address = self.build_address_dict(row)
+            return jsonify(Address=address)
+
+    def getAddressByUserId(self, uID):
+        dao = AddressesDAO()
+        row = dao.getAddressByUserId(uID)
+        if not row:
+            return jsonify(Error="Address not found"), 404
+        else:
+            address = self.build_address_dict(row)
+            return jsonify(Address=address)
+
+    def getAddressByCity(self, City):
+        dao = AddressesDAO()
+        row = dao.getAddressByCity(City)
+        if not row:
+            return jsonify(Error="Address not found"), 404
+        else:
+            address = self.build_address_dict(row)
+            return jsonify(Address=address)
+
+    def getAddressByStreet(self, Street):
+        dao = AddressesDAO()
+        row = dao.getAddressByStreet(Street)
+        if not row:
+            return jsonify(Error="Address not found"), 404
+        else:
+            address = self.build_address_dict(row)
+            return jsonify(Address=address)
+
+    def getAddressByCountry(self, Country):
+        dao = AddressesDAO()
+        row = dao.getAddressByCountry(Country)
+        if not row:
+            return jsonify(Error="Address not found"), 404
+        else:
+            address = self.build_address_dict(row)
+            return jsonify(Address=address)
+
+    def getAddressByZipCode(self, ZipCode):
+        dao = AddressesDAO()
+        row = dao.getAddressByZipCode(ZipCode)
         if not row:
             return jsonify(Error="Address not found"), 404
         else:
