@@ -115,8 +115,6 @@ def getInventoryBySupplierId(suppID):
 def getOrdersBySupplierId(suppID):
     return SuppliersHandler().getOrdersBySupplierId(suppID)
 
-@app.route('/db_project/requesters')
-
 #Show all requesters
 @app.route('/db_project/requesters', methods=['GET', 'POST' ])
 def getAllRequesters():
