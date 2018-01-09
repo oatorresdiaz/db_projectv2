@@ -29,3 +29,12 @@ class RequestersDAO:
         reqid = cursor.fetchone()[0]
         self.conn.commit()
         return reqid
+
+    def getOrdersByRequesterId(self, reqID):
+        cursor = self.conn.cursor()
+        query = "select ordQty, ordDate, ordExpDate, ordType, ordPrice, suppID, resName, resSpecifications from orders natural inner join inventory natural inner join sells natural inner join resources where reqID = %s"
+        cursor.execute(query, (reqID, ))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
