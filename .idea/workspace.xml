@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e1075fe-0f84-4a33-ac70-2c290d1ad2fe" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/db_project.iml" afterPath="$PROJECT_DIR$/.idea/db_project.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dao/resources.py" afterPath="$PROJECT_DIR$/dao/resources.py" />
-      <change beforePath="$PROJECT_DIR$/handler/resources.py" afterPath="$PROJECT_DIR$/handler/resources.py" />
-      <change beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -439,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1515466236795</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="El 9 y el 10">
+      <created>1515473244209</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1515473244209</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -524,7 +527,8 @@
     <MESSAGE value="ADDED POST, GET" />
     <MESSAGE value="Fixed SuppliersHandler and added insert method to requesters/suppliers" />
     <MESSAGE value="Merge branch 'robertoperez' of https://github.com/orlandoecool/db_projectv2 into juanagosto&#10;&#10;Conflicts:&#10;&#9;.idea/db_project.iml&#10;&#9;.idea/misc.xml&#10;&#9;.idea/workspace.xml&#10;&#9;dao/inventory.py&#10;&#9;handler/suppliers.py&#10;&#9;main.py&#10;&#9;schema.sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'robertoperez' of https://github.com/orlandoecool/db_projectv2 into juanagosto&#10;&#10;Conflicts:&#10;&#9;.idea/db_project.iml&#10;&#9;.idea/misc.xml&#10;&#9;.idea/workspace.xml&#10;&#9;dao/inventory.py&#10;&#9;handler/suppliers.py&#10;&#9;main.py&#10;&#9;schema.sql" />
+    <MESSAGE value="El 9 y el 10" />
+    <option name="LAST_COMMIT_MESSAGE" value="El 9 y el 10" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
