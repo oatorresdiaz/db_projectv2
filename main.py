@@ -201,6 +201,8 @@ def getResourcesByCategoryName(catName):
 def getAvailableResourcesByCategories(catName):
         return ResourcesHandler().getAvailableResourcesByCategories(catName)
 
+
+
 #TODO: FOR PHASE 3
 @app.route('/db_project/login')
 def login():
