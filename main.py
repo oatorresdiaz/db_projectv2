@@ -5,6 +5,7 @@ from handler.suppliers import SuppliersHandler
 from handler.requesters import RequestersHandler
 from handler.resources import ResourcesHandler
 from handler.inventory import InventoryHandler
+from handler.reserves import ReservesHandler
 from handler.requests import RequestsHandler
 from handler.addresses import AddressesHandler
 from handler.batteries import BatteriesHandler
@@ -14,14 +15,19 @@ from handler.orders import OrdersHandler
 
 app = Flask(__name__)
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_VQ5l3L
 
 =======
 >>>>>>> .merge_file_4gP5SL
+=======
+#Base route
+>>>>>>> 37b1644a2bfa517c76c8bb26ce550a3d4025285f
 @app.route('/')
 def greeting():
     return 'Hello, this is the parts DB App!'
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_VQ5l3L
 
 @app.route('/db_project/addresses')
@@ -30,6 +36,25 @@ def getAllAddresses():
 >>>>>>> .merge_file_4gP5SL
 @app.route('/db_project/users')
 def getAllUsers():
+=======
+#Shows all users
+@app.route('/db_project/users')
+def getAllUsers():
+        return UsersHandler().getAllUsers()
+    else:
+        return UsersHandler().searchUsersByArguments(request.args)
+        #return UsersHandler().searchUsers(request.args)
+
+#Shows user by ID
+@app.route('/db_project/users/<int:uID>')
+def getUserById(uID):
+    return UsersHandler().getUserById(uID)
+
+
+
+@app.route('/db_project/addresses')
+def getAllAddresses():
+>>>>>>> 37b1644a2bfa517c76c8bb26ce550a3d4025285f
     if not request.args:
         return AddressesHandler().getAllAddresses()
     else:
@@ -65,9 +90,6 @@ def getAddressByCountry(Country):
 def getAddressByZipCode(ZipCode):
     return AddressesHandler().getAddressByZipCode(ZipCode)
 
-@app.route('/db_project/users/<int:uID>')
-def getUserById(uID):
-    return UsersHandler().getUserById(uID)
 
 #Shows all admins
 @app.route('/db_project/admins', methods=['GET', 'POST' ])
@@ -85,96 +107,14 @@ def getAllAdmins():
 def getAdminById(adminID):
     return AdminsHandler().getAdminById(adminID)
 
-#Show all suppliers
-@app.route('/db_project/suppliers', methods=['GET', 'POST' ])
 
 @app.route('/db_project/admins/<int:uID>')
 def getAdminByUserId(uID):
     return AdminsHandler().getAdminByUserId(uID)
 
 
-@app.route('/db_project/batteries')
-def getAllBatteries():
-    if not request.args:
-        return BatteriesHandler().getAllBatteries()
-    else:
-        return BatteriesHandler().searchBatteries(request.args)
-
-
-@app.route('/db_project/batteries/<int:bID>')
-def getBatteriesById(bID):
-    return BatteriesHandler().getBatteryById(bID)
-
-
-@app.route('/db_project/batteries/<int:resID>')
-def getBatteriesByResourceId(resID):
-    return BatteriesHandler().getBatteryByResourceId(resID)
-
-
-@app.route('/db_project/batteries/<int:catID>')
-def getBatteriesByCategoryId(catID):
-    return BatteriesHandler().getBatteryByCategoryId(catID)
-
-
-@app.route('/db_project/batteries/<string:bType>')
-def getBatteriesByType(bType):
-    return BatteriesHandler().getBatteryByType(bType)
-
-
-@app.route('/db_project/batteries/<string:bBrand>')
-def getBatteriesByBrand(bBrand):
-    return BatteriesHandler().getBatteryByBrand(bBrand)
-
-
-@app.route('/db_project/cloth')
-def getAllClothing():
-    if not request.args:
-        return ClothingHandler().getAllClothing()
-    else:
-        return ClothingHandler().searchClothing(request.args)
-
-
-@app.route('/db_project/cloth/<int:clothID>')
-def getClothingById(clothID):
-    return ClothingHandler().getClothingById(clothID)
-
-
-@app.route('/db_project/cloth/<int:resID>')
-def getClothingByResourceId(resID):
-    return ClothingHandler().getClothingByResourceId(resID)
-
-
-@app.route('/db_project/cloth/<int:catID>')
-def getClothingByCategoryId(catID):
-    return ClothingHandler().getClothingByCategoryId(catID)
-
-
-@app.route('/db_project/cloth/<string:clothGender>')
-def getClothingByGender(clothGender):
-    return ClothingHandler().getClothingByGender(clothGender)
-
-
-@app.route('/db_project/cloth/<string:clothBrand>')
-def getClothingByBrand(clothBrand):
-    return ClothingHandler().getClothingByBrand(clothBrand)
-
-
-@app.route('/db_project/cloth/<string:clothSize>')
-def getClothingBySize(clothSize):
-    return ClothingHandler().getClothingBySize(clothSize)
-
-
-@app.route('/db_project/cloth/<string:clothColor>')
-def getClothingByColor(clothColor):
-    return ClothingHandler().getClothingByColor(clothColor)
-
-
-@app.route('/db_project/cloth/<string:clothDesignPattern>')
-def getClothingByDesignPattern(clothDesignPattern):
-    return ClothingHandler().getClothingByDesignPattern(clothDesignPattern)
-
-
-@app.route('/db_project/suppliers')
+#Show all suppliers
+@app.route('/db_project/suppliers', methods=['GET', 'POST' ])
 def getAllSuppliers():
     if request.method == 'POST':
         return SuppliersHandler.insertAdmin(request.form)
@@ -189,7 +129,7 @@ def getAllSuppliers():
 def getSupplierById(suppID):
     return SuppliersHandler().getSupplierById(suppID)
 
-@app.route('/db_project/suppliers/<int:suppID>/inventory')
+@app.route('/db_project/suppliers/<int:suppID>/inventory') #Encontrar productos de un suplidor
 def getInventoryBySupplierId(suppID):
     return SuppliersHandler().getInventoryBySupplierId(suppID)
 
@@ -197,7 +137,6 @@ def getInventoryBySupplierId(suppID):
 def getOrdersBySupplierId(suppID):
     return SuppliersHandler().getOrdersBySupplierId(suppID)
 
-@app.route('/db_project/requesters')
 #Show all requesters
 @app.route('/db_project/requesters', methods=['GET', 'POST' ])
 def getAllRequesters():
@@ -209,10 +148,12 @@ def getAllRequesters():
         else:
             return RequestersHandler().searchRequesters(request.args)
 
+#Show requester by ID
 @app.route('/db_project/requesters/<int:reqID>')
 def getRequesterById(reqID):
     return RequestersHandler().getRequesterById(reqID)
 
+#Show all resources
 @app.route('/db_project/resources')
 def getAllResources():
     if not request.args:
@@ -239,6 +180,7 @@ def getAllInventory():
     else:
         return InventoryHandler().searchInventory(request.args)
 
+#Show inventory by ID
 @app.route('/db_project/inventory/<int:invID>')
 def getInventoryById(invID):
     return InventoryHandler().getInventoryById(invID)
@@ -247,10 +189,11 @@ def getInventoryById(invID):
 def getSupplierByInventoryId(invID):
     return InventoryHandler().getSupplierByInventoryId(invID)
 
-@app.route('/db_project/resources/<string:resName>/suppliers')
+@app.route('/db_project/resources/<string:resName>/suppliers') #Encontrar suplidores para un producto dado
 def getSuppliersByResourceName(resName):
     return InventoryHandler().getSuppliersByResourceName(resName)
 
+<<<<<<< HEAD
 <<<<<<< .merge_file_VQ5l3L
 @app.route('/db_project/reserves')
 def getAllReserves():
@@ -262,6 +205,8 @@ def getAllReserves():
 
 =======
 >>>>>>> .merge_file_4gP5SL
+=======
+>>>>>>> 37b1644a2bfa517c76c8bb26ce550a3d4025285f
 @app.route('/db_project/requests')
 def getAllRequests():
     if not request.args:
@@ -275,21 +220,6 @@ def getAllOrders():
         return OrdersHandler().getAllOrders()
     else:
         return OrdersHandler().searchOrders(request.args)
-
-@app.route('/db_project/available')
-
-@app.route('/db_project/users')
-def getAllUsers():
-    if not request.args:
-        return UsersHandler().getAllUsers()
-    else:
-        return UsersHandler().searchUsers(request.args)
-
-
-@app.route('/db_project/users/<int:uID>')
-def getUserById(uID):
-    return UsersHandler().getUserById(uID)
-
 
 @app.route('/db_project/resources/available')
 def getAllAvailableResources():
