@@ -22,6 +22,16 @@ class SuppliersDAO:
         result = cursor.fetchone()
         return result
 
+    def getInventoryBySupplierId(self, suppID):
+        cursor = self.conn.cursor()
+        query = "select catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, catName from suppliers natural inner join inventory natural inner join sells natural inner join resources natural inner join categories where suppID = %s;"
+        cursor.execute(query, (suppID,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+
     def insert(self, uid):
         cursor = self.conn.cursor()
         query = "insert into suppliers(uID) values (%s) returning suppid;"

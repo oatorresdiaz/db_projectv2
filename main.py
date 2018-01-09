@@ -173,10 +173,16 @@ def getAllSuppliers():
         else:
             return SuppliersHandler().searchSuppliers(request.args)
 
+#Show supplier by ID
 @app.route('/db_project/suppliers/<int:suppID>')
 def getSupplierById(suppID):
     return SuppliersHandler().getSupplierById(suppID)
 
+@app.route('/db_project/suppliers/<int:suppID>/inventory') #Encontrar productos de un suplidor
+def getInventoryBySupplierId(suppID):
+    return SuppliersHandler().getInventoryBySupplierId(suppID)
+
+@app.route('/db_project/requesters')
 #Show all requesters
 @app.route('/db_project/requesters', methods=['GET', 'POST' ])
 def getAllRequesters():
@@ -188,10 +194,12 @@ def getAllRequesters():
         else:
             return RequestersHandler().searchRequesters(request.args)
 
+#Show requester by ID
 @app.route('/db_project/requesters/<int:reqID>')
 def getRequesterById(reqID):
     return RequestersHandler().getRequesterById(reqID)
 
+#Show all resources
 @app.route('/db_project/resources')
 def getAllResources():
     if not request.args:
@@ -199,10 +207,12 @@ def getAllResources():
     else:
         return ResourcesHandler().searchResources(request.args)
 
+#Show resource by ID
 @app.route('/db_project/resources/<int:resID>')
 def getResourceById(resID):
     return ResourcesHandler().getResourceById(resID)
 
+#Show all invetories
 @app.route('/db_project/inventory')
 def getAllInventory():
     if not request.args:
@@ -210,9 +220,18 @@ def getAllInventory():
     else:
         return InventoryHandler().searchInventory(request.args)
 
+#Show inventory by ID
 @app.route('/db_project/inventory/<int:invID>')
 def getInventoryById(invID):
     return InventoryHandler().getInventoryById(invID)
+
+@app.route('/db_project/inventory/<int:invID>/suppliers')
+def getSupplierByInventoryId(invID):
+    return InventoryHandler().getSupplierByInventoryId(invID)
+
+@app.route('/db_project/resources/<string:resName>/suppliers') #Encontrar suplidores para un producto dado
+def getSuppliersByResourceName(resName):
+    return InventoryHandler().getSuppliersByResourceName(resName)
 
 @app.route('/db_project/reserves')
 def getAllReserves():
