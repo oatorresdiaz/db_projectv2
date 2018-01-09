@@ -5,12 +5,11 @@ from handler.suppliers import SuppliersHandler
 from handler.requesters import RequestersHandler
 from handler.resources import ResourcesHandler
 from handler.inventory import InventoryHandler
-from handler.reserves import ReservesHandler
 from handler.requests import RequestsHandler
 from handler.addresses import AddressesHandler
-from handler.batteries import BatteriesHandler
-from handler.clothing import ClothingHandler
 from handler.credentials import CredentialsHandler
+from handler.orders import OrdersHandler
+
 
 app = Flask(__name__)
 
@@ -18,6 +17,7 @@ app = Flask(__name__)
 @app.route('/')
 def greeting():
     return 'Hello, this is the parts DB App!'
+
 
 @app.route('/db_project/users')
 def getAllUsers():
@@ -30,7 +30,6 @@ def getAllUsers():
 @app.route('/db_project/users/<int:uID>')
 def getUserById(uID):
     return UsersHandler().getUserById(uID)
-
 
 
 @app.route('/db_project/addresses')
@@ -173,14 +172,6 @@ def getSupplierByInventoryId(invID):
 def getSuppliersByResourceName(resName):
     return InventoryHandler().getSuppliersByResourceName(resName)
 
-@app.route('/db_project/reserves')
-def getAllReserves():
-    if not request.args:
-        return ReservesHandler().getAllReserves()
-    else:
-        return ReservesHandler().searchReserves(request.args)
-
-
 @app.route('/db_project/requests')
 def getAllRequests():
     if not request.args:
@@ -195,7 +186,6 @@ def getAllOrders():
     else:
         return OrdersHandler().searchOrders(request.args)
 
-
 @app.route('/db_project/resources/available')
 def getAllAvailableResources():
     if not request.args:
@@ -204,19 +194,19 @@ def getAllAvailableResources():
         return ResourcesHandler().searchResources(request.args)
 
 @app.route('/db_project/categories/<string:catName>/resources')
-def getResourcesByCategories(catName):
-        return ResourcesHandler().getResourcesByCategories(catName)
+def getResourcesByCategoryName(catName):
+        return ResourcesHandler().getResourcesByCategoryName(catName)
 
 @app.route('/db_project/categories/<string:catName>/resources/available')
 def getAvailableResourcesByCategories(catName):
         return ResourcesHandler().getAvailableResourcesByCategories(catName)
 
+#TODO: FOR PHASE 3
 @app.route('/db_project/login')
 def login():
      print("Welcome to the user program")
      uname = input("Enter username: ")
      print("Value entered: " + str(uname))
-
      upasswd = input("Enter password: ")
      print("Value entered: " + str(upasswd))
      if not request.args:

@@ -40,7 +40,7 @@ class ResourcesDAO:
             result.append(row)
         return result
 
-    def getResourcesByCategories(self, catName):
+    def getResourcesByCategoryName(self, catName):
         cursor = self.conn.cursor()
         query = "Select resName, resSpecifications From Requests natural inner join resources natural inner join Categories Where catName = %s Order by resName;"
         cursor.execute(query, (catName,))
