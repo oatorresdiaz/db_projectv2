@@ -155,7 +155,7 @@ def getClothingByColor(clothColor):
 def getClothingByDesignPattern(clothDesignPattern):
     return ClothingHandler().getClothingByDesignPattern(clothDesignPattern)
 
-    
+
 @app.route('/db_project/suppliers')
 def getAllSuppliers():
     if not request.args:
