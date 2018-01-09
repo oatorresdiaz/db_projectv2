@@ -5,12 +5,12 @@ from handler.suppliers import SuppliersHandler
 from handler.requesters import RequestersHandler
 from handler.resources import ResourcesHandler
 from handler.inventory import InventoryHandler
+from handler.reserves import ReservesHandler
 from handler.requests import RequestsHandler
 from handler.addresses import AddressesHandler
 from handler.batteries import BatteriesHandler
 from handler.clothing import ClothingHandler
 from handler.credentials import CredentialsHandler
-from handler.orders import OrdersHandler
 
 app = Flask(__name__)
 
@@ -104,7 +104,6 @@ def getAllSuppliers():
         else:
             return SuppliersHandler().searchSuppliers(request.args)
 
-#Show supplier by ID
 @app.route('/db_project/suppliers/<int:suppID>')
 def getSupplierById(suppID):
     return SuppliersHandler().getSupplierById(suppID)
@@ -130,12 +129,10 @@ def getAllRequesters():
         else:
             return RequestersHandler().searchRequesters(request.args)
 
-#Show requester by ID
 @app.route('/db_project/requesters/<int:reqID>')
 def getRequesterById(reqID):
     return RequestersHandler().getRequesterById(reqID)
 
-#Show all resources
 @app.route('/db_project/resources')
 def getAllResources():
     if not request.args:
@@ -164,7 +161,6 @@ def getAllInventory():
     else:
         return InventoryHandler().searchInventory(request.args)
 
-#Show inventory by ID
 @app.route('/db_project/inventory/<int:invID>')
 def getInventoryById(invID):
     return InventoryHandler().getInventoryById(invID)
@@ -200,12 +196,20 @@ def getAllOrders():
         return OrdersHandler().searchOrders(request.args)
 
 
-@app.route('/db_project/available')
+@app.route('/db_project/resources/available')
 def getAllAvailableResources():
     if not request.args:
         return ResourcesHandler().getAllAvailableResources()
     else:
         return ResourcesHandler().searchResources(request.args)
+
+@app.route('/db_project/categories/<string:catName>/resources')
+def getResourcesByCategories(catName):
+        return ResourcesHandler().getResourcesByCategories(catName)
+
+@app.route('/db_project/categories/<string:catName>/resources/available')
+def getAvailableResourcesByCategories(catName):
+        return ResourcesHandler().getAvailableResourcesByCategories(catName)
 
 @app.route('/db_project/login')
 def login():
@@ -219,6 +223,8 @@ def login():
          return CredentialsHandler().login(uname, upasswd)
      else:
          return CredentialsHandler().searchCredentials(request.args)
+
+
 
 if __name__ == '__main__':
     app.run()
