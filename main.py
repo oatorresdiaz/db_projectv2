@@ -176,14 +176,6 @@ def getSupplierByInventoryId(invID):
 def getSuppliersByResourceName(resName):
     return InventoryHandler().getSuppliersByResourceName(resName)
 
-@app.route('/db_project/reserves')
-def getAllReserves():
-    if not request.args:
-        return ReservesHandler().getAllReserves()
-    else:
-        return ReservesHandler().searchReserves(request.args)
-
-
 @app.route('/db_project/requests')
 def getAllRequests():
     if not request.args:
