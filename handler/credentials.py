@@ -28,3 +28,11 @@ class CredentialsHandler:
         else:
             credential = self.build_credential_dict(row)
             return jsonify(Credential=credential)
+
+    def login(self,uname, passwd):
+        dao = CredentialsDAO()
+        verification = dao.login(uname, passwd)
+        if verification == "false":
+            return jsonify(Error="Login Failed")
+        else:
+            return jsonify(Credentials="Login Successful")

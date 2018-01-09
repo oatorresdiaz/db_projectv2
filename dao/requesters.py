@@ -21,3 +21,11 @@ class RequestersDAO:
         cursor.execute(query, (reqID,))
         result = cursor.fetchone()
         return result
+
+    def insert(self, uid):
+        cursor = self.conn.cursor()
+        query = "insert into requesters(uID) values (%s) returning reqid;"
+        cursor.execute(query, (uid,))
+        reqid = cursor.fetchone()[0]
+        self.conn.commit()
+        return reqid
