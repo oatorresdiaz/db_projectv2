@@ -34,6 +34,15 @@ class ResourcesHandler:
             resource = self.build_resource_dict(row)
             return jsonify(Resource=resource)
 
+    def getResourcesByCity(self, city):
+        dao = ResourcesDAO()
+        resources_list = dao.getResourcesByCity(city)
+        result_list = []
+        for row in resources_list:
+            result = self.build_resource_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
+
     def getAllAvailableResources(self):
         dao = ResourcesDAO()
         resources_list = dao.getAllAvailableResources()

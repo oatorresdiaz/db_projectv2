@@ -5,12 +5,12 @@ from handler.suppliers import SuppliersHandler
 from handler.requesters import RequestersHandler
 from handler.resources import ResourcesHandler
 from handler.inventory import InventoryHandler
-from handler.reserves import ReservesHandler
 from handler.requests import RequestsHandler
 from handler.addresses import AddressesHandler
 from handler.batteries import BatteriesHandler
 from handler.clothing import ClothingHandler
 from handler.credentials import CredentialsHandler
+from handler.orders import OrdersHandler
 
 app = Flask(__name__)
 
@@ -22,6 +22,8 @@ def greeting():
 
 @app.route('/db_project/addresses')
 def getAllAddresses():
+@app.route('/db_project/users')
+def getAllUsers():
     if not request.args:
         return AddressesHandler().getAllAddresses()
     else:
@@ -57,6 +59,9 @@ def getAddressByCountry(Country):
 def getAddressByZipCode(ZipCode):
     return AddressesHandler().getAddressByZipCode(ZipCode)
 
+@app.route('/db_project/users/<int:uID>')
+def getUserById(uID):
+    return UsersHandler().getUserById(uID)
 
 #Shows all admins
 @app.route('/db_project/admins', methods=['GET', 'POST' ])
@@ -69,7 +74,7 @@ def getAllAdmins():
         else:
             return AdminsHandler().searchAdmins(request.args)
 
-
+#Show admin by ID
 @app.route('/db_project/admins/<int:adminID>')
 def getAdminById(adminID):
     return AdminsHandler().getAdminById(adminID)
@@ -173,13 +178,18 @@ def getAllSuppliers():
         else:
             return SuppliersHandler().searchSuppliers(request.args)
 
+#Show supplier by ID
 @app.route('/db_project/suppliers/<int:suppID>')
 def getSupplierById(suppID):
     return SuppliersHandler().getSupplierById(suppID)
 
-@app.route('/db_project/suppliers/<int:suppID>/inventory') #Encontrar productos de un suplidor
+@app.route('/db_project/suppliers/<int:suppID>/inventory')
 def getInventoryBySupplierId(suppID):
     return SuppliersHandler().getInventoryBySupplierId(suppID)
+
+@app.route('/db_project/suppliers/<int:suppID>/orders')
+def getOrdersBySupplierId(suppID):
+    return SuppliersHandler().getOrdersBySupplierId(suppID)
 
 @app.route('/db_project/requesters')
 #Show all requesters
@@ -204,9 +214,17 @@ def getAllResources():
     else:
         return ResourcesHandler().searchResources(request.args)
 
+@app.route('/db_project/requesters/<int:reqID>/orders')
+def getOrdersByRequesterId(reqID):
+    return RequestersHandler().getOrdersByRequesterId(reqID)
+
 @app.route('/db_project/resources/<int:resID>')
 def getResourceById(resID):
     return ResourcesHandler().getResourceById(resID)
+
+@app.route('/db_project/resources/<string:city>')
+def getResourcesByCity(city):
+    return ResourcesHandler().getResourcesByCity(city)
 
 @app.route('/db_project/inventory')
 def getAllInventory():
@@ -223,7 +241,7 @@ def getInventoryById(invID):
 def getSupplierByInventoryId(invID):
     return InventoryHandler().getSupplierByInventoryId(invID)
 
-@app.route('/db_project/resources/<string:resName>/suppliers') #Encontrar suplidores para un producto dado
+@app.route('/db_project/resources/<string:resName>/suppliers')
 def getSuppliersByResourceName(resName):
     return InventoryHandler().getSuppliersByResourceName(resName)
 
@@ -242,6 +260,14 @@ def getAllRequests():
     else:
         return RequestsHandler().searchRequests(request.args)
 
+@app.route('/db_project/orders')
+def getAllOrders():
+    if not request.args:
+        return OrdersHandler().getAllOrders()
+    else:
+        return OrdersHandler().searchOrders(request.args)
+
+@app.route('/db_project/available')
 
 @app.route('/db_project/users')
 def getAllUsers():
