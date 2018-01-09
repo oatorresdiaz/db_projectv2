@@ -27,6 +27,18 @@ class RequestersHandler:
         result['reqID'] = row[19]
         return result
 
+    def build_order_dict(self, row):
+        result = {}
+        result['ordQty'] = row[0]
+        result['ordDate'] = row[1]
+        result['ordExpDate'] = row[2]
+        result['ordType'] = row[3]
+        result['ordPrice'] = row[4]
+        result['suppID'] = row[5]
+        result['resName'] = row[6]
+        result['resSpecifications'] = row[7]
+        return result
+
     def getAllRequesters(self):
         dao = RequestersDAO()
         requesters_list = dao.getAllRequesters()
@@ -64,4 +76,13 @@ class RequestersHandler:
 
     def searchRequesters(self, args):
         pass
+
+    def getOrdersByRequesterId(self, reqID):
+        dao = RequestersDAO()
+        orders_list = dao.getOrdersByRequesterId(reqID)
+        result_list = []
+        for row in orders_list:
+            result = self.build_order_dict(row)
+            result_list.append(result)
+        return jsonify(Orders=result_list)
 

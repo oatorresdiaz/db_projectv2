@@ -5,18 +5,16 @@ from handler.suppliers import SuppliersHandler
 from handler.requesters import RequestersHandler
 from handler.resources import ResourcesHandler
 from handler.inventory import InventoryHandler
-from handler.reserves import ReservesHandler
 from handler.requests import RequestsHandler
 from handler.credentials import CredentialsHandler
+from handler.orders import OrdersHandler
 
 app = Flask(__name__)
 
-#Base route
 @app.route('/')
 def greeting():
     return 'Hello, this is the parts DB App!'
 
-#Shows all users
 @app.route('/db_project/users')
 def getAllUsers():
     if not request.args:
@@ -25,7 +23,6 @@ def getAllUsers():
         return UsersHandler().searchUsersByArguments(request.args)
         #return UsersHandler().searchUsers(request.args)
 
-#Shows user by ID
 @app.route('/db_project/users/<int:uID>')
 def getUserById(uID):
     return UsersHandler().getUserById(uID)
@@ -62,9 +59,13 @@ def getAllSuppliers():
 def getSupplierById(suppID):
     return SuppliersHandler().getSupplierById(suppID)
 
-@app.route('/db_project/suppliers/<int:suppID>/inventory') #Encontrar productos de un suplidor
+@app.route('/db_project/suppliers/<int:suppID>/inventory')
 def getInventoryBySupplierId(suppID):
     return SuppliersHandler().getInventoryBySupplierId(suppID)
+
+@app.route('/db_project/suppliers/<int:suppID>/orders')
+def getOrdersBySupplierId(suppID):
+    return SuppliersHandler().getOrdersBySupplierId(suppID)
 
 @app.route('/db_project/requesters')
 #Show all requesters
@@ -89,9 +90,17 @@ def getAllResources():
     else:
         return ResourcesHandler().searchResources(request.args)
 
+@app.route('/db_project/requesters/<int:reqID>/orders')
+def getOrdersByRequesterId(reqID):
+    return RequestersHandler().getOrdersByRequesterId(reqID)
+
 @app.route('/db_project/resources/<int:resID>')
 def getResourceById(resID):
     return ResourcesHandler().getResourceById(resID)
+
+@app.route('/db_project/resources/<string:city>')
+def getResourcesByCity(city):
+    return ResourcesHandler().getResourcesByCity(city)
 
 @app.route('/db_project/inventory')
 def getAllInventory():
@@ -108,16 +117,9 @@ def getInventoryById(invID):
 def getSupplierByInventoryId(invID):
     return InventoryHandler().getSupplierByInventoryId(invID)
 
-@app.route('/db_project/resources/<string:resName>/suppliers') #Encontrar suplidores para un producto dado
+@app.route('/db_project/resources/<string:resName>/suppliers')
 def getSuppliersByResourceName(resName):
     return InventoryHandler().getSuppliersByResourceName(resName)
-
-@app.route('/db_project/reserves')
-def getAllReserves():
-    if not request.args:
-        return ReservesHandler().getAllReserves()
-    else:
-        return ReservesHandler().searchReserves(request.args)
 
 @app.route('/db_project/requests')
 def getAllRequests():
@@ -125,6 +127,13 @@ def getAllRequests():
         return RequestsHandler().getAllRequests()
     else:
         return RequestsHandler().searchRequests(request.args)
+
+@app.route('/db_project/orders')
+def getAllOrders():
+    if not request.args:
+        return OrdersHandler().getAllOrders()
+    else:
+        return OrdersHandler().searchOrders(request.args)
 
 @app.route('/db_project/available')
 def getAllAvailableResources():

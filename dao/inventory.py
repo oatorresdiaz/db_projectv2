@@ -35,3 +35,30 @@ class InventoryDAO:
         cursor.execute(query, (resName,))
         result = cursor.fetchone()
         return result
+
+    def getInventoryByResourceNameAndCity(self, resname, city):
+        cursor = self.conn.cursor()
+        query = "select catID, resID, invID, suppID, invDate, invQty, invreserved, invAvailable, invprice, resname, resSpecifications, catname from addresses natural inner join suppliers natural inner join inventory natural inner join sells natural inner join resources natural inner join categories where resName = %s and city = %s;"
+        cursor.execute(query, (resname, city))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def getInventoryByResourceName(self, resname):
+        cursor = self.conn.cursor()
+        query = "select catID, resID, invID, suppID, invDate, invQty, invreserved, invAvailable, invprice, resname, resSpecifications, catname from addresses natural inner join suppliers natural inner join inventory natural inner join sells natural inner join resources natural inner join categories where resName = %s;"
+        cursor.execute(query, (resname, ))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def getInventoryByCity(self, city):
+        cursor = self.conn.cursor()
+        query = "select catID, resID, invID, suppID, invDate, invQty, invreserved, invAvailable, invprice, resname, resSpecifications, catname from addresses natural inner join suppliers natural inner join inventory natural inner join sells natural inner join resources natural inner join categories where city = %s;"
+        cursor.execute(query, (city, ))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result

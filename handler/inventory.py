@@ -14,7 +14,8 @@ class InventoryHandler:
         result['invAvailable'] = row[7]
         result['invPrice'] = row[8]
         result['resName'] = row[9]
-        result['catName'] = row[10]
+        result['resspecifications'] = row[10]
+        result['catName'] = row[11]
         return result
 
     def build_supplier_dict(self, row):
@@ -60,7 +61,23 @@ class InventoryHandler:
             return jsonify(Inventory=inventory)
 
     def searchInventory(self, args):
-        pass
+        resname = args.get('resName')
+        city = args.get('city')
+        dao = InventoryDAO()
+        inventory_list = []
+        if (len(args) == 2) and resname and city:
+            inventory_list = dao.getInventoryByResourceNameAndCity(resname, city)
+        elif (len(args) == 1) and resname:
+            inventory_list = dao.getInventoryByResourceName(resname)
+        elif (len(args) == 1) and city:
+            inventory_list = dao.getInventoryByCity(city)
+        else:
+            return jsonify(Error="Malformed query string"), 400
+        result_list = []
+        for row in inventory_list:
+            result = self.build_inventory_dict(row)
+            result_list.append(result)
+        return jsonify(Inventory=result_list)
 
     def getSupplierByInventoryId(self, invID):
         dao = InventoryDAO()

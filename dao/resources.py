@@ -24,14 +24,17 @@ class ResourcesDAO:
 
     def getAllAvailableResources(self):
         cursor = self.conn.cursor()
-        query = "Select * " \
-                "From Resources " \
-                "Where resID IN (Select resID" \
-                                " From Inventory " \
-                                "NATURAL INNER JOIN Resources Where inventory.mavaiable > 0)" \
-
-            #"select resID from inventory NATURAL INNER JOIN sells NATURAL INNER JOIN resources Where mavaiable > 0"
+        query = "Select * From resources Where resID IN (Select resID From Inventory NATURAL INNER JOIN Resources Where inventory.invavailable > 0)"
         cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def getResourcesByCity(self, city):
+        cursor = self.conn.cursor()
+        query = "Select resID, resName, catID from addresses natural inner join suppliers natural inner join inventory natural inner join sells natural inner join resources where city = %s;"
+        cursor.execute(query, (city,))
         result = []
         for row in cursor:
             result.append(row)

@@ -5,8 +5,9 @@ class ResourcesHandler:
     def build_resource_dict(self, row):
         result = {}
         result['resID'] = row[0]
-        result['resCategory'] = row[1]
-        result['resSubCategory'] = row[2]
+        result['resName'] = row[1]
+        result['catID'] = row[2]
+        result['resSpecifications'] = row[3]
         return result
 
     def getAllResources(self):
@@ -26,6 +27,15 @@ class ResourcesHandler:
         else:
             resource = self.build_resource_dict(row)
             return jsonify(Resource=resource)
+
+    def getResourcesByCity(self, city):
+        dao = ResourcesDAO()
+        resources_list = dao.getResourcesByCity(city)
+        result_list = []
+        for row in resources_list:
+            result = self.build_resource_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
 
     def getAllAvailableResources(self):
         dao = ResourcesDAO()
