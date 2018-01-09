@@ -39,3 +39,21 @@ class ResourcesDAO:
         for row in cursor:
             result.append(row)
         return result
+
+    def getResourcesByCategories(self, catName):
+        cursor = self.conn.cursor()
+        query = "Select resName, resSpecifications From Requests natural inner join resources natural inner join Categories Where catName = %s Order by resName;"
+        cursor.execute(query, (catName,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def getAvailableResourcesByCategories(self, catName):
+        cursor = self.conn.cursor()
+        query = "Select resName, resSpecifications From Sells natural inner join resources natural inner join Categories Where invID IN (Select invID From Inventory Where invAvailable > 0) And catName = %s Order by resName;"
+        cursor.execute(query, (catName,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
