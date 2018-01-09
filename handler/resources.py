@@ -6,7 +6,9 @@ class ResourcesHandler:
         result = {}
         result['resID'] = row[0]
         result['resName'] = row[1]
-<<<<<<< .merge_file_BUuIrI
+        result['catID'] = row[2]
+        result['resSpecifications'] = row[3]
+        result['resName'] = row[1]
         result['catID']=row[2]
         result['resSpecifications'] = row[3]
         return result
@@ -15,10 +17,6 @@ class ResourcesHandler:
         result = {}
         result['resName'] = row[0]
         result['resSpecifications'] = row[1]
-=======
-        result['catID'] = row[2]
-        result['resSpecifications'] = row[3]
->>>>>>> .merge_file_wVP5KL
         return result
 
     def getAllResources(self):
@@ -57,9 +55,9 @@ class ResourcesHandler:
             result_list.append(result)
         return jsonify(AvailableResources = result_list)
 
-    def getResourcesByCategories(self, catName):
+    def getResourcesByCategoryName(self, catName):
         dao = ResourcesDAO()
-        resources_list = dao.getResourcesByCategories(catName)
+        resources_list = dao.getResourcesByCategoryName(catName)
         result_list = []
         for row in resources_list:
             result = self.build_cat_dict(row)
