@@ -52,9 +52,9 @@ class ResourcesHandler:
             result_list.append(result)
         return jsonify(AvailableResources = result_list)
 
-    def getResourcesByCategories(self, catName):
+    def getResourcesByCategoryName(self, catName):
         dao = ResourcesDAO()
-        resources_list = dao.getResourcesByCategories(catName)
+        resources_list = dao.getResourcesByCategoryName(catName)
         result_list = []
         for row in resources_list:
             result = self.build_cat_dict(row)
