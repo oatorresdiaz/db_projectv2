@@ -19,6 +19,19 @@ app = Flask(__name__)
 def greeting():
     return 'Hello, this is the parts DB App!'
 
+@app.route('/db_project/users')
+def getAllUsers():
+    if not request.args:
+        return UsersHandler().getAllUsers()
+    else:
+        return UsersHandler().searchUsers(request.args)
+
+
+@app.route('/db_project/users/<int:uID>')
+def getUserById(uID):
+    return UsersHandler().getUserById(uID)
+
+
 
 @app.route('/db_project/addresses')
 def getAllAddresses():
@@ -74,96 +87,14 @@ def getAllAdmins():
 def getAdminById(adminID):
     return AdminsHandler().getAdminById(adminID)
 
-#Show all suppliers
-@app.route('/db_project/suppliers', methods=['GET', 'POST' ])
 
 @app.route('/db_project/admins/<int:uID>')
 def getAdminByUserId(uID):
     return AdminsHandler().getAdminByUserId(uID)
 
 
-@app.route('/db_project/batteries')
-def getAllBatteries():
-    if not request.args:
-        return BatteriesHandler().getAllBatteries()
-    else:
-        return BatteriesHandler().searchBatteries(request.args)
-
-
-@app.route('/db_project/batteries/<int:bID>')
-def getBatteriesById(bID):
-    return BatteriesHandler().getBatteryById(bID)
-
-
-@app.route('/db_project/batteries/<int:resID>')
-def getBatteriesByResourceId(resID):
-    return BatteriesHandler().getBatteryByResourceId(resID)
-
-
-@app.route('/db_project/batteries/<int:catID>')
-def getBatteriesByCategoryId(catID):
-    return BatteriesHandler().getBatteryByCategoryId(catID)
-
-
-@app.route('/db_project/batteries/<string:bType>')
-def getBatteriesByType(bType):
-    return BatteriesHandler().getBatteryByType(bType)
-
-
-@app.route('/db_project/batteries/<string:bBrand>')
-def getBatteriesByBrand(bBrand):
-    return BatteriesHandler().getBatteryByBrand(bBrand)
-
-
-@app.route('/db_project/cloth')
-def getAllClothing():
-    if not request.args:
-        return ClothingHandler().getAllClothing()
-    else:
-        return ClothingHandler().searchClothing(request.args)
-
-
-@app.route('/db_project/cloth/<int:clothID>')
-def getClothingById(clothID):
-    return ClothingHandler().getClothingById(clothID)
-
-
-@app.route('/db_project/cloth/<int:resID>')
-def getClothingByResourceId(resID):
-    return ClothingHandler().getClothingByResourceId(resID)
-
-
-@app.route('/db_project/cloth/<int:catID>')
-def getClothingByCategoryId(catID):
-    return ClothingHandler().getClothingByCategoryId(catID)
-
-
-@app.route('/db_project/cloth/<string:clothGender>')
-def getClothingByGender(clothGender):
-    return ClothingHandler().getClothingByGender(clothGender)
-
-
-@app.route('/db_project/cloth/<string:clothBrand>')
-def getClothingByBrand(clothBrand):
-    return ClothingHandler().getClothingByBrand(clothBrand)
-
-
-@app.route('/db_project/cloth/<string:clothSize>')
-def getClothingBySize(clothSize):
-    return ClothingHandler().getClothingBySize(clothSize)
-
-
-@app.route('/db_project/cloth/<string:clothColor>')
-def getClothingByColor(clothColor):
-    return ClothingHandler().getClothingByColor(clothColor)
-
-
-@app.route('/db_project/cloth/<string:clothDesignPattern>')
-def getClothingByDesignPattern(clothDesignPattern):
-    return ClothingHandler().getClothingByDesignPattern(clothDesignPattern)
-
-
-@app.route('/db_project/suppliers')
+#Show all suppliers
+@app.route('/db_project/suppliers', methods=['GET', 'POST' ])
 def getAllSuppliers():
     if request.method == 'POST':
         return SuppliersHandler.insertAdmin(request.form)
@@ -182,7 +113,7 @@ def getSupplierById(suppID):
 def getInventoryBySupplierId(suppID):
     return SuppliersHandler().getInventoryBySupplierId(suppID)
 
-@app.route('/db_project/requesters')
+
 #Show all requesters
 @app.route('/db_project/requesters', methods=['GET', 'POST' ])
 def getAllRequesters():
@@ -247,19 +178,6 @@ def getAllRequests():
         return RequestsHandler().getAllRequests()
     else:
         return RequestsHandler().searchRequests(request.args)
-
-
-@app.route('/db_project/users')
-def getAllUsers():
-    if not request.args:
-        return UsersHandler().getAllUsers()
-    else:
-        return UsersHandler().searchUsers(request.args)
-
-
-@app.route('/db_project/users/<int:uID>')
-def getUserById(uID):
-    return UsersHandler().getUserById(uID)
 
 
 @app.route('/db_project/available')
