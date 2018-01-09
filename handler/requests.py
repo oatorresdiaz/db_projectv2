@@ -4,10 +4,13 @@ from dao.requests import RequestsDAO
 class RequestsHandler:
     def build_request_dict(self, row):
         result = {}
-        result['reqID'] = row[0]
-        result['resID'] = row[1]
-        result['rqstsDate'] = row[2]
-        result['rqstsQty'] = row[3]
+        result['resID'] = row[0]
+        result['reqID'] = row[1]
+        result['reqQty'] = row[2]
+        result['reqUnit'] = row[3]
+        result['reqDate'] = row[4]
+        result['resName'] = row[5]
+        result['catID'] = row[6]
         return result
 
     def getAllRequests(self):

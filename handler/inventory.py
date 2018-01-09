@@ -4,13 +4,41 @@ from dao.inventory import InventoryDAO
 class InventoryHandler:
     def build_inventory_dict(self, row):
         result = {}
-        result['invID'] = row[0]
-        result['suppID'] = row[1]
-        result['invDate'] = row[2]
-        result['invQty'] = row[3]
-        result['invReserved'] = row[4]
-        result['invAvailable'] = row[5]
-        result['invPrice'] = row[6]
+        result['catID'] = row[0]
+        result['resID'] = row[1]
+        result['invID'] = row[2]
+        result['suppID'] = row[3]
+        result['invDate'] = row[4]
+        result['invQty'] = row[5]
+        result['invReserved'] = row[6]
+        result['invAvailable'] = row[7]
+        result['invPrice'] = row[8]
+        result['resName'] = row[9]
+        result['catName'] = row[10]
+        return result
+
+    def build_supplier_dict(self, row):
+        result = {}
+        result['uID'] = row[0]
+        result['uFirstName'] = row[1]
+        result['uLastName'] = row[2]
+        result['uGender'] = row[3]
+        result['uBirthDate'] = row[4]
+        result['addID'] = row[5]
+        result['city'] = row[6]
+        result['street'] = row[7]
+        result['country'] = row[8]
+        result['zipcode'] = row[9]
+        result['cID'] = row[10]
+        result['username'] = row[11]
+        result['password'] = row[12]
+        result['email'] = row[13]
+        result['tID'] = row[14]
+        result['homeNumber'] = row[15]
+        result['mobileNumber'] = row[16]
+        result['workNumber'] = row[17]
+        result['otherNumber'] = row[18]
+        result['suppID'] = row[19]
         return result
 
     def getAllInventory(self):
@@ -33,3 +61,21 @@ class InventoryHandler:
 
     def searchInventory(self, args):
         pass
+
+    def getSupplierByInventoryId(self, invID):
+        dao = InventoryDAO()
+        row = dao.getSupplierByInventoryId(invID)
+        if not row:
+            return jsonify(Error="Supplier not found"), 404
+        else:
+            supplier = self.build_supplier_dict(row)
+            return jsonify(Supplier=supplier)
+
+    def getSuppliersByResourceName(self, resName):
+        dao = InventoryDAO()
+        row = dao.getSuppliersByResourceName(resName)
+        if not row:
+            return jsonify(Error="Supplier not found"), 404
+        else:
+            supplier = self.build_supplier_dict(row)
+            return jsonify(Supplier=supplier)

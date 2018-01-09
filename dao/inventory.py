@@ -8,7 +8,7 @@ class InventoryDAO:
 
     def getAllInventory(self):
         cursor = self.conn.cursor()
-        query = "select * from inventory;"
+        query = "select * from inventory natural inner join sells natural inner join resources natural inner join categories;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -17,7 +17,21 @@ class InventoryDAO:
 
     def getInventoryById(self, invID):
         cursor = self.conn.cursor()
-        query = "select * from inventory where invID = %s;"
+        query = "select * from inventory natural inner join sells natural inner join resources natural inner join categories where invID = %s;"
         cursor.execute(query, (invID,))
+        result = cursor.fetchone()
+        return result
+
+    def getSupplierByInventoryId(self, invID):
+        cursor = self.conn.cursor()
+        query = "select uID, ufirstname, ulastname, ugender, ubirthdate, addid, city, street, country, zipcode, cID, username, password, email, tid, homeNumber, mobileNumber, workNumber, otherNumber, suppID from users natural inner join addresses natural inner join credentials natural inner join telephonenumbers natural inner join suppliers natural inner join inventory where invID = %s;"
+        cursor.execute(query, (invID,))
+        result = cursor.fetchone()
+        return result
+
+    def getSuppliersByResourceName(self, resName):
+        cursor = self.conn.cursor()
+        query = "select uID, ufirstname, ulastname, ugender, ubirthdate, addid, city, street, country, zipcode, cID, username, password, email, tid, homeNumber, mobileNumber, workNumber, otherNumber, suppID from users natural inner join addresses natural inner join credentials natural inner join telephonenumbers natural inner join suppliers natural inner join inventory natural inner join sells natural inner join resources where resName = %s;"
+        cursor.execute(query, (resName,))
         result = cursor.fetchone()
         return result

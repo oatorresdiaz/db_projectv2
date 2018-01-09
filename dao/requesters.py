@@ -8,7 +8,7 @@ class RequestersDAO:
 
     def getAllRequesters(self):
         cursor = self.conn.cursor()
-        query = "select * from requesters;"
+        query = "select * from users natural inner join addresses natural inner join credentials natural inner join telephonenumbers natural inner join requesters;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -17,7 +17,7 @@ class RequestersDAO:
 
     def getRequesterById(self, reqID):
         cursor = self.conn.cursor()
-        query = "select * from requesters where reqID = %s;"
+        query = "select * from users natural inner join addresses natural inner join credentials natural inner join telephonenumbers natural inner join requesters where reqID = %s;"
         cursor.execute(query, (reqID,))
         result = cursor.fetchone()
         return result

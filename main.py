@@ -22,7 +22,8 @@ def getAllUsers():
     if not request.args:
         return UsersHandler().getAllUsers()
     else:
-        return UsersHandler().searchUsers(request.args)
+        return UsersHandler().searchUsersByArguments(request.args)
+        #return UsersHandler().searchUsers(request.args)
 
 #Shows user by ID
 @app.route('/db_project/users/<int:uID>')
@@ -61,6 +62,11 @@ def getAllSuppliers():
 def getSupplierById(suppID):
     return SuppliersHandler().getSupplierById(suppID)
 
+@app.route('/db_project/suppliers/<int:suppID>/inventory') #Encontrar productos de un suplidor
+def getInventoryBySupplierId(suppID):
+    return SuppliersHandler().getInventoryBySupplierId(suppID)
+
+@app.route('/db_project/requesters')
 #Show all requesters
 @app.route('/db_project/requesters', methods=['GET', 'POST' ])
 def getAllRequesters():
@@ -72,12 +78,10 @@ def getAllRequesters():
         else:
             return RequestersHandler().searchRequesters(request.args)
 
-#Show requester by ID
 @app.route('/db_project/requesters/<int:reqID>')
 def getRequesterById(reqID):
     return RequestersHandler().getRequesterById(reqID)
 
-#Show all resources
 @app.route('/db_project/resources')
 def getAllResources():
     if not request.args:
@@ -85,12 +89,10 @@ def getAllResources():
     else:
         return ResourcesHandler().searchResources(request.args)
 
-#Show resource by ID
 @app.route('/db_project/resources/<int:resID>')
 def getResourceById(resID):
     return ResourcesHandler().getResourceById(resID)
 
-#Show all invetories
 @app.route('/db_project/inventory')
 def getAllInventory():
     if not request.args:
@@ -98,12 +100,18 @@ def getAllInventory():
     else:
         return InventoryHandler().searchInventory(request.args)
 
-#Show inventory by ID
 @app.route('/db_project/inventory/<int:invID>')
 def getInventoryById(invID):
     return InventoryHandler().getInventoryById(invID)
 
-#Show all reserves
+@app.route('/db_project/inventory/<int:invID>/suppliers')
+def getSupplierByInventoryId(invID):
+    return InventoryHandler().getSupplierByInventoryId(invID)
+
+@app.route('/db_project/resources/<string:resName>/suppliers') #Encontrar suplidores para un producto dado
+def getSuppliersByResourceName(resName):
+    return InventoryHandler().getSuppliersByResourceName(resName)
+
 @app.route('/db_project/reserves')
 def getAllReserves():
     if not request.args:
@@ -111,7 +119,6 @@ def getAllReserves():
     else:
         return ReservesHandler().searchReserves(request.args)
 
-#Show all requests
 @app.route('/db_project/requests')
 def getAllRequests():
     if not request.args:
