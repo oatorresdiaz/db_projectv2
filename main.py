@@ -14,14 +14,20 @@ from handler.orders import OrdersHandler
 
 app = Flask(__name__)
 
+<<<<<<< .merge_file_VQ5l3L
 
+=======
+>>>>>>> .merge_file_4gP5SL
 @app.route('/')
 def greeting():
     return 'Hello, this is the parts DB App!'
 
+<<<<<<< .merge_file_VQ5l3L
 
 @app.route('/db_project/addresses')
 def getAllAddresses():
+=======
+>>>>>>> .merge_file_4gP5SL
 @app.route('/db_project/users')
 def getAllUsers():
     if not request.args:
@@ -245,6 +251,7 @@ def getSupplierByInventoryId(invID):
 def getSuppliersByResourceName(resName):
     return InventoryHandler().getSuppliersByResourceName(resName)
 
+<<<<<<< .merge_file_VQ5l3L
 @app.route('/db_project/reserves')
 def getAllReserves():
     if not request.args:
@@ -253,6 +260,8 @@ def getAllReserves():
         return ReservesHandler().searchReserves(request.args)
 
 
+=======
+>>>>>>> .merge_file_4gP5SL
 @app.route('/db_project/requests')
 def getAllRequests():
     if not request.args:
