@@ -5,8 +5,15 @@ class ResourcesHandler:
     def build_resource_dict(self, row):
         result = {}
         result['resID'] = row[0]
-        result['resCategory'] = row[1]
-        result['resSubCategory'] = row[2]
+        result['resName'] = row[1]
+        result['catID']=row[2]
+        result['resSpecifications'] = row[3]
+        return result
+
+    def build_cat_dict(self, row):
+        result = {}
+        result['resName'] = row[0]
+        result['resSpecifications'] = row[1]
         return result
 
     def getAllResources(self):
@@ -35,6 +42,24 @@ class ResourcesHandler:
             result = self.build_resource_dict(row)
             result_list.append(result)
         return jsonify(AvailableResources = result_list)
+
+    def getResourcesByCategories(self, catName):
+        dao = ResourcesDAO()
+        resources_list = dao.getResourcesByCategories(catName)
+        result_list = []
+        for row in resources_list:
+            result = self.build_cat_dict(row)
+            result_list.append(result)
+        return jsonify(Resources = result_list)
+
+    def getAvailableResourcesByCategories(self, catName):
+        dao = ResourcesDAO()
+        resources_list = dao.getAvailableResourcesByCategories(catName)
+        result_list = []
+        for row in resources_list:
+            result = self.build_cat_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)
 
     def searchResources(self, args):
         pass

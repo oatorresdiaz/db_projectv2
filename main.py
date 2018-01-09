@@ -256,12 +256,20 @@ def getUserById(uID):
     return UsersHandler().getUserById(uID)
 
 
-@app.route('/db_project/available')
+@app.route('/db_project/resources/available')
 def getAllAvailableResources():
     if not request.args:
         return ResourcesHandler().getAllAvailableResources()
     else:
         return ResourcesHandler().searchResources(request.args)
+
+@app.route('/db_project/categories/<string:catName>/resources')
+def getResourcesByCategories(catName):
+        return ResourcesHandler().getResourcesByCategories(catName)
+
+@app.route('/db_project/categories/<string:catName>/resources/available')
+def getAvailableResourcesByCategories(catName):
+        return ResourcesHandler().getAvailableResourcesByCategories(catName)
 
 @app.route('/db_project/login')
 def login():
@@ -275,6 +283,8 @@ def login():
          return CredentialsHandler().login(uname, upasswd)
      else:
          return CredentialsHandler().searchCredentials(request.args)
+
+
 
 if __name__ == '__main__':
     app.run()
