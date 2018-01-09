@@ -11,22 +11,25 @@ from handler.addresses import AddressesHandler
 from handler.batteries import BatteriesHandler
 from handler.clothing import ClothingHandler
 from handler.credentials import CredentialsHandler
+from handler.orders import OrdersHandler
 
 app = Flask(__name__)
 
-
+#Base route
 @app.route('/')
 def greeting():
     return 'Hello, this is the parts DB App!'
 
+#Shows all users
 @app.route('/db_project/users')
 def getAllUsers():
     if not request.args:
         return UsersHandler().getAllUsers()
     else:
-        return UsersHandler().searchUsers(request.args)
+        return UsersHandler().searchUsersByArguments(request.args)
+        #return UsersHandler().searchUsers(request.args)
 
-
+#Shows user by ID
 @app.route('/db_project/users/<int:uID>')
 def getUserById(uID):
     return UsersHandler().getUserById(uID)
@@ -82,7 +85,7 @@ def getAllAdmins():
         else:
             return AdminsHandler().searchAdmins(request.args)
 
-
+#Show admin by ID
 @app.route('/db_project/admins/<int:adminID>')
 def getAdminById(adminID):
     return AdminsHandler().getAdminById(adminID)
@@ -113,6 +116,9 @@ def getSupplierById(suppID):
 def getInventoryBySupplierId(suppID):
     return SuppliersHandler().getInventoryBySupplierId(suppID)
 
+@app.route('/db_project/suppliers/<int:suppID>/orders')
+def getOrdersBySupplierId(suppID):
+    return SuppliersHandler().getOrdersBySupplierId(suppID)
 
 #Show all requesters
 @app.route('/db_project/requesters', methods=['GET', 'POST' ])
@@ -138,12 +144,18 @@ def getAllResources():
     else:
         return ResourcesHandler().searchResources(request.args)
 
-#Show resource by ID
+@app.route('/db_project/requesters/<int:reqID>/orders')
+def getOrdersByRequesterId(reqID):
+    return RequestersHandler().getOrdersByRequesterId(reqID)
+
 @app.route('/db_project/resources/<int:resID>')
 def getResourceById(resID):
     return ResourcesHandler().getResourceById(resID)
 
-#Show all invetories
+@app.route('/db_project/resources/<string:city>')
+def getResourcesByCity(city):
+    return ResourcesHandler().getResourcesByCity(city)
+
 @app.route('/db_project/inventory')
 def getAllInventory():
     if not request.args:
@@ -179,6 +191,12 @@ def getAllRequests():
     else:
         return RequestsHandler().searchRequests(request.args)
 
+@app.route('/db_project/orders')
+def getAllOrders():
+    if not request.args:
+        return OrdersHandler().getAllOrders()
+    else:
+        return OrdersHandler().searchOrders(request.args)
 
 @app.route('/db_project/available')
 def getAllAvailableResources():

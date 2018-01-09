@@ -42,6 +42,18 @@ class SuppliersHandler:
         result['catName'] = row[10]
         return result
 
+    def build_order_dict(self, row):
+        result = {}
+        result['ordQty'] = row[0]
+        result['ordDate'] = row[1]
+        result['ordExpDate'] = row[2]
+        result['ordType'] = row[3]
+        result['ordPrice'] = row[4]
+        result['suppID'] = row[5]
+        result['resName'] = row[6]
+        result['resSpecifications'] = row[7]
+        return result
+
     def getAllSuppliers(self):
         dao = SuppliersDAO()
         suppliers_list = dao.getAllSuppliers()
@@ -73,7 +85,7 @@ class SuppliersHandler:
                 if uid:
                     dao = SuppliersDAO()
                     suppid = dao.insert(uid)
-                    result = self.build_supplier_attributes(suppid, uid)       #A~adir buil attributes
+                    result = self.build_supplier_attributes(suppid, uid)
                     return jsonify(Admin=result), 201
                 else:
                     return jsonify(Error="Unexpected attributes in post request"), 400
@@ -90,3 +102,14 @@ class SuppliersHandler:
             result = self.build_inv_dict(row)
             result_list.append(result)
         return jsonify(SupplierInventory=result_list)
+
+    def getOrdersBySupplierId(self, suppID):
+        dao = SuppliersDAO()
+        if not dao.getSupplierById(suppID):
+            return jsonify(Error="Supplier Not Found"), 404
+        orders_list = dao.getOrdersBySupplierId(suppID)
+        result_list = []
+        for row in orders_list:
+            result = self.build_order_dict(row)
+            result_list.append(result)
+        return jsonify(SupplierOrders=result_list)

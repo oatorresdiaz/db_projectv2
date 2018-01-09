@@ -39,3 +39,12 @@ class SuppliersDAO:
         suppid = cursor.fetchone()[0]
         self.conn.commit()
         return suppid
+
+    def getOrdersBySupplierId(self, suppID):
+        cursor = self.conn.cursor()
+        query = "select ordQty, ordDate, ordExpDate, ordType, ordPrice, suppID, resName, resSpecifications from orders natural inner join inventory natural inner join sells natural inner join resources natural inner join categories where suppID = %s;"
+        cursor.execute(query, (suppID,))
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
