@@ -10,9 +10,7 @@ from handler.addresses import AddressesHandler
 from handler.credentials import CredentialsHandler
 from handler.orders import OrdersHandler
 
-
 app = Flask(__name__)
-
 
 @app.route('/')
 def greeting():
@@ -24,7 +22,7 @@ def getAllUsers():
     if not request.args:
         return UsersHandler().getAllUsers()
     else:
-        return UsersHandler().searchUsers(request.args)
+        return UsersHandler().searchUsersByArguments(request.args)
 
 
 @app.route('/db_project/users/<int:uID>')
@@ -37,7 +35,7 @@ def getAllAddresses():
     if not request.args:
         return AddressesHandler().getAllAddresses()
     else:
-        return AddressesHandler().searchAddresses(request.args)
+        return AddressesHandler().searchAddressesByArguments(request.args)
 
 
 @app.route('/db_project/addresses/<int:addID>')
@@ -79,7 +77,7 @@ def getAllAdmins():
         if not request.args:
             return AdminsHandler().getAllAdmins()
         else:
-            return AdminsHandler().searchAdmins(request.args)
+            return AdminsHandler().searchAdminsByArguments(request.args)
 
 
 @app.route('/db_project/admins/<int:adminID>')
@@ -114,8 +112,6 @@ def getInventoryBySupplierId(suppID):
 @app.route('/db_project/suppliers/<int:suppID>/orders')
 def getOrdersBySupplierId(suppID):
     return SuppliersHandler().getOrdersBySupplierId(suppID)
-
-@app.route('/db_project/requesters')
 
 #Show all requesters
 @app.route('/db_project/requesters', methods=['GET', 'POST' ])

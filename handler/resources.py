@@ -8,9 +8,6 @@ class ResourcesHandler:
         result['resName'] = row[1]
         result['catID'] = row[2]
         result['resSpecifications'] = row[3]
-        result['resName'] = row[1]
-        result['catID']=row[2]
-        result['resSpecifications'] = row[3]
         return result
 
     def build_cat_dict(self, row):
