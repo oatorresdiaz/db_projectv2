@@ -38,3 +38,42 @@ class RequestersDAO:
         for row in cursor:
             result.append(row)
         return result
+
+    def searchRequestersByArguments(self, args):
+        cursor = self.conn.cursor()
+        arguments = ""
+        values = list(args.values())
+        for arg in args:
+            arguments = arguments + arg + "= %s" + " and "
+        arguments = arguments[:-5]  # Remove the last ' and '
+        query = "select * from users natural inner join addresses natural inner join telephonenumbers natural inner join requesters where " + arguments
+        cursor.execute(query, values)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def searchRequestersWithSorting(self, orderby):
+        cursor = self.conn.cursor()
+        query = "select * from users natural inner join addresses natural inner join telephonenumbers natural inner join requesters order by " + orderby
+        cursor.execute(query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def searchRequestersByArgumentsWithSorting(self, args):
+        cursor = self.conn.cursor()
+        arguments = ""
+        values = list(args.values())
+        values.remove(args.get('orderby'))
+        for arg in args:
+            if arg != 'orderby':
+                arguments = arguments + arg + "= %s" + " and "
+        arguments = arguments[:-5]  # Remove the last ' and '
+        query = "select * from users natural inner join addresses natural inner join telephonenumbers natural inner join requesters where " + arguments + " order by " + args.get('orderby')
+        cursor.execute(query, values)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result

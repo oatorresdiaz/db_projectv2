@@ -122,7 +122,7 @@ def getAllRequesters():
         if not request.args:
             return RequestersHandler().getAllRequesters()
         else:
-            return RequestersHandler().searchRequesters(request.args)
+            return RequestersHandler().searchRequestersByArguments(request.args)
 
 @app.route('/db_project/requesters/<int:reqID>')
 def getRequesterById(reqID):
@@ -154,7 +154,7 @@ def getAllInventory():
     if not request.args:
         return InventoryHandler().getAllInventory()
     else:
-        return InventoryHandler().searchInventory(request.args)
+        return InventoryHandler().searchInventoryByArguments(request.args)
 
 @app.route('/db_project/inventory/<int:invID>')
 def getInventoryById(invID):
@@ -173,7 +173,7 @@ def getAllRequests():
     if not request.args:
         return RequestsHandler().getAllRequests()
     else:
-        return RequestsHandler().searchRequests(request.args)
+        return RequestsHandler().searchRequestsByArguments(request.args)
 
 @app.route('/db_project/orders')
 def getAllOrders():

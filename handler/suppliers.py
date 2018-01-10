@@ -122,4 +122,4 @@ class SuppliersHandler:
         for row in users_list:
             result = self.build_supplier_dict(row)
             result_list.append(result)
-        return jsonify(Users=result_list)
+        return jsonify(Suppliers=result_list)

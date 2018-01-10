@@ -22,5 +22,17 @@ class RequestsHandler:
             result_list.append(result)
         return jsonify(Requests=result_list)
 
-    def searchRequests(self, args):
-        pass
+    def searchRequestsByArguments(self, args):
+        dao = RequestsDAO()
+        if not 'orderby' in args:
+            requests_list = dao.searchRequestsByArguments(args)
+        elif (len(args) == 1) and 'orderby' in args:
+            requests_list = dao.searchRequestsWithSorting(args.get('orderby'))
+        else:
+            requests_list = dao.searchRequestsByArgumentsWithSorting(args)
+        result_list = []
+        for row in requests_list:
+            result = self.build_request_dict(row)
+            result_list.append(result)
+        return jsonify(Users=result_list)
+
