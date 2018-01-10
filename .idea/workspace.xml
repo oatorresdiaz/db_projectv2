@@ -32,8 +32,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1680">
-              <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+            <state relative-caret-position="90">
+              <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -190,7 +190,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -202,6 +201,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -504,13 +504,21 @@
       <option name="project" value="LOCAL" />
       <updated>1515549458432</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="FINAL COMMIT.">
+      <created>1515549999606</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1515549999606</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="729" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27222222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27222222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.5222222" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -539,7 +547,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modified the Procfile AGAIN for Heroku integration. But I have no idea if this will work." />
     <MESSAGE value="Erased the Procfile and requirements.txt because I gave up." />
     <MESSAGE value="Created handlers and dao for addresses, telephone numbers, credentials, credit cards, price history, &amp; sells." />
     <MESSAGE value="Created handlers and dao for medications, ice, tools, clothing, power generators, batteries, medical devices, &amp; heavy equipment." />
@@ -564,7 +571,8 @@
     <MESSAGE value="Created functions in resources handler and DAO for searching users with arguments and sorting." />
     <MESSAGE value="Modified the dictionary in orders." />
     <MESSAGE value="Merge branch 'juanagosto' of https://github.com/orlandoecool/db_project2 into orlandotorres&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'juanagosto' of https://github.com/orlandoecool/db_project2 into orlandotorres&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="FINAL COMMIT." />
+    <option name="LAST_COMMIT_MESSAGE" value="FINAL COMMIT." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -769,24 +777,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-71">
           <caret line="121" column="50" lean-forward="true" selection-start-line="121" selection-start-column="50" selection-end-line="121" selection-end-column="50" />
-          <folding>
-            <marker date="1515546512422" expanded="true" signature="415:522" ph="select * fro... inventory" />
-            <marker date="1515546512422" expanded="true" signature="748:872" ph="select * fro... inventory" />
-            <marker date="1515546512422" expanded="true" signature="1074:1115" ph="select * fro... inventory" />
-            <marker date="1515546512422" expanded="true" signature="1313:1355" ph="select * fro... inventory" />
-            <marker date="1515546512422" expanded="true" signature="1557:1598" ph="select * fro... inventory" />
-            <marker date="1515546512422" expanded="true" signature="1802:1848" ph="select * fro... inventory" />
-            <marker date="1515546512422" expanded="true" signature="2059:2106" ph="select * fro... inventory" />
-            <marker date="1515546512422" expanded="true" signature="2312:2355" ph="select * fro... inventory" />
-            <marker date="1515546512422" expanded="true" signature="2559:2930" ph="select uID, users" />
-            <marker date="1515546512422" expanded="true" signature="3135:3562" ph="select uID, users" />
-            <marker date="1515546512422" expanded="true" signature="3782:4097" ph="select catID... addresses" />
-            <marker date="1515546512422" expanded="true" signature="4352:4653" ph="select catID... addresses" />
-            <marker date="1515546512422" expanded="true" signature="4893:5191" ph="select catID... addresses" />
-            <marker date="1515546512422" expanded="true" signature="5642:5756" ph="select * fro... inventory" />
-            <marker date="1515546512422" expanded="true" signature="6013:6130" ph="select * fro... inventory" />
-            <marker date="1515546512422" expanded="true" signature="6699:6840" ph="select * fro... inventory" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -876,7 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="90" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -913,8 +903,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1680">
-          <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+        <state relative-caret-position="90">
+          <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
           <folding />
         </state>
       </provider>
