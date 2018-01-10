@@ -5,8 +5,22 @@ from dao.users import UsersDAO
 class AdminsHandler:
     def build_admin_dict(self, row):
         result = {}
-        result['adminID'] = row[0]
-        result['uID'] = row[1]
+        result['uID'] = row[0]
+        result['uFirstName'] = row[1]
+        result['uLastName'] = row[2]
+        result['uGender'] = row[3]
+        result['uBirthDate'] = row[4]
+        result['addID'] = row[5]
+        result['city'] = row[6]
+        result['street'] = row[7]
+        result['country'] = row[8]
+        result['zipcode'] = row[9]
+        result['tID'] = row[10]
+        result['homeNumber'] = row[11]
+        result['mobileNumber'] = row[12]
+        result['workNumber'] = row[13]
+        result['otherNumber'] = row[14]
+        result['adminID'] = row[15]
         return result
 
     def getAllAdmins(self):
@@ -55,3 +69,12 @@ class AdminsHandler:
 
     def searchAdmins(self, args):
         pass
+
+    def searchAdminsByArguments(self, args):
+        dao = AdminsDAO()
+        admins_list = dao.searchAdminsByArguments(args)
+        result_list = []
+        for row in admins_list:
+            result = self.build_admin_dict(row)
+            result_list.append(result)
+        return jsonify(Admins=result_list)

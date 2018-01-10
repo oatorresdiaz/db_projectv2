@@ -8,7 +8,7 @@ class AdminsDAO:
 
     def getAllAdmins(self):
         cursor = self.conn.cursor()
-        query = "select * from users natural inner join addresses natural inner join credentials natural inner join telephonenumbers natural inner join admins;"
+        query = "select * from users natural inner join addresses natural inner join telephonenumbers natural inner join admins;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -36,3 +36,19 @@ class AdminsDAO:
         adminid = cursor.fetchone()[0]
         self.conn.commit()
         return adminid
+
+    def searchAdminsByArguments(self, args):
+        cursor = self.conn.cursor()
+        arguments = ""
+        values = list(args.values())
+        for arg in args:
+            arguments = arguments + arg + "= %s" + " and "
+        arguments = arguments[:-5] + ";"  # Remove the last ' and '
+        query = "select * from users natural inner join addresses natural inner join telephonenumbers natural inner join admins where " + arguments
+        cursor.execute(query, values)
+        print(cursor.query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+

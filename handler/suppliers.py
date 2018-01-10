@@ -15,16 +15,12 @@ class SuppliersHandler:
         result['street'] = row[7]
         result['country'] = row[8]
         result['zipcode'] = row[9]
-        result['cID'] = row[10]
-        result['username'] = row[11]
-        result['password'] = row[12]
-        result['email'] = row[13]
-        result['tID'] = row[14]
-        result['homeNumber'] = row[15]
-        result['mobileNumber'] = row[16]
-        result['workNumber'] = row[17]
-        result['otherNumber'] = row[18]
-        result['suppID'] = row[19]
+        result['tID'] = row[10]
+        result['homeNumber'] = row[11]
+        result['mobileNumber'] = row[12]
+        result['workNumber'] = row[13]
+        result['otherNumber'] = row[14]
+        result['suppID'] = row[15]
         return result
 
     def build_inv_dict(self, row):
