@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e1075fe-0f84-4a33-ac70-2c290d1ad2fe" name="Default" comment="Merged">
+    <list default="true" id="6e1075fe-0f84-4a33-ac70-2c290d1ad2fe" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dao/pricehistory.py" afterPath="$PROJECT_DIR$/dao/pricehistory.py" />
-      <change beforePath="$PROJECT_DIR$/dao/telephonenumbers.py" afterPath="$PROJECT_DIR$/dao/telephonenumbers.py" />
-      <change beforePath="$PROJECT_DIR$/handler/pricehistory.py" afterPath="$PROJECT_DIR$/handler/pricehistory.py" />
-      <change beforePath="$PROJECT_DIR$/handler/telephonenumbers.py" afterPath="$PROJECT_DIR$/handler/telephonenumbers.py" />
-      <change beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -504,13 +499,19 @@
       <option name="project" value="LOCAL" />
       <updated>1515546142013</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Added priceHistory stuff and telephoneNumbers">
+      <created>1515549310489</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1515549310489</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4" />
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912844" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31651375" sideWeight="0.51666665" order="9" side_tool="true" content_ui="tabs" />
@@ -557,7 +558,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Completed schema.sql" />
     <MESSAGE value="Replaced in schema.sql file 'market' to 'inventory'.&#10;Replaced in schema.sql file 'mID' to 'invID'." />
     <MESSAGE value="Included the requirements.txt for Heroku integration. But I have no idea if this will work." />
     <MESSAGE value="Included the Procfile for Heroku integration. But I have no idea if this will work." />
@@ -582,7 +582,8 @@
     <MESSAGE value="Modified the handler and DAO of users, suppliers, requesters, &amp; admins." />
     <MESSAGE value="Created functions in user handler and DAO for searching users with arguments and sorting." />
     <MESSAGE value="Merged" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merged" />
+    <MESSAGE value="Added priceHistory stuff and telephoneNumbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added priceHistory stuff and telephoneNumbers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
