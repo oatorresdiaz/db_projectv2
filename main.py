@@ -189,7 +189,7 @@ def getAllOrders():
     if not request.args:
         return OrdersHandler().getAllOrders()
     else:
-        return OrdersHandler().searchOrders(request.args)
+        return OrdersHandler().searchOrdersByArguments(request.args)
 
 
 @app.route('/db_project/resources/available')
@@ -222,7 +222,7 @@ def login():
          return CredentialsHandler().login(uname, upasswd)
      else:
          return CredentialsHandler().searchCredentials(request.args)
-     
+
 
 if __name__ == '__main__':
     app.run()

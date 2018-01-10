@@ -15,3 +15,44 @@ class OrdersDAO:
             result.append(row)
         return result
 
+    def searchOrdersByArguments(self, args):
+        cursor = self.conn.cursor()
+        arguments = ""
+        values = list(args.values())
+        for arg in args:
+            arguments = arguments + arg + "= %s" + " and "
+        arguments = arguments[:-5]  # Remove the last ' and '
+        query = "select * from orders where " + arguments
+        cursor.execute(query, values)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def searchOrdersWithSorting(self, orderby):
+        cursor = self.conn.cursor()
+        query = "select * from orders order by " + orderby
+        cursor.execute(query)
+        print(cursor.query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def searchOrdersByArgumentsWithSorting(self, args):
+        cursor = self.conn.cursor()
+        arguments = ""
+        values = list(args.values())
+        values.remove(args.get('orderby'))
+        for arg in args:
+            if arg != 'orderby':
+                arguments = arguments + arg + "= %s" + " and "
+        arguments = arguments[:-5]  # Remove the last ' and '
+        query = "select * from orders where " + arguments + " order by " + args.get('orderby')
+        cursor.execute(query, values)
+        print(cursor.query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
