@@ -34,5 +34,5 @@ class RequestsHandler:
         for row in requests_list:
             result = self.build_request_dict(row)
             result_list.append(result)
-        return jsonify(Users=result_list)
+        return jsonify(Requests=result_list)
 

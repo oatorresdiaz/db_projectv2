@@ -109,4 +109,4 @@ class InventoryHandler:
         for row in users_list:
             result = self.build_inventory_dict(row)
             result_list.append(result)
-        return jsonify(Users=result_list)
+        return jsonify(Inventory=result_list)

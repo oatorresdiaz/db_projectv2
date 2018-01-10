@@ -94,5 +94,5 @@ class RequestersHandler:
         for row in users_list:
             result = self.build_requester_dict(row)
             result_list.append(result)
-        return jsonify(Suppliers=result_list)
+        return jsonify(Requesters=result_list)
 

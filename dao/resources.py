@@ -58,3 +58,44 @@ class ResourcesDAO:
         for row in cursor:
             result.append(row)
         return result
+
+    def searchResourcesByArguments(self, args):
+        cursor = self.conn.cursor()
+        arguments = ""
+        values = list(args.values())
+        for arg in args:
+            arguments = arguments + arg + "= %s" + " and "
+        arguments = arguments[:-5]  # Remove the last ' and '
+        query = "select * from resources where " + arguments
+        cursor.execute(query, values)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def searchResourcesWithSorting(self, orderby):
+        cursor = self.conn.cursor()
+        query = "select * from resources order by " + orderby
+        cursor.execute(query)
+        print(cursor.query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
+
+    def searchResourcesByArgumentsWithSorting(self, args):
+        cursor = self.conn.cursor()
+        arguments = ""
+        values = list(args.values())
+        values.remove(args.get('orderby'))
+        for arg in args:
+            if arg != 'orderby':
+                arguments = arguments + arg + "= %s" + " and "
+        arguments = arguments[:-5]  # Remove the last ' and '
+        query = "select * from resources where " + arguments + " order by " + args.get('orderby')
+        cursor.execute(query, values)
+        print(cursor.query)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
