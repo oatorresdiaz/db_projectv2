@@ -158,6 +158,7 @@ def getAllInventory():
     else:
         return InventoryHandler().searchInventory(request.args)
 
+
 @app.route('/db_project/inventory/<int:invID>')
 def getInventoryById(invID):
     return InventoryHandler().getInventoryById(invID)
@@ -165,6 +166,22 @@ def getInventoryById(invID):
 @app.route('/db_project/inventory/<int:invID>/suppliers')
 def getSupplierByInventoryId(invID):
     return InventoryHandler().getSupplierByInventoryId(invID)
+
+
+@app.route('/db_project/inventory/maxPrice')
+def getMaxPriceInInventory():
+    return InventoryHandler().getMaxPriceInInventory()
+
+
+@app.route('/db_project/inventory/minPrice')
+def getMinPriceInInventory():
+    return InventoryHandler().getMinPriceInInventory()
+
+
+@app.route('/db_project/inventory/free')
+def getFreeInInventory():
+    return InventoryHandler().getFreeInInventory()
+
 
 @app.route('/db_project/resources/<string:resName>/suppliers')
 def getSuppliersByResourceName(resName):
@@ -198,6 +215,8 @@ def getResourcesByCategoryName(catName):
 @app.route('/db_project/categories/<string:catName>/resources/available')
 def getAvailableResourcesByCategories(catName):
         return ResourcesHandler().getAvailableResourcesByCategories(catName)
+
+
 
 #TODO: FOR PHASE 3
 @app.route('/db_project/login')
