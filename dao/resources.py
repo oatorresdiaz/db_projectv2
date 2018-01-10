@@ -33,7 +33,7 @@ class ResourcesDAO:
 
     def getResourcesByCity(self, city):
         cursor = self.conn.cursor()
-        query = "Select resID, resName, catID from addresses natural inner join suppliers natural inner join inventory natural inner join sells natural inner join resources where city = %s;"
+        query = "Select resID, resName, catID, resSpecifications from addresses natural inner join suppliers natural inner join inventory natural inner join sells natural inner join resources where city = %s;"
         cursor.execute(query, (city,))
         result = []
         for row in cursor:
@@ -53,6 +53,7 @@ class ResourcesDAO:
         cursor = self.conn.cursor()
         query = "Select resName, resSpecifications From Sells natural inner join resources natural inner join Categories Where invID IN (Select invID From Inventory Where invAvailable > 0) And catName = %s Order by resName;"
         cursor.execute(query, (catName,))
+        print(cursor.query)
         result = []
         for row in cursor:
             result.append(row)

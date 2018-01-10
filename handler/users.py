@@ -14,15 +14,11 @@ class UsersHandler:
         result['street'] = row[7]
         result['country'] = row[8]
         result['zipcode'] = row[9]
-        result['cID'] = row[10]
-        result['username'] = row[11]
-        result['password'] = row[12]
-        result['email'] = row[13]
-        result['tID'] = row[14]
-        result['homeNumber'] = row[15]
-        result['mobileNumber'] = row[16]
-        result['workNumber'] = row[17]
-        result['otherNumber'] = row[18]
+        result['tID'] = row[10]
+        result['homeNumber'] = row[11]
+        result['mobileNumber'] = row[12]
+        result['workNumber'] = row[13]
+        result['otherNumber'] = row[14]
         return result
 
     def getAllUsers(self):
@@ -64,7 +60,12 @@ class UsersHandler:
 
     def searchUsersByArguments(self, args):
         dao = UsersDAO()
-        users_list = dao.getUsersByArguments(args)
+        if not 'orderby' in args:
+            users_list = dao.searchUsersByArguments(args)
+        elif (len(args) == 1) and 'orderby' in args:
+            users_list = dao.searchUsersWithSorting(args.get('orderby'))
+        else:
+            users_list = dao.searchUsersByArgumentsWithSorting(args)
         result_list = []
         for row in users_list:
             result = self.build_user_dict(row)

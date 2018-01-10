@@ -6,7 +6,7 @@ class ResourcesHandler:
         result = {}
         result['resID'] = row[0]
         result['resName'] = row[1]
-        result['catID']=row[2]
+        result['catID'] = row[2]
         result['resSpecifications'] = row[3]
         return result
 

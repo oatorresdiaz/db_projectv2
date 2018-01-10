@@ -76,3 +76,12 @@ class AddressesHandler:
         else:
             address = self.build_address_dict(row)
             return jsonify(Address=address)
+
+    def searchAddressesByArguments(self, args):
+        dao = AddressesDAO()
+        addresses_list = dao.searchAddressesByArguments(args)
+        result_list = []
+        for row in addresses_list:
+            result = self.build_address_dict(row)
+            result_list.append(result)
+        return jsonify(Users=result_list)
