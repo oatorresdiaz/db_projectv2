@@ -60,7 +60,12 @@ class UsersHandler:
 
     def searchUsersByArguments(self, args):
         dao = UsersDAO()
-        users_list = dao.searchUsersByArguments(args)
+        if not 'orderby' in args:
+            users_list = dao.searchUsersByArguments(args)
+        elif (len(args) == 1) and 'orderby' in args:
+            users_list = dao.searchUsersWithSorting(args.get('orderby'))
+        else:
+            users_list = dao.searchUsersByArgumentsWithSorting(args)
         result_list = []
         for row in users_list:
             result = self.build_user_dict(row)

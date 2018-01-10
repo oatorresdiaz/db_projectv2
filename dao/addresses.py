@@ -58,3 +58,17 @@ class AddressesDAO:
         cursor.execute(query, (ZipCode,))
         result = cursor.fetchone()
         return result
+
+    def searchAddressesByArguments(self, args):
+        cursor = self.conn.cursor()
+        arguments = ""
+        values = list(args.values())
+        for arg in args:
+            arguments = arguments + arg + "= %s" + " and "
+        arguments = arguments[:-5] + ";"  # Remove the last ' and '
+        query = "select * from users natural inner join addresses natural inner join telephonenumbers where " + arguments
+        cursor.execute(query, values)
+        result = []
+        for row in cursor:
+            result.append(row)
+        return result
