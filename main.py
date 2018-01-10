@@ -9,6 +9,8 @@ from handler.requests import RequestsHandler
 from handler.addresses import AddressesHandler
 from handler.credentials import CredentialsHandler
 from handler.orders import OrdersHandler
+from handler.telephonenumbers import TelephoneNumbersHandler
+from handler.pricehistory import PriceHistoryHandler
 
 app = Flask(__name__)
 
@@ -161,6 +163,7 @@ def getAllInventory():
         return InventoryHandler().searchInventoryByArguments(request.args)
 
 
+
 @app.route('/db_project/inventory/<int:invID>')
 def getInventoryById(invID):
     return InventoryHandler().getInventoryById(invID)
@@ -169,6 +172,22 @@ def getInventoryById(invID):
 @app.route('/db_project/inventory/<int:invID>/suppliers')
 def getSupplierByInventoryId(invID):
     return InventoryHandler().getSupplierByInventoryId(invID)
+
+
+
+@app.route('/db_project/inventory/maxPrice')
+def getMaxPriceInInventory():
+    return InventoryHandler().getMaxPriceInInventory()
+
+
+@app.route('/db_project/inventory/minPrice')
+def getMinPriceInInventory():
+    return InventoryHandler().getMinPriceInInventory()
+
+
+@app.route('/db_project/inventory/free')
+def getFreeInInventory():
+    return InventoryHandler().getFreeInInventory()
 
 
 @app.route('/db_project/resources/<string:resName>/suppliers')
@@ -208,6 +227,38 @@ def getResourcesByCategoryName(catName):
 @app.route('/db_project/categories/<string:catName>/resources/available')
 def getAvailableResourcesByCategories(catName):
         return ResourcesHandler().getAvailableResourcesByCategories(catName)
+
+
+@app.route('/db_project/telephoneNumbers')
+def getAllTelephoneNumbers():
+    if not request.args:
+        return TelephoneNumbersHandler().getAllTelephoneNumbers()
+    else:
+        return TelephoneNumbersHandler().searchUsers(request.args)
+
+
+@app.route('/db_project/telephoneNumbers/<int:tID>')
+def getTelephoneNumberById(tID):
+    return TelephoneNumbersHandler().getTelephoneNumberById(tID)
+
+@app.route('/db_project/telephoneNumbers/users/<int:uID>')
+def getTelephoneNumberByUserId(uID):
+        return TelephoneNumbersHandler().getTelephoneNumberByUserId(uID)
+
+
+@app.route('/db_project/priceHistory')
+def getAllPriceHistory():
+    return PriceHistoryHandler.getAllPriceHistory()
+
+
+@app.route('/db_project/priceHistory/<int:phID>')
+def getPriceHistoryById(phID):
+    return PriceHistoryHandler().getPriceHistoryById(phID)
+
+@app.route('/db_project/priceHistory/inventory/<int:invID>')
+def getPriceHistoryByUserId(invID):
+        return PriceHistoryHandler().getPriceHistoryByInventoryId(invID)
+
 
 
 #TODO: FOR PHASE 3

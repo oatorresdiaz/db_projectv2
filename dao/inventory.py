@@ -145,3 +145,24 @@ class InventoryDAO:
         for row in cursor:
             result.append(row)
         return result
+
+    def getMaxPriceInInventory(self):
+        cursor = self.conn.cursor()
+        query = "select * from inventory natural inner join sells natural inner join resources natural inner join categories where invPrice = (select max(invPrice) from inventory);"
+        cursor.execute(query)
+        result = cursor.fetchone()
+        return result
+
+    def getMinPriceInInventory(self):
+        cursor = self.conn.cursor()
+        query = "select * from inventory natural inner join sells natural inner join resources natural inner join categories where invPrice = (select min(invPrice) from inventory where invPrice > 0);"
+        cursor.execute(query)
+        result = cursor.fetchone()
+        return result
+
+    def getFreeInInventory(self):
+        cursor = self.conn.cursor()
+        query = "select * from inventory natural inner join sells natural inner join resources natural inner join categories where invPrice = (select min(invPrice) from inventory);"
+        cursor.execute(query)
+        result = cursor.fetchone()
+        return result

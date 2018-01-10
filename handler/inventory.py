@@ -110,3 +110,58 @@ class InventoryHandler:
             result = self.build_inventory_dict(row)
             result_list.append(result)
         return jsonify(Inventory=result_list)
+
+
+    def getMaxPriceInInventory(self):
+        dao = InventoryDAO()
+        maxPriceInInventory = dao.getMaxPriceInInventory()
+        result_list = []
+        result = self.build_inventory_dict(maxPriceInInventory)
+        result_list.append(result)
+        return jsonify(Inventory=result_list)
+
+    # def getMaxPriceInInventory(self):
+    #        dao = InventoryDAO()
+    #        maxPriceInInventory = dao.getMaxPriceInInventory()
+    #        result_list = []
+    #        for row in maxPriceInInventory:
+    #            result = self.build_inventory_dict(row)
+    #            result_list.append(result)
+    #        return jsonify(Inventory=result_list)
+
+
+    def getMinPriceInInventory(self):
+        dao = InventoryDAO()
+        minPriceInInventory = dao.getMinPriceInInventory()
+        result_list = []
+        result = self.build_inventory_dict(minPriceInInventory)
+        result_list.append(result)
+        return jsonify(Inventory=result_list)
+
+
+    # def getMinPriceInInventory(self):
+    #     dao = InventoryDAO()
+    #     minPriceInInventory = dao.getMinPriceInInventory()
+    #     result_list = []
+    #     for row in minPriceInInventory:
+    #         result = self.build_inventory_dict(row)
+    #         result_list.append(result)
+    #     return jsonify(Inventory=result_list)
+
+
+    def getFreeInInventory(self):
+        dao = InventoryDAO()
+        freeInInventory = dao.getFreeInInventory()
+        result_list = []
+        result = self.build_inventory_dict(freeInInventory)
+        result_list.append(result)
+        return jsonify(Inventory=result_list)
+
+    # def getFreeInInventory(self):
+    #     dao = InventoryDAO()
+    #     freeInInventory = dao.getFreeInInventory()
+    #     result_list = []
+    #     for row in freeInInventory:
+    #         result = self.build_inventory_dict(row)
+    #         result_list.append(result)
+    #     return jsonify(Inventory=result_list)

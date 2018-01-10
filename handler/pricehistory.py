@@ -13,7 +13,7 @@ class PriceHistoryHandler:
 
     def getAllPriceHistory(self):
         dao = PriceHistoryDAO()
-        priceHistory_list = dao.getAllCreditCards()
+        priceHistory_list = dao.getAllPriceHistory()
         result_list = []
         for row in priceHistory_list:
             result = self.build_priceHistory_dict(row)
@@ -23,6 +23,15 @@ class PriceHistoryHandler:
     def getPriceHistoryById(self, phID):
         dao = PriceHistoryDAO()
         row = dao.getPriceHistoryById(phID)
+        if not row:
+            return jsonify(Error="Price History not found"), 404
+        else:
+            priceHistory = self.build_priceHistory_dict(row)
+            return jsonify(PriceHistory=priceHistory)
+
+    def getPriceHistoryByInventoryId(self, invID):
+        dao = PriceHistoryDAO()
+        row = dao.getPriceHistoryByInventoryId(invID)
         if not row:
             return jsonify(Error="Price History not found"), 404
         else:
