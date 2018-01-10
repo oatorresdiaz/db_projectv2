@@ -109,3 +109,17 @@ class SuppliersHandler:
             result = self.build_order_dict(row)
             result_list.append(result)
         return jsonify(SupplierOrders=result_list)
+
+    def searchSuppliersByArguments(self, args):
+        dao = SuppliersDAO()
+        if not 'orderby' in args:
+            users_list = dao.searchSuppliersByArguments(args)
+        elif (len(args) == 1) and 'orderby' in args:
+            users_list = dao.searchSuppliersWithSorting(args.get('orderby'))
+        else:
+            users_list = dao.searchSuppliersByArgumentsWithSorting(args)
+        result_list = []
+        for row in users_list:
+            result = self.build_supplier_dict(row)
+            result_list.append(result)
+        return jsonify(Users=result_list)

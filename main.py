@@ -99,7 +99,7 @@ def getAllSuppliers():
         if not request.args:
             return SuppliersHandler().getAllSuppliers()
         else:
-            return SuppliersHandler().searchSuppliers(request.args)
+            return SuppliersHandler().searchSuppliersByArguments(request.args)
 
 @app.route('/db_project/suppliers/<int:suppID>')
 def getSupplierById(suppID):
