@@ -212,7 +212,5 @@ def login():
      else:
          return CredentialsHandler().searchCredentials(request.args)
 
-
-
 if __name__ == '__main__':
     app.run()

@@ -38,7 +38,6 @@ class ResourcesDAO:
         result = []
         for row in cursor:
             result.append(row)
-<<<<<<< .merge_file_PzkC3H
         return result
 
     def getResourcesByCategoryName(self, catName):
@@ -57,6 +56,4 @@ class ResourcesDAO:
         result = []
         for row in cursor:
             result.append(row)
-=======
->>>>>>> .merge_file_shAH4H
         return result
