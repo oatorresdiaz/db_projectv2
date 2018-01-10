@@ -8,8 +8,8 @@ class UsersDAO:
 
     def getAllUsers(self):
         cursor = self.conn.cursor()
-        query = "select * from users natural inner join addresses natural inner join telephonenumbers;"
-        cursor.execute(query)
+        query = "select * from users natural inner join addresses natural inner join telephonenumbers"
+        cursor.execute(query,)
         result = []
         for row in cursor:
             result.append(row)
