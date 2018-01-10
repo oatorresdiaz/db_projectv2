@@ -1,0 +1,72 @@
+# db_project
+Backend System for Disaster Site Resources Locator
+
+Entities:
+
+  User - Covers every user using the database. It contains the persons full name,
+       Gender, birth date, username and password.
+       It's primary key is uID.
+
+  Addresses - Contains the city, street, country and zip code for all users. It's primary
+	    key is addID and has the foreign key uID.
+
+  Telephone Numbers - Contains the the home, mobile, work, etc. phones of the users. The 
+		    values can also be null. The primary key is tID and receives uID as a 
+		    foreign key.
+
+  Credentials - Contains the email, username and password for the account of a user. It's primary key 
+ 	      is cID and receives uID as a primary key.
+
+  Credit Cards - Contains the credit card information of users. The primary key is ccID and
+		receives uID as a foreign key.
+
+  Admin - Identifies the user as an administrator. Contains the primary key adminID 
+        and the foreign key uID.
+
+  Supplier - Identifies the user as a supplier. Contains the primary key suppID and 
+           the foreign key uID.
+           
+  Requester - Identifies the user as a requester. Contains the primary key reqID and 
+           the foreign key uID.
+           
+  Resources - All items that can be requested/ordered in the database. It's primary key is resID
+	     and receives catID as a foreign key.
+
+  Category - Contains the different types of resources that can be found in the database.
+
+  Inventory - Contains all the supplied resources by the suppliers. Contains the 
+            date added, total quantity in stock, the quantity that is reserved,
+            the quantity available and it's price.
+
+  Price History - Contains the past prices for resources in the inventories and there 
+		 effective dates. It's primary key is phID and receives invID as a foreign key.
+
+  
+            
+Relations:
+
+  Admin/Supplier/Requester - subcategories of the user entity
+
+  Supplies - Which user is providing the resources in the inventory.
+
+  Orders - The resources bought/reserved by a requester from the available stock in the inventory.
+            Saves the date and amount of resources purchased
+              
+  Requests - Contains the needed resources of the requesters (not paired with a supplier).
+            Includes the quantity of resources that are requested and the date at which
+            it was made. The primary key is rqstsID.
+
+  Sells - Guarantees that the resources in the inventory and requests are part
+              of the Resource entity.
+  
+  Lives - Relates the different homes a user may have.
+
+  ownsPhone - Relates the user to their respective phone numbers
+
+  ownsCard - Relates the user to their respective credit cards
+
+  Account Credentials - Relates the user to their account information
+
+  hasPriceHistory - Relates the inventory to it's past prices
+ 
+  isDivided - Relates the resource to the category it belongs to
