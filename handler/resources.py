@@ -70,5 +70,16 @@ class ResourcesHandler:
             result_list.append(result)
         return jsonify(Resources=result_list)
 
-    def searchResources(self, args):
-        pass
+    def searchResourcesByArguments(self, args):
+        dao = ResourcesDAO()
+        if not 'orderby' in args:
+            resources_list = dao.searchResourcesByArguments(args)
+        elif (len(args) == 1) and 'orderby' in args:
+            resources_list = dao.searchResourcesWithSorting(args.get('orderby'))
+        else:
+            resources_list = dao.searchResourcesByArgumentsWithSorting(args)
+        result_list = []
+        for row in resources_list:
+            result = self.build_resource_dict(row)
+            result_list.append(result)
+        return jsonify(Resources=result_list)

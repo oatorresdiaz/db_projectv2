@@ -82,3 +82,17 @@ class RequestersHandler:
             result_list.append(result)
         return jsonify(Orders=result_list)
 
+    def searchRequestersByArguments(self, args):
+        dao = RequestersDAO()
+        if not 'orderby' in args:
+            users_list = dao.searchRequestersByArguments(args)
+        elif (len(args) == 1) and 'orderby' in args:
+            users_list = dao.searchRequestersWithSorting(args.get('orderby'))
+        else:
+            users_list = dao.searchRequestersByArgumentsWithSorting(args)
+        result_list = []
+        for row in users_list:
+            result = self.build_requester_dict(row)
+            result_list.append(result)
+        return jsonify(Requesters=result_list)
+

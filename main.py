@@ -68,7 +68,6 @@ def getAddressByZipCode(ZipCode):
     return AddressesHandler().getAddressByZipCode(ZipCode)
 
 
-#Shows all admins
 @app.route('/db_project/admins', methods=['GET', 'POST' ])
 def getAllAdmins():
     if request.method == 'POST':
@@ -90,7 +89,6 @@ def getAdminByUserId(uID):
     return AdminsHandler().getAdminByUserId(uID)
 
 
-#Show all suppliers
 @app.route('/db_project/suppliers', methods=['GET', 'POST' ])
 def getAllSuppliers():
     if request.method == 'POST':
@@ -99,21 +97,23 @@ def getAllSuppliers():
         if not request.args:
             return SuppliersHandler().getAllSuppliers()
         else:
-            return SuppliersHandler().searchSuppliers(request.args)
+            return SuppliersHandler().searchSuppliersByArguments(request.args)
 
 @app.route('/db_project/suppliers/<int:suppID>')
 def getSupplierById(suppID):
     return SuppliersHandler().getSupplierById(suppID)
 
+
 @app.route('/db_project/suppliers/<int:suppID>/inventory')
 def getInventoryBySupplierId(suppID):
     return SuppliersHandler().getInventoryBySupplierId(suppID)
+
 
 @app.route('/db_project/suppliers/<int:suppID>/orders')
 def getOrdersBySupplierId(suppID):
     return SuppliersHandler().getOrdersBySupplierId(suppID)
 
-#Show all requesters
+
 @app.route('/db_project/requesters', methods=['GET', 'POST' ])
 def getAllRequesters():
     if request.method == 'POST':
@@ -122,81 +122,92 @@ def getAllRequesters():
         if not request.args:
             return RequestersHandler().getAllRequesters()
         else:
-            return RequestersHandler().searchRequesters(request.args)
+            return RequestersHandler().searchRequestersByArguments(request.args)
+
 
 @app.route('/db_project/requesters/<int:reqID>')
 def getRequesterById(reqID):
     return RequestersHandler().getRequesterById(reqID)
+
 
 @app.route('/db_project/resources')
 def getAllResources():
     if not request.args:
         return ResourcesHandler().getAllResources()
     else:
-        return ResourcesHandler().searchResources(request.args)
+        return ResourcesHandler().searchResourcesByArguments(request.args)
+
 
 @app.route('/db_project/requesters/<int:reqID>/orders')
 def getOrdersByRequesterId(reqID):
     return RequestersHandler().getOrdersByRequesterId(reqID)
 
-#Show resource by ID
+
 @app.route('/db_project/resources/<int:resID>')
 def getResourceById(resID):
     return ResourcesHandler().getResourceById(resID)
+
 
 @app.route('/db_project/resources/<string:city>')
 def getResourcesByCity(city):
     return ResourcesHandler().getResourcesByCity(city)
 
-#Show all invetories
+
 @app.route('/db_project/inventory')
 def getAllInventory():
     if not request.args:
         return InventoryHandler().getAllInventory()
     else:
-        return InventoryHandler().searchInventory(request.args)
+        return InventoryHandler().searchInventoryByArguments(request.args)
+
 
 @app.route('/db_project/inventory/<int:invID>')
 def getInventoryById(invID):
     return InventoryHandler().getInventoryById(invID)
 
+
 @app.route('/db_project/inventory/<int:invID>/suppliers')
 def getSupplierByInventoryId(invID):
     return InventoryHandler().getSupplierByInventoryId(invID)
 
+
 @app.route('/db_project/resources/<string:resName>/suppliers')
 def getSuppliersByResourceName(resName):
     return InventoryHandler().getSuppliersByResourceName(resName)
+
 
 @app.route('/db_project/requests')
 def getAllRequests():
     if not request.args:
         return RequestsHandler().getAllRequests()
     else:
-        return RequestsHandler().searchRequests(request.args)
+        return RequestsHandler().searchRequestsByArguments(request.args)
+
 
 @app.route('/db_project/orders')
 def getAllOrders():
     if not request.args:
         return OrdersHandler().getAllOrders()
     else:
-        return OrdersHandler().searchOrders(request.args)
+        return OrdersHandler().searchOrdersByArguments(request.args)
+
 
 @app.route('/db_project/resources/available')
 def getAllAvailableResources():
     if not request.args:
         return ResourcesHandler().getAllAvailableResources()
     else:
-        return ResourcesHandler().searchResources(request.args)
+        return ResourcesHandler().searchResourcesByArguments(request.args)
+
 
 @app.route('/db_project/categories/<string:catName>/resources')
 def getResourcesByCategoryName(catName):
         return ResourcesHandler().getResourcesByCategoryName(catName)
 
+
 @app.route('/db_project/categories/<string:catName>/resources/available')
 def getAvailableResourcesByCategories(catName):
         return ResourcesHandler().getAvailableResourcesByCategories(catName)
-
 
 
 #TODO: FOR PHASE 3
@@ -211,6 +222,7 @@ def login():
          return CredentialsHandler().login(uname, upasswd)
      else:
          return CredentialsHandler().searchCredentials(request.args)
+
 
 if __name__ == '__main__':
     app.run()

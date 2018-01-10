@@ -96,3 +96,17 @@ class InventoryHandler:
         else:
             supplier = self.build_supplier_dict(row)
             return jsonify(Supplier=supplier)
+
+    def searchInventoryByArguments(self, args):
+        dao = InventoryDAO()
+        if not 'orderby' in args:
+            users_list = dao.searchInventoryByArguments(args)
+        elif (len(args) == 1) and 'orderby' in args:
+            users_list = dao.searchInventoryWithSorting(args.get('orderby'))
+        else:
+            users_list = dao.searchInventoryByArgumentsWithSorting(args)
+        result_list = []
+        for row in users_list:
+            result = self.build_inventory_dict(row)
+            result_list.append(result)
+        return jsonify(Inventory=result_list)

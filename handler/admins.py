@@ -50,7 +50,7 @@ class AdminsHandler:
             admin = self.build_admin_dict(row)
             return jsonify(Admin=admin)
 
-    def insertAdmin(self, form):
+    def insertAdmin(self, form): #TODO: FOR PHASE 3
         if len(form) != 1:
             return jsonify(Error = "Malformed post request"), 400
         else:
@@ -67,12 +67,14 @@ class AdminsHandler:
                 else:
                     return jsonify(Error="Unexpected attributes in post request"), 400
 
-    def searchAdmins(self, args):
-        pass
-
     def searchAdminsByArguments(self, args):
         dao = AdminsDAO()
-        admins_list = dao.searchAdminsByArguments(args)
+        if not 'orderby' in args:
+            admins_list = dao.searchAdminsByArguments(args)
+        elif (len(args) == 1) and 'orderby' in args:
+            admins_list = dao.searchAdminsWithSorting(args.get('orderby'))
+        else:
+            admins_list = dao.searchAdminsByArgumentsWithSorting(args)
         result_list = []
         for row in admins_list:
             result = self.build_admin_dict(row)
