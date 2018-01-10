@@ -21,3 +21,10 @@ class TelephoneNumbersDAO:
         cursor.execute(query, (tID,))
         result = cursor.fetchone()
         return result
+
+    def getTelephoneNumberByUserId(self, uID):
+        cursor = self.conn.cursor()
+        query = "select * from telephonenumbers where uID = %s;"
+        cursor.execute(query, (uID,))
+        result = cursor.fetchone()
+        return result

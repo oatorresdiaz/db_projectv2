@@ -8,7 +8,7 @@ class PriceHistoryDAO:
 
     def getAllPriceHistory(self):
         cursor = self.conn.cursor()
-        query = "select * from creditcards;"
+        query = "select * from pricehistory;"
         cursor.execute(query)
         result = []
         for row in cursor:
@@ -20,4 +20,12 @@ class PriceHistoryDAO:
         query = "select * from pricehistory where phID = %s;"
         cursor.execute(query, (phID,))
         result = cursor.fetchone()
-        return result
+        return
+
+    def getPriceHistoryByInventoryId(self, invID):
+        cursor = self.conn.cursor()
+        query = "select * from pricehistory where invID = %s;"
+        cursor.execute(query, (invID,))
+        result = cursor.fetchone()
+        return
+

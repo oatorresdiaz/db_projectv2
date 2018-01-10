@@ -9,6 +9,8 @@ from handler.requests import RequestsHandler
 from handler.addresses import AddressesHandler
 from handler.credentials import CredentialsHandler
 from handler.orders import OrdersHandler
+from handler.telephonenumbers import TelephoneNumbersHandler
+from handler.pricehistory import PriceHistoryHandler
 
 app = Flask(__name__)
 
@@ -213,6 +215,36 @@ def getResourcesByCategoryName(catName):
 @app.route('/db_project/categories/<string:catName>/resources/available')
 def getAvailableResourcesByCategories(catName):
         return ResourcesHandler().getAvailableResourcesByCategories(catName)
+
+@app.route('/db_project/telephoneNumbers')
+def getAllTelephoneNumbers():
+    if not request.args:
+        return TelephoneNumbersHandler().getAllTelephoneNumbers()
+    else:
+        return TelephoneNumbersHandler().searchUsers(request.args)
+
+
+@app.route('/db_project/telephoneNumbers/<int:tID>')
+def getTelephoneNumberById(tID):
+    return TelephoneNumbersHandler().getTelephoneNumberById(tID)
+
+@app.route('/db_project/telephoneNumbers/users/<int:uID>')
+def getTelephoneNumberByUserId(uID):
+        return TelephoneNumbersHandler().getTelephoneNumberByUserId(uID)
+
+
+@app.route('/db_project/priceHistory')
+def getAllPriceHistory():
+    return PriceHistoryHandler.getAllPriceHistory()
+
+
+@app.route('/db_project/priceHistory/<int:phID>')
+def getPriceHistoryById(phID):
+    return PriceHistoryHandler().getPriceHistoryById(phID)
+
+@app.route('/db_project/priceHistory/inventory/<int:invID>')
+def getPriceHistoryByUserId(invID):
+        return PriceHistoryHandler().getPriceHistoryByInventoryId(invID)
 
 
 

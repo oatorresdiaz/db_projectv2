@@ -23,12 +23,23 @@ class TelephoneNumbersHandler:
 
     def getTelephoneNumberById(self, tID):
         dao = TelephoneNumbersDAO()
-        row = dao.getUserById(tID)
+        row = dao.getTelephoneNumberById(tID)
         if not row:
             return jsonify(Error="Telephone Number not found"), 404
         else:
             telephoneNumber = self.build_telephoneNumber_dict(row)
             return jsonify(TelephoneNumber=telephoneNumber)
+
+
+    def getTelephoneNumberByUserId(self, uID):
+        dao = TelephoneNumbersDAO()
+        row = dao.getTelephoneNumberByUserId(uID)
+        if not row:
+            return jsonify(Error="Telephone Number not found"), 404
+        else:
+            telephoneNumber = self.build_telephoneNumber_dict(row)
+            return jsonify(TelephoneNumber=telephoneNumber)
+
 
     def searchUsers(self, args):
         firstName = args.get('uFname')
