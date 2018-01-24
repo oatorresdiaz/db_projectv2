@@ -19,15 +19,18 @@ def greeting():
     return 'Hello, this is the parts DB App!'
 
 
-@app.route('/db_project/users')
+@app.route('/db_project/users', methods=['GET', 'POST'])
 def getAllUsers():
-    if not request.args:
-        return UsersHandler().getAllUsers()
+    if request.method == 'POST':
+        return UsersHandler().insertUser(request.form)
     else:
-        return UsersHandler().searchUsersByArguments(request.args)
+        if not request.args:
+            return UsersHandler().getAllUsers()
+        else:
+            return UsersHandler().searchUsersByArguments(request.args)
 
 
-@app.route('/db_project/users/<int:uID>')
+@app.route('/db_project/users/<int:uID>', methods=['GET', 'PUT', 'DELETE'])
 def getUserById(uID):
     return UsersHandler().getUserById(uID)
 

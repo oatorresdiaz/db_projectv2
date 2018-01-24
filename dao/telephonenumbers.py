@@ -28,3 +28,11 @@ class TelephoneNumbersDAO:
         cursor.execute(query, (uID,))
         result = cursor.fetchone()
         return result
+
+    def insert(self, homeNumber, mobileNumber, workNumber, otherNumber):
+        cursor = self.conn.cursor()
+        query = "insert into users(homeNumber, mobileNumber, workNumber, otherNumber) values (%s, %s, %s, %s) returning pid;"
+        cursor.execute(query, (homeNumber, mobileNumber, workNumber, otherNumber,))
+        tID = cursor.fetchone()[0]
+        self.conn.commit()
+        return tID

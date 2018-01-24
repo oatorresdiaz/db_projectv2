@@ -72,3 +72,11 @@ class AddressesDAO:
         for row in cursor:
             result.append(row)
         return result
+
+    def insert(self, uid, city, street, country, zipcode):
+        cursor = self.conn.cursor()
+        query = "insert into addresses(uid, city, street, country, zipcode) values (%s, %s, %s, %s, %s) returning pid;"
+        cursor.execute(query, (uid, city, street, country, zipcode,))
+        addID = cursor.fetchone()[0]
+        self.conn.commit()
+        return addID

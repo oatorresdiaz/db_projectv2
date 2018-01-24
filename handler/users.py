@@ -1,5 +1,7 @@
 from flask import jsonify
 from dao.users import UsersDAO
+from dao.addresses import AddressesDAO
+from dao.telephonenumbers import TelephoneNumbersDAO
 
 class UsersHandler:
     def build_user_dict(self, row):
@@ -19,6 +21,26 @@ class UsersHandler:
         result['mobileNumber'] = row[12]
         result['workNumber'] = row[13]
         result['otherNumber'] = row[14]
+        return result
+
+    def build_user_attributes(self, uid, uFirstName, uLastName, uGender, uBirthDate, addID, city, street, country,
+                              zipcode, tID, homeNumber, mobileNumber, workNumber, otherNumber):
+        result = {}
+        result['uID'] = uid
+        result['uFirstName'] = uFirstName
+        result['uLastName'] = uLastName
+        result['uGender'] = uGender
+        result['uBirthDate'] = uBirthDate
+        result['addID'] = addID
+        result['city'] = city
+        result['street'] = street
+        result['country'] = country
+        result['zipcode'] = zipcode
+        result['tID'] = tID
+        result['homeNumber'] = homeNumber
+        result['mobileNumber'] = mobileNumber
+        result['workNumber'] = workNumber
+        result['otherNumber'] = otherNumber
         return result
 
     def getAllUsers(self):
@@ -71,3 +93,61 @@ class UsersHandler:
             result = self.build_user_dict(row)
             result_list.append(result)
         return jsonify(Users=result_list)
+
+    def insertUser(self, form):
+        if len(form) != 12:
+            return jsonify(Error="Malformed post request"), 400
+        else:
+            uFirstName = form['uFirstName']
+            uLastName = form['uLastName']
+            uGender = form['uGender']
+            uBirthDate = form['uBirthDate']
+            city = form['city']
+            street = form['street']
+            country = form['country']
+            zipcode = form['zipcode']
+            homeNumber = form['homeNumber']
+            mobileNumber = form['mobileNumber']
+            workNumber = form['workNumber']
+            otherNumber = form['otherNumber']
+            if uFirstName and uLastName and uGender and uBirthDate and city and street and country and zipcode and homeNumber and mobileNumber and workNumber and otherNumber:
+                uDao = UsersDAO()
+                uID = uDao.insert(uFirstName, uLastName, uGender, uBirthDate)
+                addDao = AddressesDAO()
+                addID = addDao.insert(uID, city, street, country, zipcode)
+                telDao = TelephoneNumbersDAO()
+                tID = telDao.insert(homeNumber, mobileNumber, workNumber, otherNumber)
+                result = self.build_user_attributes(uID, uFirstName, uLastName, uGender, uBirthDate, addID, city, street, country, zipcode, tID, homeNumber, mobileNumber, workNumber, otherNumber)
+                return jsonify(User=result), 201
+            else:
+                return jsonify(Error="Unexpected attributes in post request"), 400
+
+    # def insertUser(self, form):
+    #     if len(form) != 12:
+    #         return jsonify(Error="Malformed post request"), 400
+    #     else:
+    #         uFirstName = form['uFirstName']
+    #         uLastName = form['uLastName']
+    #         uGender = form['uGender']
+    #         uBirthDate = form['uBirthDate']
+    #         city = form['city']
+    #         street = form['street']
+    #         country = form['country']
+    #         zipcode = form['zipcode']
+    #         homeNumber = form['homeNumber']
+    #         mobileNumber = form['mobileNumber']
+    #         workNumber = form['workNumber']
+    #         otherNumber = form['otherNumber']
+    #         if uFirstName and uLastName and uGender and uBirthDate:
+    #             dao = UsersDAO()
+    #             uid = dao.insert(uFirstName, uLastName, uGender, uBirthDate)
+    #             if city and street and country and zipcode:
+    #                 addDao = AddressesDAO()
+    #                 addID = addDao.insert(uid, city, street, country, zipcode)
+    #             if homeNumber or mobileNumber or workNumber or otherNumber:
+    #                 telDao = TelephoneNumbersDAO()
+    #                 tID = telDao.insert(homeNumber, mobileNumber, workNumber, otherNumber)
+    #             result = self.build_user_attributes(uid, uFirstName, uLastName, uGender, uBirthDate, addID, city, street, country, zipcode, tID, homeNumber, mobileNumber, workNumber, otherNumber)
+    #             return jsonify(User=result), 201
+    #         else:
+    #             return jsonify(Error="Unexpected attributes in post request"), 400
