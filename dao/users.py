@@ -92,7 +92,7 @@ class UsersDAO:
 
     def insert(self, uFirstName, uLastName, uGender, uBirthDate):
         cursor = self.conn.cursor()
-        query = "insert into users(uFirstName, uLastName, uGender, uBirthDate) values (%s, %s, %s, %s) returning pid;"
+        query = "insert into users(uFirstName, uLastName, uGender, uBirthDate) values (%s, %s, %s, %s) returning uID;"
         cursor.execute(query, (uFirstName, uLastName, uGender, uBirthDate,))
         uID = cursor.fetchone()[0]
         self.conn.commit()
