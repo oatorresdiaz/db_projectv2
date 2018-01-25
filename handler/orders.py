@@ -6,7 +6,7 @@ class OrdersHandler:
         result = {}
         result['reqID'] = row[0]
         result['invID'] = row[1]
-        result['orderQty'] = row[2]
+        result['ordQty'] = row[2]
         result['ordDate'] = row[3]
         result['ordExpDate'] = row[4]
         result['ordType'] = row[5]

@@ -29,3 +29,10 @@ class CategoriesDAO:
         catID = cursor.fetchone()[0]
         self.conn.commit()
         return catID
+
+    def update(self, catID, catName):
+        cursor = self.conn.cursor()
+        query = "update categories set catName = %s where catID = %s;"
+        cursor.execute(query, (catName, catID,))
+        self.conn.commit()
+        return catID

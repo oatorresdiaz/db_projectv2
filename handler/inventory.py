@@ -205,7 +205,7 @@ class InventoryHandler:
                 catID = catDao.insert(catName)
 
                 invDao = InventoryDAO()
-                invID = invDao.insert(missing)
+                invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)
 
                 resDao = ResourcesDAO()
                 resID = resDao.insert(missing)
@@ -226,31 +226,25 @@ class InventoryHandler:
         if not invDao.getInventoryById(invID):
             return jsonify(Error="Inventory not found."), 404
         else:
-            if len(form) != 14:
+            if len(form) != 8:
                 return jsonify(Error="Malformed update request"), 400
             else:
-                uFirstName = form['uFirstName']
-                uLastName = form['uLastName']
-                uGender = form['uGender']
-                uBirthDate = form['uBirthDate']
-                addID = form['addID']
-                city = form['city']
-                street = form['street']
-                country = form['country']
-                zipcode = form['zipcode']
-                tID = form['tID']
-                homeNumber = form['homeNumber']
-                mobileNumber = form['mobileNumber']
-                workNumber = form['workNumber']
-                otherNumber = form['otherNumber']
-                if uFirstName and uLastName and uGender and uBirthDate and city and street and country and zipcode and (
-                            homeNumber or mobileNumber or workNumber or otherNumber):
-                    uID = uDao.update(uID, uFirstName, uLastName, uGender, uBirthDate)
-                    addID = addDao.update(addID, uID, city, street, country, zipcode)
-                    tID = telDao.update(tID, uID, homeNumber, mobileNumber, workNumber, otherNumber)
-                    result = self.build_user_attributes(uID, uFirstName, uLastName, uGender, uBirthDate, addID, city,
-                                                        street, country, zipcode, tID, homeNumber, mobileNumber,
-                                                        workNumber, otherNumber)
-                    return jsonify(User=result), 200
+                invDate = form['invDate']
+                invQty = form['invQty']
+                invReserved = form['invReserved']
+                invAvailable = form['invAvailable']
+                invPrice = form['invPrice']
+                resName = form['resName']
+                resspecifications = form['resspecifications']
+                catName = form['catName']
+
+                if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName:
+                    invID = invDao.update(missing)
+                    catID = catDao.update(missing)
+                    resID = resDao.update(missing)
+                    suppID = suppDao.update(missing)
+
+                    result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
+                    return jsonify(Inventory=result), 200
                 else:
                     return jsonify(Error="Unexpected attributes in update request"), 400
