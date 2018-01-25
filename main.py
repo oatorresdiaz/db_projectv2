@@ -76,7 +76,7 @@ def getAddressByZipCode(ZipCode):
 @app.route('/db_project/admins', methods=['GET', 'POST' ])
 def getAllAdmins():
     if request.method == 'POST':
-        return AdminsHandler.insertAdmin(request.form)
+        return AdminsHandler().insertAdmin(request.form)
     else:
         if not request.args:
             return AdminsHandler().getAllAdmins()
@@ -97,7 +97,7 @@ def getAdminByUserId(uID):
 @app.route('/db_project/suppliers', methods=['GET', 'POST' ])
 def getAllSuppliers():
     if request.method == 'POST':
-        return SuppliersHandler.insertAdmin(request.form)
+        return SuppliersHandler().insertSupplier(request.form)
     else:
         if not request.args:
             return SuppliersHandler().getAllSuppliers()
@@ -134,13 +134,15 @@ def getAllRequesters():
 def getRequesterById(reqID):
     return RequestersHandler().getRequesterById(reqID)
 
-
-@app.route('/db_project/resources')
+@app.route('/db_project/resources', methods=['GET', 'POST'])
 def getAllResources():
-    if not request.args:
-        return ResourcesHandler().getAllResources()
+    if request.method == 'POST':
+        return ResourcesHandler().insertResource(request.form)
     else:
-        return ResourcesHandler().searchResourcesByArguments(request.args)
+        if not request.args:
+            return ResourcesHandler().getAllResources()
+        else:
+            return ResourcesHandler().searchResourcesByArguments(request.args)
 
 
 @app.route('/db_project/requesters/<int:reqID>/orders')

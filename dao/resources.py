@@ -99,3 +99,11 @@ class ResourcesDAO:
         for row in cursor:
             result.append(row)
         return result
+
+    def insert(self, resName, catID, resSpecifications):
+        cursor = self.conn.cursor()
+        query = "insert into resources(resName, catID, resSpecifications) values (%s, %s, %s) returning resID;"
+        cursor.execute(query, (resName, catID, resSpecifications,))
+        resID = cursor.fetchone()[0]
+        self.conn.commit()
+        return resID

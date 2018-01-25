@@ -23,6 +23,12 @@ class AdminsHandler:
         result['adminID'] = row[15]
         return result
 
+    def build_admin_attributes(self, adminID, uID):
+        result = {}
+        result['adminID'] = adminID
+        result['uID'] = uID
+        return result
+
     def getAllAdmins(self):
         dao = AdminsDAO()
         admins_list = dao.getAllAdmins()
@@ -54,18 +60,14 @@ class AdminsHandler:
         if len(form) != 1:
             return jsonify(Error = "Malformed post request"), 400
         else:
-            uid = form['uid']
-            row = UsersDAO.getUserById(uid)
-            if not row:
-                return jsonify(Error="User not found"), 404
+            uID = form['uID']
+            if uID:
+                adminDao = AdminsDAO()
+                adminID = adminDao.insert(uID)
+                result = self.build_admin_attributes(adminID, uID)
+                return jsonify(Admins=result), 201
             else:
-                if uid:
-                    dao = AdminsDAO()
-                    adminid = dao.insert(uid)
-                    result = self.build_admin_attributes(adminid, uid)
-                    return jsonify(Admin=result), 201
-                else:
-                    return jsonify(Error="Unexpected attributes in post request"), 400
+                return jsonify(Error="Unexpected attributes in post request"), 400
 
     def searchAdminsByArguments(self, args):
         dao = AdminsDAO()
