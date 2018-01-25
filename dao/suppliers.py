@@ -31,15 +31,6 @@ class SuppliersDAO:
             result.append(row)
         return result
 
-
-    def insert(self, uid):
-        cursor = self.conn.cursor()
-        query = "insert into suppliers(uID) values (%s) returning suppid;"
-        cursor.execute(query, (uid,))
-        suppid = cursor.fetchone()[0]
-        self.conn.commit()
-        return suppid
-
     def getOrdersBySupplierId(self, suppID):
         cursor = self.conn.cursor()
         query = "select ordQty, ordDate, ordExpDate, ordType, ordPrice, suppID, resName, resSpecifications from orders natural inner join inventory natural inner join sells natural inner join resources natural inner join categories where suppID = %s;"
@@ -87,3 +78,11 @@ class SuppliersDAO:
         for row in cursor:
             result.append(row)
         return result
+
+    def insert(self, uID):
+        cursor = self.conn.cursor()
+        query = "insert into suppliers(uID) values (%s) returning suppID;"
+        cursor.execute(query, (uID,))
+        suppID = cursor.fetchone()[0]
+        self.conn.commit()
+        return suppID

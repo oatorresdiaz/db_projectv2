@@ -40,17 +40,25 @@ def getUserById(uID):
         return jsonify(Error="Method not allowed."), 405
 
 
-@app.route('/db_project/addresses')
+@app.route('/db_project/addresses', methods=['GET', 'POST'])
 def getAllAddresses():
-    if not request.args:
-        return AddressesHandler().getAllAddresses()
+    if request.method == 'POST':
+        return AddressesHandler().insertAddress(request.form)
     else:
-        return AddressesHandler().searchAddressesByArguments(request.args)
+        if not request.args:
+            return AddressesHandler().getAllAddresses()
+        else:
+            return AddressesHandler().searchAddressesByArguments(request.args)
 
 
-@app.route('/db_project/addresses/<int:addID>')
+@app.route('/db_project/addresses/<int:addID>', methods=['GET', 'PUT'])
 def getAddressById(addID):
-    return AddressesHandler().getAddressById(addID)
+    if request.method == 'GET':
+        return AddressesHandler().getAddressById(addID)
+    elif request.method == 'PUT':
+        return AddressesHandler().updateAddress(addID, request.form)
+    else:
+        return jsonify(Error="Method not allowed."), 405
 
 
 @app.route('/db_project/addresses/<int:uID>')
@@ -102,7 +110,7 @@ def getAdminByUserId(uID):
 @app.route('/db_project/suppliers', methods=['GET', 'POST' ])
 def getAllSuppliers():
     if request.method == 'POST':
-        return SuppliersHandler.insertAdmin(request.form)
+        return SuppliersHandler().insertSupplier(request.form)
     else:
         if not request.args:
             return SuppliersHandler().getAllSuppliers()
