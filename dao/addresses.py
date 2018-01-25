@@ -80,3 +80,10 @@ class AddressesDAO:
         addID = cursor.fetchone()[0]
         self.conn.commit()
         return addID
+
+    def update(self, addID, uID, city, street, country, zipcode):
+        cursor = self.conn.cursor()
+        query = "update addresses set city = %s, street = %s, country = %s, zipcode = %s where uID = %s and addID =%s;"
+        cursor.execute(query, (city, street, country, zipcode, uID, addID, ))
+        self.conn.commit()
+        return addID

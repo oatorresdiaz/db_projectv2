@@ -30,9 +30,14 @@ def getAllUsers():
             return UsersHandler().searchUsersByArguments(request.args)
 
 
-@app.route('/db_project/users/<int:uID>', methods=['GET', 'PUT', 'DELETE'])
+@app.route('/db_project/users/<int:uID>', methods=['GET', 'PUT'])
 def getUserById(uID):
-    return UsersHandler().getUserById(uID)
+    if request.method == 'GET':
+        return UsersHandler().getUserById(uID)
+    elif request.method == 'PUT':
+        return UsersHandler().updateUser(uID, request.form)
+    else:
+        return jsonify(Error="Method not allowed."), 405
 
 
 @app.route('/db_project/addresses')

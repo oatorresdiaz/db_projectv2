@@ -121,3 +121,39 @@ class UsersHandler:
                 return jsonify(User=result), 201
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400
+
+    def updateUser(self, uID, form):
+        uDao = UsersDAO()
+        addDao = AddressesDAO()
+        telDao = TelephoneNumbersDAO()
+        if not uDao.getUserById(uID):
+            return jsonify(Error="User not found."), 404
+        else:
+            if len(form) != 14:
+                return jsonify(Error="Malformed update request"), 400
+            else:
+                uFirstName = form['uFirstName']
+                uLastName = form['uLastName']
+                uGender = form['uGender']
+                uBirthDate = form['uBirthDate']
+                addID = form['addID']
+                city = form['city']
+                street = form['street']
+                country = form['country']
+                zipcode = form['zipcode']
+                tID = form['tID']
+                homeNumber = form['homeNumber']
+                mobileNumber = form['mobileNumber']
+                workNumber = form['workNumber']
+                otherNumber = form['otherNumber']
+                if uFirstName and uLastName and uGender and uBirthDate and city and street and country and zipcode and (
+                            homeNumber or mobileNumber or workNumber or otherNumber):
+                    uID = uDao.update(uID, uFirstName, uLastName, uGender, uBirthDate)
+                    addID = addDao.update(addID, uID, city, street, country, zipcode)
+                    tID = telDao.update(tID, uID, homeNumber, mobileNumber, workNumber, otherNumber)
+                    result = self.build_user_attributes(uID, uFirstName, uLastName, uGender, uBirthDate, addID, city,
+                                                        street, country, zipcode, tID, homeNumber, mobileNumber,
+                                                        workNumber, otherNumber)
+                    return jsonify(User=result), 200
+                else:
+                    return jsonify(Error="Unexpected attributes in update request"), 400
