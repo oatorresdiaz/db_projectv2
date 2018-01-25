@@ -36,11 +36,11 @@ create table purchases(reqID integer references requesters(reqID), invID integer
 -- Reserves table
 create table reserves(reqID integer references requesters(reqID), invID integer references inventory(invID), resQty integer, resDate date, resExpDate date, primary key (reqID, invID));
 
---Category table
+--Categories table
 create table categories(catID serial primary key, catName varchar(20));
 
 -- Resources table
-create table resources(resID serial primary key, resName varchar(20), catID integer references category(catID), resspecification varchar(100));
+create table resources(resID serial primary key, resName varchar(20), catID integer references categories(catID), resspecification varchar(100));
 
 -- Requests table
 create table requests(reqID integer references requesters(reqID), resID integer references resources(resID), requestQty integer, requestDate date, primary key(reqID, resID));

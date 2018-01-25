@@ -1,5 +1,8 @@
 from flask import jsonify
 from dao.inventory import InventoryDAO
+from dao.categories import CategoriesDAO
+from dao.resources import ResourcesDAO
+from dao.suppliers import SuppliersDAO
 
 class InventoryHandler:
     def build_inventory_dict(self, row):
@@ -40,6 +43,23 @@ class InventoryHandler:
         result['workNumber'] = row[17]
         result['otherNumber'] = row[18]
         result['suppID'] = row[19]
+        return result
+
+    def build_inventory_attributes(self, catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice,
+                                   resName, resspecifications, catName):
+        result = {}
+        result['catID'] = catID
+        result['resID'] = resID
+        result['invID'] = invID
+        result['suppID'] = suppID
+        result['invDate'] = invDate
+        result['invQty'] = invQty
+        result['invReserved'] = invReserved
+        result['invAvailable'] = invAvailable
+        result['invPrice'] = invPrice
+        result['resName'] = resName
+        result['resspecifications'] = resspecifications
+        result['catName'] = catName
         return result
 
     def getAllInventory(self):
@@ -165,3 +185,72 @@ class InventoryHandler:
     #         result = self.build_inventory_dict(row)
     #         result_list.append(result)
     #     return jsonify(Inventory=result_list)
+
+
+    def insertInventory(self, form):
+        if len(form) != 8:
+            return jsonify(Error="Malformed post request"), 400
+        else:
+            invDate = form['invDate']
+            invQty = form['invQty']
+            invReserved = form['invReserved']
+            invAvailable = form['invAvailable']
+            invPrice = form['invPrice']
+            resName = form['resName']
+            resspecifications = form['resspecifications']
+            catName = form['catName']
+
+            if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName:
+                catDao = CategoriesDAO()
+                catID = catDao.insert(catName)
+
+                invDao = InventoryDAO()
+                invID = invDao.insert(missing)
+
+                resDao = ResourcesDAO()
+                resID = resDao.insert(missing)
+
+                suppDao = SuppliersDAO()
+                suppID = suppDao.insert(missing)
+
+                result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
+                return jsonify(Inventory=result), 201
+            else:
+                return jsonify(Error="Unexpected attributes in post request"), 400
+
+    def updateInventory(self, invID, form):
+        invDao = InventoryDAO()
+        catDao = CategoriesDAO()
+        resDao = ResourcesDAO()
+        suppDao = SuppliersDAO()
+        if not invDao.getInventoryById(invID):
+            return jsonify(Error="Inventory not found."), 404
+        else:
+            if len(form) != 14:
+                return jsonify(Error="Malformed update request"), 400
+            else:
+                uFirstName = form['uFirstName']
+                uLastName = form['uLastName']
+                uGender = form['uGender']
+                uBirthDate = form['uBirthDate']
+                addID = form['addID']
+                city = form['city']
+                street = form['street']
+                country = form['country']
+                zipcode = form['zipcode']
+                tID = form['tID']
+                homeNumber = form['homeNumber']
+                mobileNumber = form['mobileNumber']
+                workNumber = form['workNumber']
+                otherNumber = form['otherNumber']
+                if uFirstName and uLastName and uGender and uBirthDate and city and street and country and zipcode and (
+                            homeNumber or mobileNumber or workNumber or otherNumber):
+                    uID = uDao.update(uID, uFirstName, uLastName, uGender, uBirthDate)
+                    addID = addDao.update(addID, uID, city, street, country, zipcode)
+                    tID = telDao.update(tID, uID, homeNumber, mobileNumber, workNumber, otherNumber)
+                    result = self.build_user_attributes(uID, uFirstName, uLastName, uGender, uBirthDate, addID, city,
+                                                        street, country, zipcode, tID, homeNumber, mobileNumber,
+                                                        workNumber, otherNumber)
+                    return jsonify(User=result), 200
+                else:
+                    return jsonify(Error="Unexpected attributes in update request"), 400
