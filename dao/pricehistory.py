@@ -30,22 +30,25 @@ class PriceHistoryDAO:
         return
 
     def insert(self, invID, priceAtMoment):
+        value = None
         cursor = self.conn.cursor()
-        query = "insert into pricehistory(invID, startDate, thruDate, priceAtMoment) values (%s, current_timestamp, NULL, %s)"
+        query = "insert into pricehistory(invID, startDate, priceAtMoment) values (%s, current_timestamp, %s)"
         cursor.execute(query, (invID, priceAtMoment,))
         self.conn.commit()
 
     def findPriceHistoryId(self, invID):
+        value = None
         cursor = self.conn.cursor()
-        query = "select phID from pricehistory where thruDate = NULL and invID = %s"
-        cursor.execute(query, (invID,))
-        phID = cursor.fetchone()[0]
+        query = "select phID from pricehistory where thruDate = %s and invid = %s"
+        cursor.execute(query, (value, invID,))
+        phid = cursor.fetchone()
         self.conn.commit()
-        return phID
+        return phid
 
 
     def updateThruDate(self, phID):
+        value = None
         cursor = self.conn.cursor()
-        query = "update pricehistory set ordexpdate = current_timestamp where phID = %s;"
+        query = "update pricehistory set thrudate = current_timestamp where phID = %s and thrudate is null;"
         cursor.execute(query, (phID,))
         self.conn.commit()
