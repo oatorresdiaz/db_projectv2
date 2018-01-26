@@ -203,6 +203,33 @@ class InventoryHandler:
 
 
     def insertInventory(self, form):
+        if len(form) != 9:
+            return jsonify(Error="Malformed post request"), 400
+        else:
+            invDate = form['invDate']
+            invQty = form['invQty']
+            invReserved = form['invReserved']
+            invAvailable = form['invAvailable']
+            invPrice = form['invPrice']
+            resName = form['resName']
+            resspecifications = form['resspecifications']
+            catName = form['catName']
+            uID = form['uID']
+
+            if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName and uID:
+                catDao = CategoriesDAO()
+                catID = catDao.insert(catName)
+
+                resDao = ResourcesDAO()
+                resID = resDao.insert(resName, catID, resspecifications)
+
+                suppDao = SuppliersDAO()
+                suppID = suppDao.insert(uID)
+
+                invDao = InventoryDAO()
+                invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)
+
+                result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
         if len(form) != 4:
             return jsonify(Error="Malformed post request"), 400
         else:
@@ -232,6 +259,10 @@ class InventoryHandler:
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400
 
+    def updateInventory(self, invID, form):
+        invDao = InventoryDAO()
+        catDao = CategoriesDAO()
+        resDao = ResourcesDAO()
 
     def updateInventory(self, invID, form):
         invDao = InventoryDAO()
@@ -241,6 +272,36 @@ class InventoryHandler:
         if not invDao.getInventoryById(invID):
             return jsonify(Error="Inventory not found."), 404
         else:
+            if len(form) != 8:
+                return jsonify(Error="Malformed update request"), 400
+            else:
+                invDate = form['invDate']
+                invQty = form['invQty']
+                invReserved = form['invReserved']
+                invAvailable = form['invAvailable']
+                invPrice = form['invPrice']
+                resName = form['resName']
+                resspecifications = form['resspecifications']
+                catName = form['catName']
+
+                if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName:
+                    catID = catDao.getCategoryByInventoryId(invID)
+                    resID = resDao.getResourcesByInventoryId(invID)
+                    suppID = suppDao.getSupplierByInventoryId(invID)
+
+                    currentInvPrice = InventoryDAO.getPriceById(invID)[0]
+
+                    if invPrice != int(currentInvPrice):
+                        priceHDao = PriceHistoryDAO()
+                        priceHistoryId = priceHDao.findPriceHistoryId(invID)
+                        priceHDao.updateThruDate(priceHistoryId)
+
+                        priceHDao.insert(invID, invPrice)
+
+                    result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
+                    return jsonify(Inventory=result), 200
+                else:
+                    return jsonify(Error="Unexpected attributes in update request"), 400
             if len(form) != 2:
                 print(len(form))
                 return jsonify(Error="Malformed update request"), 400

@@ -44,3 +44,4 @@ create table requests(reqID integer references requesters(reqID), resID integer 
 
 -- Sells table
 create table sells(invID integer references inventory(invID), resID integer references resources(resID), primary key (invID, resID));
+

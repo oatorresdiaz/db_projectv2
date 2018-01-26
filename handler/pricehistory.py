@@ -37,3 +37,5 @@ class PriceHistoryHandler:
         else:
             priceHistory = self.build_priceHistory_dict(row)
             return jsonify(PriceHistory=priceHistory)
+
+

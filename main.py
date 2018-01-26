@@ -294,7 +294,7 @@ def getTelephoneNumberByUserId(uID):
 
 @app.route('/db_project/priceHistory')
 def getAllPriceHistory():
-    return PriceHistoryHandler.getAllPriceHistory()
+    return PriceHistoryHandler().getAllPriceHistory()
 
 
 @app.route('/db_project/priceHistory/<int:phID>')
