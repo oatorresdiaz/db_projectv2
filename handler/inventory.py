@@ -191,15 +191,15 @@ class InventoryHandler:
         if len(form) != 9:
             return jsonify(Error="Malformed post request"), 400
         else:
-            invDate = form['invDate']
+            ##invDate = form['invDate']
             invQty = form['invQty']
-            invReserved = form['invReserved']
+           ## invReserved = form['invReserved']
             invAvailable = form['invAvailable']
             invPrice = form['invPrice']
-            resName = form['resName']
-            resspecifications = form['resspecifications']
-            catName = form['catName']
-            uID = form['uID']
+           ## resName = form['resName']
+          ##  resspecifications = form['resspecifications']
+          ##  catName = form['catName']
+          ##  uID = form['uID']
 
             if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName and uID:
                 catDao = CategoriesDAO()
@@ -224,8 +224,8 @@ class InventoryHandler:
 
     def updateInventory(self, invID, form):
         invDao = InventoryDAO()
-        catDao = CategoriesDAO()
-        resDao = ResourcesDAO()
+        ##catDao = CategoriesDAO()
+       ## resDao = ResourcesDAO()
         suppDao = SuppliersDAO()
         if not invDao.getInventoryById(invID):
             return jsonify(Error="Inventory not found."), 404
@@ -233,18 +233,18 @@ class InventoryHandler:
             if len(form) != 8:
                 return jsonify(Error="Malformed update request"), 400
             else:
-                invDate = form['invDate']
+               ## invDate = form['invDate']
                 invQty = form['invQty']
-                invReserved = form['invReserved']
+               ## invReserved = form['invReserved']
                 invAvailable = form['invAvailable']
                 invPrice = form['invPrice']
-                resName = form['resName']
-                resspecifications = form['resspecifications']
-                catName = form['catName']
+             ##   resName = form['resName']
+             ##   resspecifications = form['resspecifications']
+             ##  catName = form['catName']
 
-                if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName:
-                    catID = catDao.getCategoryByInventoryId(invID)
-                    resID = resDao.getResourcesByInventoryId(invID)
+                if invQty and invAvailable and invPrice:
+                    ##catID = catDao.getCategoryByInventoryId(invID)
+                    ##resID = resDao.getResourcesByInventoryId(invID)
                     suppID = suppDao.getSupplierByInventoryId(invID)
 
                     currentInvPrice = InventoryDAO().getPriceById(invID)[0]
@@ -255,6 +255,11 @@ class InventoryHandler:
                         priceHDao.updateThruDate(priceHistoryId)
 
                         priceHDao.insert(invID, invPrice)
+
+                blah = int(invQty)
+                bleh = int(invAvailable)
+
+
 
                     result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
                     return jsonify(Inventory=result), 200

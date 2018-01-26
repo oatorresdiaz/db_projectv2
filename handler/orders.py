@@ -67,7 +67,7 @@ class OrdersHandler:
                     return jsonify(Error="Value out of bounds"), 400
 
                 ordPrice = InventoryDAO().getPriceById(invID)[0]
-                if ordPrice > 0:
+                if int(ordPrice) > 0:
                     ordType = "Purchase"
                     ordDao.insertPurchase(reqID, invID, ordQty, ordPrice)
                     InventoryDAO().updateAvailablePurchase(invID, ordQty)
