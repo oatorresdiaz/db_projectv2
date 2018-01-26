@@ -612,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516940360135</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="BLAH">
+      <created>1516991206135</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1516991206135</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -678,7 +685,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modifiec Procfile to see if it fixes Heroku error." />
     <MESSAGE value="Modified requirements.txt." />
     <MESSAGE value="Setup dbconfig for heroku database access." />
     <MESSAGE value="Modified ALL DAOs in order to access heroku database." />
@@ -703,7 +709,8 @@
     <MESSAGE value="POST of Orders WIP" />
     <MESSAGE value="POST of Orders DONE" />
     <MESSAGE value="Inventory Update WIP" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inventory Update WIP" />
+    <MESSAGE value="BLAH" />
+    <option name="LAST_COMMIT_MESSAGE" value="BLAH" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
