@@ -101,3 +101,11 @@ class SuppliersDAO:
         suppID = cursor.fetchone()[0]
         self.conn.commit()
         return suppID
+
+    def getSuppIdByUserId(self, uID):
+        cursor = self.conn.cursor()
+        query = "select suppID from suppliers where uID = %s;"
+        cursor.execute(query, (uID,))
+        suppID = cursor.fetchone()[0]
+        self.conn.commit()
+        return suppID

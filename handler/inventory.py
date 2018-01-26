@@ -203,13 +203,13 @@ class InventoryHandler:
 
             if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName and uID:
                 catDao = CategoriesDAO()
-                catID = catDao.insert(catName)
+                catID = catDao.getCatIdByCatName(catName)
 
                 resDao = ResourcesDAO()
-                resID = resDao.insert(resName, catID, resspecifications)
+                resID = resDao.getResourceId(resName, catID, resspecifications)
 
                 suppDao = SuppliersDAO()
-                suppID = suppDao.insert(uID)
+                suppID = suppDao.getSuppIdByUserId(uID)
 
                 invDao = InventoryDAO()
                 invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)
@@ -247,7 +247,7 @@ class InventoryHandler:
                     resID = resDao.getResourcesByInventoryId(invID)
                     suppID = suppDao.getSupplierByInventoryId(invID)
 
-                    currentInvPrice = InventoryDAO.getPriceById(invID)[0]
+                    currentInvPrice = InventoryDAO().getPriceById(invID)[0]
 
                     if invPrice != int(currentInvPrice):
                         priceHDao = PriceHistoryDAO()

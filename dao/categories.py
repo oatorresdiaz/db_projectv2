@@ -44,3 +44,11 @@ class CategoriesDAO:
         cursor.execute(query, (catName, catID,))
         self.conn.commit()
         return catID
+
+    def getCatIdByCatName(self, catName):
+        cursor = self.conn.cursor()
+        query = "select catId from categories where catName = %s;"
+        cursor.execute(query, (catName,))
+        catID = cursor.fetchone()[0]
+        self.conn.commit()
+        return catID

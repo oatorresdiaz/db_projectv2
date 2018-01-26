@@ -114,3 +114,11 @@ class ResourcesDAO:
         resID = cursor.fetchone()[0]
         self.conn.commit()
         return resID
+
+    def getResourceId(self, resName, catID, resspecifications):
+        cursor = self.conn.cursor()
+        query = "select resID from resources where resName = %s and catID = %s and resSpecifications = %s;"
+        cursor.execute(query, (resName, catID, resspecifications,))
+        resID = cursor.fetchone()[0]
+        self.conn.commit()
+        return resID
