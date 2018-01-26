@@ -269,19 +269,19 @@ class InventoryHandler:
                             InventoryDAO().updatePrice(invPrice, invID)
                     else:
                         invPrice = InventoryDAO().getPriceById(invID)[0]
-
-                    currentInvQty = InventoryDAO().getQtyById(invID)[0]
-                    currentInvAvailable = InventoryDAO().getAvailableById(invID)[0]
-                    invDiff = int(invQty)
-                    if invDiff != currentInvQty:
-                        invDiff = invDiff - currentInvQty
-                        if invDiff < 0:
-                            checkAmount = invDiff * (-1)
-                            if checkAmount > currentInvAvailable:
-                                return jsonify(Error="Not enough resources to remove"), 200
-
-                        InventoryDAO().updateQtyAvailable(invID, invDiff, currentInvQty, currentInvAvailable)
-
+                    if invQty:
+                        currentInvQty = InventoryDAO().getQtyById(invID)[0]
+                        currentInvAvailable = InventoryDAO().getAvailableById(invID)[0]
+                        invDiff = int(invQty)
+                        if invDiff != currentInvQty:
+                            invDiff = invDiff - currentInvQty
+                            if invDiff < 0:
+                                checkAmount = invDiff * (-1)
+                                if checkAmount > currentInvAvailable:
+                                    return jsonify(Error="Not enough resources to remove"), 200
+                            InventoryDAO().updateQtyAvailable(invID, invDiff, currentInvQty, currentInvAvailable)
+                    else:
+                        InventoryDAO().getQtyById(invID)[0]
                     result = self.build_inventory_attributes2(invQty, invPrice)
                     return jsonify(Inventory=result), 200
                 else:
