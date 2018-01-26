@@ -10,7 +10,7 @@ create table addresses(addID serial primary key, uID integer references users(uI
 create table credentials(cid serial primary key, uID integer references users(uID), username varchar(20), password varchar(20), email varchar(20));
 
 -- Credit Card table
-create table creditCards(ccID serial primary key, uID integer references users(uID), ccNumber integer, ccExpDate date, ccSecurityCode integer);
+create table creditCards(ccID serial primary key, uID integer references users(uID), ccNumber bigint, ccExpDate date, ccSecurityCode integer);
 
 -- Telephone Numbers table
 create table telephoneNumbers(tID serial primary key, uID integer references users(uID), homeNumber varchar(20), mobileNumber varchar(20), workNumber varchar(20), otherNumber varchar(20));
@@ -30,17 +30,14 @@ create table inventory(invID serial primary key, suppID integer references suppl
 -- Price History table
 create table priceHistory(phID serial primary key, invID integer references inventory(invID), startDate date, thruDate date, priceAtMoment float);
 
--- Purchases table
-create table purchases(reqID integer references requesters(reqID), invID integer references inventory(invID), purchaseDate date, purchaseAmount float, primary key (reqID, invID));
+-- Orders table
+create table orders(reqID integer references requesters(reqID), invID integer references inventory(invID), ordQty integer, ordType varchar(20), ordDate date, resExpDate date, primary key (reqID, invID));
 
--- Reserves table
-create table reserves(reqID integer references requesters(reqID), invID integer references inventory(invID), resQty integer, resDate date, resExpDate date, primary key (reqID, invID));
-
---Category table
+--Categories table
 create table categories(catID serial primary key, catName varchar(20));
 
 -- Resources table
-create table resources(resID serial primary key, resName varchar(20), catID integer references category(catID), resspecification varchar(100));
+create table resources(resID serial primary key, resName varchar(20), catID integer references categories(catID), resspecification varchar(100));
 
 -- Requests table
 create table requests(reqID integer references requesters(reqID), resID integer references resources(resID), requestQty integer, requestDate date, primary key(reqID, resID));

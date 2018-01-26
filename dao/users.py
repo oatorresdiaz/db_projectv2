@@ -98,4 +98,11 @@ class UsersDAO:
         self.conn.commit()
         return uID
 
+    def update(self, uID, uFirstName, uLastName, uGender, uBirthDate):
+        cursor = self.conn.cursor()
+        query = "update users set uFirstName = %s, uLastName = %s, uGender = %s, uBirthDate = %s where uID = %s;"
+        cursor.execute(query, (uFirstName, uLastName, uGender, uBirthDate, uID,))
+        self.conn.commit()
+        return uID
+
 

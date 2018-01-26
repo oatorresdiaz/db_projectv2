@@ -62,3 +62,10 @@ class RequestsDAO:
         for row in cursor:
             result.append(row)
         return result
+
+    def insert(self, reqID, resID, reqQty, reqUnit, reqDate):
+        cursor = self.conn.cursor()
+        query = "insert into requests(reqID, resID, reqQty, reqUnit, reqDate) values (%s, %s, %s, %s, %s);"
+        cursor.execute(query, (reqID, resID, reqQty, reqUnit, reqDate,))
+        self.conn.commit()
+        return resID, reqID

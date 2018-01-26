@@ -89,6 +89,7 @@ class SuppliersHandler:
 
     def searchSuppliers(self, args):
         pass
+
     def getInventoryBySupplierId(self, suppID):
         dao = SuppliersDAO()
         if not dao.getSupplierById(suppID):

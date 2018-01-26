@@ -194,3 +194,20 @@ class InventoryDAO:
         cursor.execute(query, (int(ordQty), int(ordQty), invID,))
         print(cursor.query)
         self.conn.commit()
+
+
+    def insert(self, suppID, invDate, invQty, invReserved, invAvailable, invPrice):
+        cursor = self.conn.cursor()
+        query = "insert into inventory(suppID, invDate, invQty, invReserved, invAvailable, invPrice) values (%s, %s, %s, %s, %s, %s) returning invID;"
+        cursor.execute(query, (suppID, invDate, invQty, invReserved, invAvailable, invPrice,))
+        invID = cursor.fetchone()[0]
+        self.conn.commit()
+        return invID
+
+    def update(self, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice):
+        cursor = self.conn.cursor()
+        query = "update inventory set suppID = %s, invDate = %s, invQty = %s, invReserved = %s, invAvailable = %s, invPrice = %s where uID = %s;"
+        cursor.execute(query, (suppID, invDate, invQty, invReserved, invAvailable, invPrice, invID,))
+        self.conn.commit()
+        return invID
+
