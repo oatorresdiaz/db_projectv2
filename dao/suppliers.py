@@ -31,6 +31,13 @@ class SuppliersDAO:
             result.append(row)
         return result
 
+    def getSupplierByInventoryId(self, invID):
+        cursor = self.conn.cursor()
+        query = "select suppID from suppliers where invID = %s;"
+        cursor.execute(query, (invID,))
+        suppID = cursor.fetchone()
+        return suppID
+
 
     def insert(self, uID):
         cursor = self.conn.cursor()

@@ -165,18 +165,26 @@ def getResourcesByCity(city):
     return ResourcesHandler().getResourcesByCity(city)
 
 
-@app.route('/db_project/inventory')
+@app.route('/db_project/inventory', methods=['GET', 'POST'])
 def getAllInventory():
-    if not request.args:
-        return InventoryHandler().getAllInventory()
+    if request.method == 'POST':
+        return InventoryHandler().insertInventory(request.form)
     else:
-        return InventoryHandler().searchInventoryByArguments(request.args)
+        if not request.args:
+            return InventoryHandler().getAllInventory()
+        else:
+            return InventoryHandler().searchInventoryByArguments(request.args)
 
 
 
-@app.route('/db_project/inventory/<int:invID>')
+@app.route('/db_project/inventory/<int:invID>', methods=['GET', 'PUT'])
 def getInventoryById(invID):
-    return InventoryHandler().getInventoryById(invID)
+    if request.method == 'GET':
+        return InventoryHandler().getInventoryById(invID)
+    elif request.method == 'PUT':
+        return InventoryHandler().updateInventory(invID, request.form)
+    else:
+        return jsonify(Error="Method not allowed."), 405
 
 
 @app.route('/db_project/inventory/<int:invID>/suppliers')

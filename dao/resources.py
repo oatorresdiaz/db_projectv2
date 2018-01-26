@@ -59,6 +59,13 @@ class ResourcesDAO:
             result.append(row)
         return result
 
+    def getResourcesByInventoryId(self, invID):
+        cursor = self.conn.cursor()
+        query = "select resID from resources where invID = %s;"
+        cursor.execute(query, (invID,))
+        resID = cursor.fetchone()
+        return resID
+
     def searchResourcesByArguments(self, args):
         cursor = self.conn.cursor()
         arguments = ""

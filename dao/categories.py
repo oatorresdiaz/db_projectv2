@@ -22,6 +22,13 @@ class CategoriesDAO:
         result = cursor.fetchone()
         return result
 
+    def getCategoryByInventoryId(self, invID):
+        cursor = self.conn.cursor()
+        query = "select catID from inventory where invID = %s;"
+        cursor.execute(query, (invID,))
+        catID = cursor.fetchone()
+        return catID
+
     def insert(self, catName):
         cursor = self.conn.cursor()
         query = "insert into categories(catName) values (%s) returning catID;"

@@ -211,7 +211,7 @@ class InventoryHandler:
                 resID = resDao.insert(resName, catID, resspecifications)
 
                 suppDao = SuppliersDAO()
-                suppID = suppDao.insert(missing)
+                suppID = suppDao.insert(resName, catID, resspecifications)
 
                 result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
                 return jsonify(Inventory=result), 201
@@ -239,10 +239,9 @@ class InventoryHandler:
                 catName = form['catName']
 
                 if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName:
-                    invID = invDao.update(missing)
-                    catID = catDao.update(missing)
-                    resID = resDao.update(missing)
-                    suppID = suppDao.update(missing)
+                    catID = catDao.getCategoryByInventoryId(invID)
+                    resID = resDao.getResourcesByInventoryId(invID)
+                    suppID = suppDao.getSupplierByInventoryId(invID)
 
                     result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
                     return jsonify(Inventory=result), 200
