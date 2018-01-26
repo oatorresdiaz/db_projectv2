@@ -166,3 +166,17 @@ class InventoryDAO:
         cursor.execute(query)
         result = cursor.fetchone()
         return result
+
+    def getPriceById(self, invID):
+        cursor = self.conn.cursor()
+        query = "select invprice from inventory where invid = %s;"
+        cursor.execute(query, (invID,))
+        result = cursor.fetchone()
+        return result
+
+    def getAvailableById(self, invID):
+        cursor = self.conn.cursor()
+        query = "select invavailable from inventory where invid = %s;"
+        cursor.execute(query, (invID,))
+        result = cursor.fetchone()
+        return result

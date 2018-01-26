@@ -173,12 +173,9 @@ def getAllInventory():
 def getInventoryById(invID):
     return InventoryHandler().getInventoryById(invID)
 
-
 @app.route('/db_project/inventory/<int:invID>/suppliers')
 def getSupplierByInventoryId(invID):
     return InventoryHandler().getSupplierByInventoryId(invID)
-
-
 
 @app.route('/db_project/inventory/maxPrice')
 def getMaxPriceInInventory():
@@ -208,12 +205,15 @@ def getAllRequests():
         return RequestsHandler().searchRequestsByArguments(request.args)
 
 
-@app.route('/db_project/orders')
+@app.route('/db_project/orders', methods= ['GET', 'POST'])
 def getAllOrders():
-    if not request.args:
-        return OrdersHandler().getAllOrders()
+    if request.method == 'POST':
+        return OrdersHandler().insertOrder(request.form)
     else:
-        return OrdersHandler().searchOrdersByArguments(request.args)
+        if not request.args:
+            return OrdersHandler().getAllOrders()
+        else:
+            return OrdersHandler().searchOrdersByArguments(request.args)
 
 
 @app.route('/db_project/resources/available')

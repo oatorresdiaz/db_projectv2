@@ -56,3 +56,18 @@ class OrdersDAO:
             result.append(row)
         return result
 
+    def insertPurchase(self, reqID, invID, ordQty):
+        cursor = self.conn.cursor()
+        query = "insert into users(uFirstName, uLastName, uGender, uBirthDate) values (%s, %s, %s, %s) returning uID;"
+        cursor.execute(query, ()
+        uID = cursor.fetchone()[0]
+        self.conn.commit()
+        return uID
+
+    def insertReserve(self, reqID, invID, ordQty):
+        cursor = self.conn.cursor()
+        query = "insert into users(uFirstName, uLastName, uGender, uBirthDate) values (%s, %s, %s, %s) returning uID;"
+        cursor.execute(query, (uFirstName, uLastName, uGender, uBirthDate,))
+        uID = cursor.fetchone()[0]
+        self.conn.commit()
+        return uID
