@@ -204,14 +204,14 @@ class InventoryHandler:
                 catDao = CategoriesDAO()
                 catID = catDao.insert(catName)
 
-                invDao = InventoryDAO()
-                invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)
-
                 resDao = ResourcesDAO()
                 resID = resDao.insert(resName, catID, resspecifications)
 
                 suppDao = SuppliersDAO()
                 suppID = suppDao.insert(resName, catID, resspecifications)
+
+                invDao = InventoryDAO()
+                invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)
 
                 result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
                 return jsonify(Inventory=result), 201

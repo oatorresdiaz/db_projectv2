@@ -11,6 +11,7 @@ from handler.credentials import CredentialsHandler
 from handler.orders import OrdersHandler
 from handler.telephonenumbers import TelephoneNumbersHandler
 from handler.pricehistory import PriceHistoryHandler
+from handler.categories import CategoriesHandler
 
 app = Flask(__name__)
 
@@ -235,6 +236,14 @@ def getAllAvailableResources():
         return ResourcesHandler().getAllAvailableResources()
     else:
         return ResourcesHandler().searchResourcesByArguments(request.args)
+
+@app.route('/db_project/categories')
+def getAllCategories():
+        return CategoriesHandler().getAllCategories()
+
+@app.route('/db_project/categories/<int:catID>')
+def getCategoryByID(catID):
+        return CategoriesHandler().getCategoriesbyId(catID)
 
 
 @app.route('/db_project/categories/<string:catName>/resources')
