@@ -188,7 +188,7 @@ class InventoryHandler:
 
 
     def insertInventory(self, form):
-        if len(form) != 8:
+        if len(form) != 9:
             return jsonify(Error="Malformed post request"), 400
         else:
             invDate = form['invDate']
@@ -199,8 +199,9 @@ class InventoryHandler:
             resName = form['resName']
             resspecifications = form['resspecifications']
             catName = form['catName']
+            uID = form['uID']
 
-            if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName:
+            if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName and uID:
                 catDao = CategoriesDAO()
                 catID = catDao.insert(catName)
 
@@ -208,7 +209,7 @@ class InventoryHandler:
                 resID = resDao.insert(resName, catID, resspecifications)
 
                 suppDao = SuppliersDAO()
-                suppID = suppDao.insert(resName, catID, resspecifications)
+                suppID = suppDao.insert(uID)
 
                 invDao = InventoryDAO()
                 invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)

@@ -61,9 +61,9 @@ class ResourcesDAO:
 
     def getResourcesByInventoryId(self, invID):
         cursor = self.conn.cursor()
-        query = "select resID from resources where invID = %s;"
+        query = "select resID from resources natural inner join inventory where invID = %s;"
         cursor.execute(query, (invID,))
-        resID = cursor.fetchone()
+        resID = cursor.fetchone()[0]
         return resID
 
     def searchResourcesByArguments(self, args):

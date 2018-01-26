@@ -24,9 +24,10 @@ class CategoriesDAO:
 
     def getCategoryByInventoryId(self, invID):
         cursor = self.conn.cursor()
-        query = "select catID from inventory where invID = %s;"
+        query = "select catID from inventory natural inner join resources where invID = %s;"
         cursor.execute(query, (invID,))
-        catID = cursor.fetchone()
+        catID = cursor.fetchone()[0]
+        print(catID)
         return catID
 
     def insert(self, catName):
