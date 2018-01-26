@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6e1075fe-0f84-4a33-ac70-2c290d1ad2fe" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dao/orders.py" afterPath="$PROJECT_DIR$/dao/orders.py" />
-      <change beforePath="$PROJECT_DIR$/handler/orders.py" afterPath="$PROJECT_DIR$/handler/orders.py" />
+      <change beforePath="$PROJECT_DIR$/dao/inventory.py" afterPath="$PROJECT_DIR$/dao/inventory.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,7 +14,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/db_project$db_project.coverage" NAME="db_project Coverage Results" MODIFIED="1516837446252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/db_projectv2$db_project.coverage" NAME="db_project Coverage Results" MODIFIED="1516912623211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/db_projectv2$db_project.coverage" NAME="db_project Coverage Results" MODIFIED="1516940615726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -30,21 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="207" column="58" lean-forward="true" selection-start-line="207" selection-start-column="58" selection-end-line="207" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/handler/users.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="100" column="18" lean-forward="false" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
+            <state relative-caret-position="153">
+              <caret line="190" column="24" lean-forward="false" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -73,56 +62,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inventory.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="inventory.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dao/inventory.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="182" column="0" lean-forward="false" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+            <state relative-caret-position="303">
+              <caret line="191" column="8" lean-forward="false" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="8" />
               <folding>
-                <marker date="1516931124993" expanded="true" signature="415:522" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="748:872" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="1074:1115" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="1313:1355" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="1557:1598" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="1802:1848" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="2059:2106" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="2312:2355" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="2559:2930" ph="select uID, users" />
-                <marker date="1516931124993" expanded="true" signature="3135:3562" ph="select uID, users" />
-                <marker date="1516931124993" expanded="true" signature="3782:4097" ph="select catID... addresses" />
-                <marker date="1516931124993" expanded="true" signature="4352:4653" ph="select catID... addresses" />
-                <marker date="1516931124993" expanded="true" signature="4893:5191" ph="select catID... addresses" />
-                <marker date="1516931124993" expanded="true" signature="5642:5756" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="6013:6130" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="6699:6840" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="7122:7284" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="7248:7283" ph="select max(i... inventory" />
-                <marker date="1516931124993" expanded="true" signature="7466:7647" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="7592:7646" ph="select min(i... inventory" />
-                <marker date="1516931124993" expanded="true" signature="7825:7987" ph="select * fro... inventory" />
-                <marker date="1516931124993" expanded="true" signature="7951:7986" ph="select min(i... inventory" />
-                <marker date="1516931124993" expanded="true" signature="8166:8213" ph="select invpr... inventory" />
-                <marker date="1516931124993" expanded="true" signature="8406:8457" ph="select invav... inventory" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/users.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="94" column="16" lean-forward="false" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
-              <folding>
-                <marker date="1516893501684" expanded="true" signature="407:491" ph="select * fro... users" />
-                <marker date="1516893501684" expanded="true" signature="710:807" ph="select * fro... users" />
-                <marker date="1516893501684" expanded="true" signature="1005:1111" ph="select * fro... users" />
-                <marker date="1516893501684" expanded="true" signature="1356:1461" ph="select * fro... users" />
-                <marker date="1516893501684" expanded="true" signature="1728:1853" ph="select * fro... users" />
-                <marker date="1516893501684" expanded="true" signature="2313:2404" ph="select * fro... users" />
-                <marker date="1516893501684" expanded="true" signature="2657:2751" ph="select * fro... users" />
-                <marker date="1516893501684" expanded="true" signature="3316:3434" ph="select * fro... users" />
-                <marker date="1516893501684" expanded="true" signature="3744:3843" ph="insert into users... " />
+                <marker date="1516940615697" expanded="true" signature="415:522" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="748:872" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="1074:1115" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="1313:1355" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="1557:1598" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="1802:1848" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="2059:2106" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="2312:2355" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="2559:2930" ph="select uID, users" />
+                <marker date="1516940615697" expanded="true" signature="3135:3562" ph="select uID, users" />
+                <marker date="1516940615697" expanded="true" signature="3782:4097" ph="select catID... addresses" />
+                <marker date="1516940615697" expanded="true" signature="4352:4653" ph="select catID... addresses" />
+                <marker date="1516940615697" expanded="true" signature="4893:5191" ph="select catID... addresses" />
+                <marker date="1516940615697" expanded="true" signature="5642:5756" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="6013:6130" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="6699:6840" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="7122:7284" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="7248:7283" ph="select max(i... inventory" />
+                <marker date="1516940615697" expanded="true" signature="7466:7647" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="7592:7646" ph="select min(i... inventory" />
+                <marker date="1516940615697" expanded="true" signature="7825:7987" ph="select * fro... inventory" />
+                <marker date="1516940615697" expanded="true" signature="7951:7986" ph="select min(i... inventory" />
+                <marker date="1516940615697" expanded="true" signature="8166:8213" ph="select invpr... inventory" />
+                <marker date="1516940615697" expanded="true" signature="8406:8457" ph="select invav... inventory" />
+                <marker date="1516940615697" expanded="true" signature="8665:8761" ph="update inventory... " />
+                <marker date="1516940615697" expanded="true" signature="8986:9092" ph="update inventory... " />
               </folding>
             </state>
           </provider>
@@ -131,8 +102,8 @@
       <file leaf-file-name="orders.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handler/orders.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+            <state relative-caret-position="237">
+              <caret line="77" column="72" lean-forward="true" selection-start-line="77" selection-start-column="72" selection-end-line="77" selection-end-column="72" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -143,15 +114,18 @@
       <file leaf-file-name="orders.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dao/orders.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="68" column="205" lean-forward="false" selection-start-line="68" selection-start-column="205" selection-end-line="68" selection-end-column="205" />
+            <state relative-caret-position="153">
+              <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
               <folding>
-                <marker date="1516934519565" expanded="true" signature="409:429" ph="select * fro... orders" />
-                <marker date="1516934519565" expanded="true" signature="867:894" ph="select * fro... orders" />
-                <marker date="1516934519565" expanded="true" signature="1148:1178" ph="select * fro... orders" />
-                <marker date="1516934519565" expanded="true" signature="1744:1798" ph="select * fro... orders" />
-                <marker date="1516934519565" expanded="true" signature="2104:2262" ph="insert into orders... " />
-                <marker date="1516934519565" expanded="true" signature="2530:2718" ph="insert into orders... " />
+                <marker date="1516937364001" expanded="true" signature="409:429" ph="select * fro... orders" />
+                <marker date="1516937364001" expanded="true" signature="867:894" ph="select * fro... orders" />
+                <marker date="1516937364001" expanded="true" signature="1148:1178" ph="select * fro... orders" />
+                <marker date="1516937364001" expanded="true" signature="1744:1798" ph="select * fro... orders" />
+                <marker date="1516937364001" expanded="true" signature="2104:2246" ph="insert into orders... " />
+                <marker date="1516937364001" expanded="true" signature="2456:2628" ph="insert into orders... " />
+                <marker date="1516937364001" expanded="true" signature="2819:2839" ph="select ordDa... p" />
+                <marker date="1516937364001" expanded="true" signature="2819:2877" ph="select ordDa... orders" />
+                <marker date="1516937364001" expanded="true" signature="3082:3143" ph="select ordEx... orders" />
               </folding>
             </state>
           </provider>
@@ -262,9 +236,9 @@
         <option value="$PROJECT_DIR$/handler/admins.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/handler/inventory.py" />
-        <option value="$PROJECT_DIR$/dao/inventory.py" />
         <option value="$PROJECT_DIR$/dao/orders.py" />
         <option value="$PROJECT_DIR$/handler/orders.py" />
+        <option value="$PROJECT_DIR$/dao/inventory.py" />
       </list>
     </option>
   </component>
@@ -275,10 +249,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="197" />
-    <option name="y" value="-4" />
+    <option name="x" value="65" />
+    <option name="y" value="24" />
     <option name="width" value="1855" />
-    <option name="height" value="929" />
+    <option name="height" value="901" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -303,11 +277,6 @@
             <path>
               <item name="db_projectv2" type="b2602c69:ProjectViewProjectNode" />
               <item name="db_projectv2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="db_projectv2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="db_projectv2" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -662,7 +631,21 @@
       <option name="project" value="LOCAL" />
       <updated>1516932262152</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="POST of Orders DONE">
+      <created>1516934608742</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1516934608742</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Inventory Update WIP">
+      <created>1516940360135</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1516940360135</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -670,8 +653,8 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32806805" sideWeight="0.18092428" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33962265" sideWeight="0.8190757" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33900365" sideWeight="0.18436658" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33900365" sideWeight="0.8156334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.4942857" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -717,8 +700,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created handlers and dao for food, water, &amp; fuel." />
-    <MESSAGE value="Included Procfile &amp; requirements.txt for Heroku implementation." />
     <MESSAGE value="Modifiec Procfile to see if it fixes Heroku error." />
     <MESSAGE value="Modified requirements.txt." />
     <MESSAGE value="Setup dbconfig for heroku database access." />
@@ -742,7 +723,9 @@
     <MESSAGE value="Added post to user. Not sure if it works." />
     <MESSAGE value="Added Insert to requests" />
     <MESSAGE value="POST of Orders WIP" />
-    <option name="LAST_COMMIT_MESSAGE" value="POST of Orders WIP" />
+    <MESSAGE value="POST of Orders DONE" />
+    <MESSAGE value="Inventory Update WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inventory Update WIP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -872,13 +855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dao/telephonenumbers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -963,10 +939,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="190" column="24" lean-forward="false" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dao/users.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="94" column="16" lean-forward="false" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
+        <state relative-caret-position="-893">
+          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
           <folding>
             <marker date="1516893501684" expanded="true" signature="407:491" ph="select * fro... users" />
             <marker date="1516893501684" expanded="true" signature="710:807" ph="select * fro... users" />
@@ -981,42 +965,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/inventory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="182" column="0" lean-forward="false" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
-          <folding>
-            <marker date="1516931124993" expanded="true" signature="415:522" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="748:872" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="1074:1115" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="1313:1355" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="1557:1598" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="1802:1848" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="2059:2106" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="2312:2355" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="2559:2930" ph="select uID, users" />
-            <marker date="1516931124993" expanded="true" signature="3135:3562" ph="select uID, users" />
-            <marker date="1516931124993" expanded="true" signature="3782:4097" ph="select catID... addresses" />
-            <marker date="1516931124993" expanded="true" signature="4352:4653" ph="select catID... addresses" />
-            <marker date="1516931124993" expanded="true" signature="4893:5191" ph="select catID... addresses" />
-            <marker date="1516931124993" expanded="true" signature="5642:5756" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="6013:6130" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="6699:6840" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="7122:7284" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="7248:7283" ph="select max(i... inventory" />
-            <marker date="1516931124993" expanded="true" signature="7466:7647" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="7592:7646" ph="select min(i... inventory" />
-            <marker date="1516931124993" expanded="true" signature="7825:7987" ph="select * fro... inventory" />
-            <marker date="1516931124993" expanded="true" signature="7951:7986" ph="select min(i... inventory" />
-            <marker date="1516931124993" expanded="true" signature="8166:8213" ph="select invpr... inventory" />
-            <marker date="1516931124993" expanded="true" signature="8406:8457" ph="select invav... inventory" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handler/users.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="-15">
           <caret line="100" column="18" lean-forward="false" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
           <folding />
         </state>
@@ -1024,34 +975,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/handler/orders.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+        <state relative-caret-position="237">
+          <caret line="77" column="72" lean-forward="true" selection-start-line="77" selection-start-column="72" selection-end-line="77" selection-end-column="72" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="33" column="79" lean-forward="true" selection-start-line="33" selection-start-column="79" selection-end-line="33" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dao/orders.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="68" column="205" lean-forward="false" selection-start-line="68" selection-start-column="205" selection-end-line="68" selection-end-column="205" />
+        <state relative-caret-position="153">
+          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
           <folding>
-            <marker date="1516934519565" expanded="true" signature="409:429" ph="select * fro... orders" />
-            <marker date="1516934519565" expanded="true" signature="867:894" ph="select * fro... orders" />
-            <marker date="1516934519565" expanded="true" signature="1148:1178" ph="select * fro... orders" />
-            <marker date="1516934519565" expanded="true" signature="1744:1798" ph="select * fro... orders" />
-            <marker date="1516934519565" expanded="true" signature="2104:2262" ph="insert into orders... " />
-            <marker date="1516934519565" expanded="true" signature="2530:2718" ph="insert into orders... " />
+            <marker date="1516937364001" expanded="true" signature="409:429" ph="select * fro... orders" />
+            <marker date="1516937364001" expanded="true" signature="867:894" ph="select * fro... orders" />
+            <marker date="1516937364001" expanded="true" signature="1148:1178" ph="select * fro... orders" />
+            <marker date="1516937364001" expanded="true" signature="1744:1798" ph="select * fro... orders" />
+            <marker date="1516937364001" expanded="true" signature="2104:2246" ph="insert into orders... " />
+            <marker date="1516937364001" expanded="true" signature="2456:2628" ph="insert into orders... " />
+            <marker date="1516937364001" expanded="true" signature="2819:2839" ph="select ordDa... p" />
+            <marker date="1516937364001" expanded="true" signature="2819:2877" ph="select ordDa... orders" />
+            <marker date="1516937364001" expanded="true" signature="3082:3143" ph="select ordEx... orders" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/dao/inventory.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="207" column="58" lean-forward="true" selection-start-line="207" selection-start-column="58" selection-end-line="207" selection-end-column="58" />
-          <folding />
+        <state relative-caret-position="303">
+          <caret line="191" column="8" lean-forward="false" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="8" />
+          <folding>
+            <marker date="1516940615697" expanded="true" signature="415:522" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="748:872" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="1074:1115" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="1313:1355" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="1557:1598" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="1802:1848" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="2059:2106" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="2312:2355" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="2559:2930" ph="select uID, users" />
+            <marker date="1516940615697" expanded="true" signature="3135:3562" ph="select uID, users" />
+            <marker date="1516940615697" expanded="true" signature="3782:4097" ph="select catID... addresses" />
+            <marker date="1516940615697" expanded="true" signature="4352:4653" ph="select catID... addresses" />
+            <marker date="1516940615697" expanded="true" signature="4893:5191" ph="select catID... addresses" />
+            <marker date="1516940615697" expanded="true" signature="5642:5756" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="6013:6130" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="6699:6840" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="7122:7284" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="7248:7283" ph="select max(i... inventory" />
+            <marker date="1516940615697" expanded="true" signature="7466:7647" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="7592:7646" ph="select min(i... inventory" />
+            <marker date="1516940615697" expanded="true" signature="7825:7987" ph="select * fro... inventory" />
+            <marker date="1516940615697" expanded="true" signature="7951:7986" ph="select min(i... inventory" />
+            <marker date="1516940615697" expanded="true" signature="8166:8213" ph="select invpr... inventory" />
+            <marker date="1516940615697" expanded="true" signature="8406:8457" ph="select invav... inventory" />
+            <marker date="1516940615697" expanded="true" signature="8665:8761" ph="update inventory... " />
+            <marker date="1516940615697" expanded="true" signature="8986:9092" ph="update inventory... " />
+          </folding>
         </state>
       </provider>
     </entry>
