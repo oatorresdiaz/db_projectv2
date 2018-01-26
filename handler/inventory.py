@@ -3,6 +3,7 @@ from dao.inventory import InventoryDAO
 from dao.categories import CategoriesDAO
 from dao.resources import ResourcesDAO
 from dao.suppliers import SuppliersDAO
+from dao.pricehistory import PriceHistoryDAO
 
 class InventoryHandler:
     def build_inventory_dict(self, row):
@@ -213,6 +214,9 @@ class InventoryHandler:
                 invDao = InventoryDAO()
                 invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)
 
+                priceHDao = PriceHistoryDAO()
+                priceHDao.insert(invID, invPrice)
+
                 result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
                 return jsonify(Inventory=result), 201
             else:
@@ -242,6 +246,15 @@ class InventoryHandler:
                     catID = catDao.getCategoryByInventoryId(invID)
                     resID = resDao.getResourcesByInventoryId(invID)
                     suppID = suppDao.getSupplierByInventoryId(invID)
+
+                    currentInvPrice = InventoryDAO.getPriceById(invID)[0]
+
+                    if invPrice != int(currentInvPrice):
+                        priceHDao = PriceHistoryDAO()
+                        priceHistoryId = priceHDao.findPriceHistoryId(invID)
+                        priceHDao.updateThruDate(priceHistoryId)
+
+                        priceHDao.insert(invID, invPrice)
 
                     result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
                     return jsonify(Inventory=result), 200

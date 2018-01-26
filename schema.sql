@@ -30,11 +30,8 @@ create table inventory(invID serial primary key, suppID integer references suppl
 -- Price History table
 create table priceHistory(phID serial primary key, invID integer references inventory(invID), startDate date, thruDate date, priceAtMoment float);
 
--- Purchases table
-create table purchases(reqID integer references requesters(reqID), invID integer references inventory(invID), purchaseDate date, purchaseAmount float, primary key (reqID, invID));
-
--- Reserves table
-create table reserves(reqID integer references requesters(reqID), invID integer references inventory(invID), resQty integer, resDate date, resExpDate date, primary key (reqID, invID));
+-- Orders table
+create table orders(reqID integer references requesters(reqID), invID integer references inventory(invID), ordQty integer, ordType varchar(20), ordDate date, resExpDate date, primary key (reqID, invID));
 
 --Categories table
 create table categories(catID serial primary key, catName varchar(20));
