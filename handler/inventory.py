@@ -1,5 +1,9 @@
 from flask import jsonify
 from dao.inventory import InventoryDAO
+from dao.categories import CategoriesDAO
+from dao.resources import ResourcesDAO
+from dao.suppliers import SuppliersDAO
+from dao.pricehistory import PriceHistoryDAO
 
 class InventoryHandler:
     def build_inventory_dict(self, row):
@@ -40,6 +44,23 @@ class InventoryHandler:
         result['workNumber'] = row[17]
         result['otherNumber'] = row[18]
         result['suppID'] = row[19]
+        return result
+
+    def build_inventory_attributes(self, catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice,
+                                   resName, resspecifications, catName):
+        result = {}
+        result['catID'] = catID
+        result['resID'] = resID
+        result['invID'] = invID
+        result['suppID'] = suppID
+        result['invDate'] = invDate
+        result['invQty'] = invQty
+        result['invReserved'] = invReserved
+        result['invAvailable'] = invAvailable
+        result['invPrice'] = invPrice
+        result['resName'] = resName
+        result['resspecifications'] = resspecifications
+        result['catName'] = catName
         return result
 
     def getAllInventory(self):
@@ -138,7 +159,6 @@ class InventoryHandler:
         result_list.append(result)
         return jsonify(Inventory=result_list)
 
-
     # def getMinPriceInInventory(self):
     #     dao = InventoryDAO()
     #     minPriceInInventory = dao.getMinPriceInInventory()
@@ -165,3 +185,75 @@ class InventoryHandler:
     #         result = self.build_inventory_dict(row)
     #         result_list.append(result)
     #     return jsonify(Inventory=result_list)
+
+
+    def insertInventory(self, form):
+        if len(form) != 9:
+            return jsonify(Error="Malformed post request"), 400
+        else:
+            invDate = form['invDate']
+            invQty = form['invQty']
+            invReserved = form['invReserved']
+            invAvailable = form['invAvailable']
+            invPrice = form['invPrice']
+            resName = form['resName']
+            resspecifications = form['resspecifications']
+            catName = form['catName']
+            uID = form['uID']
+
+            if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName and uID:
+                catDao = CategoriesDAO()
+                catID = catDao.insert(catName)
+
+                resDao = ResourcesDAO()
+                resID = resDao.insert(resName, catID, resspecifications)
+
+                suppDao = SuppliersDAO()
+                suppID = suppDao.insert(uID)
+
+                invDao = InventoryDAO()
+                invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)
+
+                result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
+                return jsonify(Inventory=result), 201
+            else:
+                return jsonify(Error="Unexpected attributes in post request"), 400
+
+    def updateInventory(self, invID, form):
+        invDao = InventoryDAO()
+        catDao = CategoriesDAO()
+        resDao = ResourcesDAO()
+        suppDao = SuppliersDAO()
+        if not invDao.getInventoryById(invID):
+            return jsonify(Error="Inventory not found."), 404
+        else:
+            if len(form) != 8:
+                return jsonify(Error="Malformed update request"), 400
+            else:
+                invDate = form['invDate']
+                invQty = form['invQty']
+                invReserved = form['invReserved']
+                invAvailable = form['invAvailable']
+                invPrice = form['invPrice']
+                resName = form['resName']
+                resspecifications = form['resspecifications']
+                catName = form['catName']
+
+                if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName:
+                    catID = catDao.getCategoryByInventoryId(invID)
+                    resID = resDao.getResourcesByInventoryId(invID)
+                    suppID = suppDao.getSupplierByInventoryId(invID)
+
+                    currentInvPrice = InventoryDAO.getPriceById(invID)[0]
+
+                    if invPrice != int(currentInvPrice):
+                        priceHDao = PriceHistoryDAO()
+                        priceHistoryId = priceHDao.findPriceHistoryId(invID)
+                        priceHDao.updateThruDate(priceHistoryId)
+
+                        priceHDao.insert(invID, invPrice)
+
+                    result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
+                    return jsonify(Inventory=result), 200
+                else:
+                    return jsonify(Error="Unexpected attributes in update request"), 400
