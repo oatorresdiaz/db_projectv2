@@ -204,12 +204,18 @@ class InventoryDAO:
         self.conn.commit()
         return invID
 
-    def update(self, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice):
+    def updatePrice(self, invPrice, invID):
         cursor = self.conn.cursor()
-        query = "update inventory set suppID = %s, invDate = %s, invQty = %s, invReserved = %s, invAvailable = %s, invPrice = %s where uID = %s;"
-        cursor.execute(query, (suppID, invDate, invQty, invReserved, invAvailable, invPrice, invID,))
+        query = "update inventory set invPrice = %s where invID = %s;"
+        cursor.execute(query, (invPrice, invID,))
         self.conn.commit()
-        return invID
+
+    def updateQtyAvailable(self, invID, invDiff, currInvQty, currInvAva):
+        cursor = self.conn.cursor()
+        print(invDiff)
+        query = "update inventory set invqty = (%s + %s), invavailable = (%s + %s) where invid = %s"
+        cursor.execute(query, (int(currInvQty), int(invDiff), int(currInvAva), int(invDiff), invID))
+        self.conn.commit()
 
     def getInvDateByInvId(self, invID):
         cursor = self.conn.cursor()
@@ -219,3 +225,9 @@ class InventoryDAO:
         self.conn.commit()
         return invDate
 
+    def getQtyById(self, invID):
+        cursor = self.conn.cursor()
+        query = "select invqty from inventory where invid = %s"
+        cursor.execute(query, (invID,))
+        invQty = cursor.fetchone()
+        return invQty
