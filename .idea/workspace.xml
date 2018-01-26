@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6e1075fe-0f84-4a33-ac70-2c290d1ad2fe" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/creditcards.py" afterPath="$PROJECT_DIR$/dao/creditcards.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/requesters.py" afterPath="$PROJECT_DIR$/dao/requesters.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/requests.py" afterPath="$PROJECT_DIR$/dao/requests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/resources.py" afterPath="$PROJECT_DIR$/dao/resources.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handler/credentials.py" afterPath="$PROJECT_DIR$/handler/credentials.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handler/creditcards.py" afterPath="$PROJECT_DIR$/handler/creditcards.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handler/requesters.py" afterPath="$PROJECT_DIR$/handler/requesters.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handler/requests.py" afterPath="$PROJECT_DIR$/handler/requests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/schema.sql" afterPath="$PROJECT_DIR$/schema.sql" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="295" column="41" lean-forward="true" selection-start-line="295" selection-start-column="41" selection-end-line="295" selection-end-column="41" />
+            <state relative-caret-position="15">
+              <caret line="137" column="29" lean-forward="false" selection-start-line="137" selection-start-column="29" selection-end-line="137" selection-end-column="29" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -49,11 +39,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="creditcards.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="schema.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/schema.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="creditcards.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handler/creditcards.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="74" column="19" lean-forward="false" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+            <state relative-caret-position="1035">
+              <caret line="70" column="22" lean-forward="false" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -62,7 +62,7 @@
       <file leaf-file-name="creditcards.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dao/creditcards.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
+            <state relative-caret-position="480">
               <caret line="33" column="48" lean-forward="false" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
               <folding>
                 <marker date="1516937606686" expanded="true" signature="419:444" ph="select * fro... creditcards" />
@@ -78,8 +78,8 @@
       <file leaf-file-name="users.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dao/users.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="105" selection-end-column="18" />
+            <state relative-caret-position="1455">
+              <caret line="98" column="18" lean-forward="false" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
               <folding>
                 <marker date="1516893063554" expanded="true" signature="407:491" ph="select * fro... users" />
                 <marker date="1516893063554" expanded="true" signature="710:807" ph="select * fro... users" />
@@ -99,7 +99,7 @@
       <file leaf-file-name="users.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handler/users.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="1830">
               <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="158" selection-end-column="88" />
               <folding />
             </state>
@@ -244,7 +244,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,7 +271,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -623,7 +623,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516906164634</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Added GET, POST, &amp; PUT to Credit Cards.">
+      <created>1516937765575</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1516937765575</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -631,9 +638,9 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27222222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.53055555" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.53055555" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.46944445" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.46944445" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.4942857" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -658,7 +665,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Included Procfile &amp; requirements.txt for Heroku implementation." />
     <MESSAGE value="Modifiec Procfile to see if it fixes Heroku error." />
     <MESSAGE value="Modified requirements.txt." />
     <MESSAGE value="Setup dbconfig for heroku database access." />
@@ -683,7 +689,8 @@
     <MESSAGE value="ADDED POST TO USERS." />
     <MESSAGE value="ADDED PUT TO USERS." />
     <MESSAGE value="Added POST method to Suppliers." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added POST method to Suppliers." />
+    <MESSAGE value="Added GET, POST, &amp; PUT to Credit Cards." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GET, POST, &amp; PUT to Credit Cards." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -827,7 +834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -835,14 +841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="39" column="82" lean-forward="true" selection-start-line="39" selection-start-column="82" selection-end-line="39" selection-end-column="82" />
-          <folding>
-            <marker date="1516895920332" expanded="true" signature="429:459" ph="select * fro... telephonenumbers" />
-            <marker date="1516895920332" expanded="true" signature="689:734" ph="select * fro... telephonenumbers" />
-            <marker date="1516895920332" expanded="true" signature="933:978" ph="select * fro... telephonenumbers" />
-            <marker date="1516895920332" expanded="true" signature="1208:1334" ph="insert into telephonenumbers... " />
-            <marker date="1516895920332" expanded="true" signature="1644:1756" ph="update addre... " />
-            <marker date="1516895920332" expanded="true" signature="1644:1769" ph="update telep... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -884,18 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="81" selection-end-column="20" />
-          <folding>
-            <marker date="1516902935774" expanded="true" signature="417:440" ph="select * fro... addresses" />
-            <marker date="1516902935774" expanded="true" signature="664:704" ph="select * fro... addresses" />
-            <marker date="1516902935774" expanded="true" signature="897:935" ph="select * fro... addresses" />
-            <marker date="1516902935774" expanded="true" signature="1125:1164" ph="select * fro... addresses" />
-            <marker date="1516902935774" expanded="true" signature="1359:1400" ph="select * fro... addresses" />
-            <marker date="1516902935774" expanded="true" signature="1599:1641" ph="select * fro... addresses" />
-            <marker date="1516902935774" expanded="true" signature="1841:1883" ph="select * fro... addresses" />
-            <marker date="1516902935774" expanded="true" signature="2299:2390" ph="select * fro... users" />
-            <marker date="1516902935774" expanded="true" signature="2655:2757" ph="insert into addresses... " />
-            <marker date="1516902935774" expanded="true" signature="3035:3135" ph="update addre... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -903,16 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
           <caret line="84" column="37" lean-forward="true" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
-          <folding>
-            <marker date="1516905814821" expanded="true" signature="415:528" ph="select * fro... users" />
-            <marker date="1516905814821" expanded="true" signature="754:885" ph="select * fro... users" />
-            <marker date="1516905814821" expanded="true" signature="1088:1340" ph="select catID... suppliers" />
-            <marker date="1516905814821" expanded="true" signature="1583:1815" ph="select ordQt... orders" />
-            <marker date="1516905814821" expanded="true" signature="2267:2387" ph="select * fro... users" />
-            <marker date="1516905814821" expanded="true" signature="2644:2767" ph="select * fro... users" />
-            <marker date="1516905814821" expanded="true" signature="3308:3455" ph="select * fro... users" />
-            <marker date="1516905814821" expanded="true" signature="3698:3753" ph="insert into suppliers... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -920,20 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="102" column="8" lean-forward="false" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="8" />
-          <folding>
-            <marker date="1516911138780" expanded="true" signature="415:438" ph="select * fro... resources" />
-            <marker date="1516911138780" expanded="true" signature="663:703" ph="select * fro... resources" />
-            <marker date="1516911138780" expanded="true" signature="897:1027" ph="Select * Fro... resources" />
-            <marker date="1516911138780" expanded="true" signature="937:1026" ph="Select resID... Inventory" />
-            <marker date="1516911138780" expanded="true" signature="1253:1443" ph="Select resID... addresses" />
-            <marker date="1516911138780" expanded="true" signature="1690:1832" ph="Select resNa... Requests" />
-            <marker date="1516911138780" expanded="true" signature="2089:2294" ph="Select resNa... Sells" />
-            <marker date="1516911138780" expanded="true" signature="2209:2259" ph="Select invID... Inventory" />
-            <marker date="1516911138780" expanded="true" signature="2775:2805" ph="select * fro... resources" />
-            <marker date="1516911138780" expanded="true" signature="3062:3095" ph="select * fro... resources" />
-            <marker date="1516911138780" expanded="true" signature="3664:3721" ph="select * fro... resources" />
-            <marker date="1516911138780" expanded="true" signature="4022:4114" ph="insert into resources... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -949,15 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-          <folding>
-            <marker date="1516907072172" expanded="true" signature="417:531" ph="select * fro... users" />
-            <marker date="1516907072172" expanded="true" signature="757:888" ph="select * fro... users" />
-            <marker date="1516907072172" expanded="true" signature="1069:1124" ph="insert into requesters... " />
-            <marker date="1516907072172" expanded="true" signature="1349:1550" ph="select ordQt... orders" />
-            <marker date="1516907072172" expanded="true" signature="2002:2123" ph="select * fro... users" />
-            <marker date="1516907072172" expanded="true" signature="2381:2505" ph="select * fro... users" />
-            <marker date="1516907072172" expanded="true" signature="3047:3195" ph="select * fro... users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -969,51 +922,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dao/requests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
           <caret line="70" column="27" lean-forward="true" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
-          <folding>
-            <marker date="1516912316874" expanded="true" signature="413:464" ph="select * fro... requests" />
-            <marker date="1516912316874" expanded="true" signature="688:756" ph="select * fro... requests" />
-            <marker date="1516912316874" expanded="true" signature="1163:1221" ph="select * fro... requests" />
-            <marker date="1516912316874" expanded="true" signature="1477:1538" ph="select * fro... requests" />
-            <marker date="1516912316874" expanded="true" signature="2106:2191" ph="select * fro... requests" />
-            <marker date="1516912316874" expanded="true" signature="2497:2585" ph="insert into requests... " />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/handler/users.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="1830">
           <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="158" selection-end-column="88" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/dao/creditcards.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="295" column="41" lean-forward="true" selection-start-line="295" selection-start-column="41" selection-end-line="295" selection-end-column="41" />
+        <state relative-caret-position="480">
+          <caret line="33" column="48" lean-forward="false" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <marker date="1516937606686" expanded="true" signature="419:444" ph="select * fro... creditcards" />
+            <marker date="1516937606686" expanded="true" signature="670:711" ph="select * fro... creditcards" />
+            <marker date="1516937606686" expanded="true" signature="907:947" ph="select * fro... creditcards" />
+            <marker date="1516937606686" expanded="true" signature="1206:1310" ph="insert into creditcards... " />
+            <marker date="1516937606686" expanded="true" signature="1595:1694" ph="update credi... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/creditcards.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="70" column="22" lean-forward="false" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/users.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="105" selection-end-column="18" />
+        <state relative-caret-position="1455">
+          <caret line="98" column="18" lean-forward="false" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
           <folding>
             <marker date="1516893063554" expanded="true" signature="407:491" ph="select * fro... users" />
             <marker date="1516893063554" expanded="true" signature="710:807" ph="select * fro... users" />
@@ -1029,25 +978,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/creditcards.py">
+    <entry file="file://$PROJECT_DIR$/schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="33" column="48" lean-forward="false" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
-          <folding>
-            <marker date="1516937606686" expanded="true" signature="419:444" ph="select * fro... creditcards" />
-            <marker date="1516937606686" expanded="true" signature="670:711" ph="select * fro... creditcards" />
-            <marker date="1516937606686" expanded="true" signature="907:947" ph="select * fro... creditcards" />
-            <marker date="1516937606686" expanded="true" signature="1206:1310" ph="insert into creditcards... " />
-            <marker date="1516937606686" expanded="true" signature="1595:1694" ph="update credi... " />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/creditcards.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="74" column="19" lean-forward="false" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="15">
+          <caret line="137" column="29" lean-forward="false" selection-start-line="137" selection-start-column="29" selection-end-line="137" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
