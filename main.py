@@ -253,14 +253,16 @@ def getAllAvailableResources():
     else:
         return ResourcesHandler().searchResourcesByArguments(request.args)
 
-@app.route('/db_project/categories')
+@app.route('/db_project/categories', methods=['GET', 'POST'])
 def getAllCategories():
+    if request.method == 'POST':
+        return CategoriesHandler().insertCategories(request.form)
+    else:
         return CategoriesHandler().getAllCategories()
 
 @app.route('/db_project/categories/<int:catID>')
 def getCategoryByID(catID):
         return CategoriesHandler().getCategoriesbyId(catID)
-
 
 @app.route('/db_project/categories/<string:catName>/resources')
 def getResourcesByCategoryName(catName):

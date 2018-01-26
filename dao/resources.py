@@ -117,8 +117,24 @@ class ResourcesDAO:
 
     def getResourceId(self, resName, catID, resspecifications):
         cursor = self.conn.cursor()
-        query = "select resID from resources where resName = %s and catID = %s and resSpecifications = %s;"
+        query = "select resID from inventory natural inner join sells natural inner join resources where resName = %s and catID = %s and resSpecifications = %s;"
         cursor.execute(query, (resName, catID, resspecifications,))
         resID = cursor.fetchone()[0]
         self.conn.commit()
         return resID
+
+    def getResourceNameByResId(self, resID):
+        cursor = self.conn.cursor()
+        query = "select resName from resources where resID = %s;"
+        cursor.execute(query, (resID,))
+        resName = cursor.fetchone()[0]
+        self.conn.commit()
+        return resName
+
+    def getResourceSpecificationsByResId(self, resID):
+        cursor = self.conn.cursor()
+        query = "select resSpecifications from resources where resID = %s;"
+        cursor.execute(query, (resID,))
+        resSpecifications = cursor.fetchone()[0]
+        self.conn.commit()
+        return resSpecifications

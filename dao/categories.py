@@ -45,10 +45,18 @@ class CategoriesDAO:
         self.conn.commit()
         return catID
 
-    def getCatIdByCatName(self, catName):
+    def getCatIdByResId(self, resID):
         cursor = self.conn.cursor()
-        query = "select catId from categories where catName = %s;"
-        cursor.execute(query, (catName,))
+        query = "select catId from categories natural inner join resources where resID = %s;"
+        cursor.execute(query, (resID,))
         catID = cursor.fetchone()[0]
         self.conn.commit()
         return catID
+
+    def getCatNameByResId(self, resID):
+        cursor = self.conn.cursor()
+        query = "select catName from categories natural inner join resources where resID = %s;"
+        cursor.execute(query, (resID,))
+        catName = cursor.fetchone()[0]
+        self.conn.commit()
+        return catName

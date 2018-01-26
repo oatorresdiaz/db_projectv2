@@ -196,10 +196,10 @@ class InventoryDAO:
         self.conn.commit()
 
 
-    def insert(self, suppID, invDate, invQty, invReserved, invAvailable, invPrice):
+    def insert(self, suppID, invQty, invPrice):
         cursor = self.conn.cursor()
-        query = "insert into inventory(suppID, invDate, invQty, invReserved, invAvailable, invPrice) values (%s, %s, %s, %s, %s, %s) returning invID;"
-        cursor.execute(query, (suppID, invDate, invQty, invReserved, invAvailable, invPrice,))
+        query = "insert into inventory(suppID, invDate, invQty, invReserved, invAvailable, invPrice) values (%s, CURRENT_TIMESTAMP, %s, 0, %s, %s) returning invID;"
+        cursor.execute(query, (suppID, invQty, invQty, invPrice,))
         invID = cursor.fetchone()[0]
         self.conn.commit()
         return invID
@@ -210,4 +210,12 @@ class InventoryDAO:
         cursor.execute(query, (suppID, invDate, invQty, invReserved, invAvailable, invPrice, invID,))
         self.conn.commit()
         return invID
+
+    def getInvDateByInvId(self, invID):
+        cursor = self.conn.cursor()
+        query = "select invDate from inventory where invID = %s;"
+        cursor.execute(query, (invID,))
+        invDate = cursor.fetchone()[0]
+        self.conn.commit()
+        return invDate
 

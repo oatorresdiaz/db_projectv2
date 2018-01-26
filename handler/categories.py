@@ -9,6 +9,12 @@ class CategoriesHandler:
         result['catName'] = row[1]
         return result
 
+    def build_categories_attributes(self, catID, catName):
+        result = {}
+        result['catID'] = catID
+        result['catName'] = catName
+        return result
+
     def getAllCategories(self):
         dao = CategoriesDAO()
         categories_list = dao.getAllCategories()
@@ -26,3 +32,19 @@ class CategoriesHandler:
         else:
             category = self.build_categories_dict(row)
             return jsonify(Category=category)
+
+    def insertCategories(self, form):
+        if len(form) != 1:
+            return jsonify(Error="Malformed post request"), 400
+        else:
+          catName = form['catName']
+
+            if catName:
+                catDao = CategoriesDAO()
+                catID = catDao.insert(catName)
+
+                result = self.build_categories_attributes(catID, catName)
+                return jsonify(Categories=result), 201
+            else:
+                return jsonify(Error="Unexpected attributes in post request"), 400
+

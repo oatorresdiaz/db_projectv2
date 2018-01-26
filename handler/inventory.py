@@ -188,36 +188,31 @@ class InventoryHandler:
 
 
     def insertInventory(self, form):
-        if len(form) != 9:
+        if len(form) != 4:
             return jsonify(Error="Malformed post request"), 400
         else:
-            ##invDate = form['invDate']
             invQty = form['invQty']
-           ## invReserved = form['invReserved']
-            invAvailable = form['invAvailable']
             invPrice = form['invPrice']
-           ## resName = form['resName']
-          ##  resspecifications = form['resspecifications']
-          ##  catName = form['catName']
-          ##  uID = form['uID']
+            resID = form['resID']
+            suppID = form['suppID']
 
-            if invDate and invQty and invReserved and invAvailable and invPrice and resName and resspecifications and catName and uID:
+            if invQty and invPrice and resID and suppID:
+                invDao = InventoryDAO()
+                invID = invDao.insert(suppID, invQty, invPrice)
+                invDate = invDao.getInvDateByInvId(invID)
+
                 catDao = CategoriesDAO()
-                catID = catDao.getCatIdByCatName(catName)
+                catID = catDao.getCatIdByResId(resID)
+                catName = catDao.getCatNameByResId(resID)
 
                 resDao = ResourcesDAO()
-                resID = resDao.getResourceId(resName, catID, resspecifications)
-
-                suppDao = SuppliersDAO()
-                suppID = suppDao.getSuppIdByUserId(uID)
-
-                invDao = InventoryDAO()
-                invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)
+                resName = resDao.getResourceNameByResId(resID)
+                resspecifications = resDao.getResourceSpecificationsByResId(resID)
 
                 priceHDao = PriceHistoryDAO()
                 priceHDao.insert(invID, invPrice)
 
-                result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
+                result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, 0, invQty, invPrice, resName, resspecifications, catName)
                 return jsonify(Inventory=result), 201
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400

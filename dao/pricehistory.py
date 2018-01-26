@@ -46,6 +46,6 @@ class PriceHistoryDAO:
 
     def updateThruDate(self, phID):
         cursor = self.conn.cursor()
-        query = "update pricehistory set ordexpdate = current_timestamp where phID = %s;"
+        query = "update pricehistory set thruDate = current_timestamp where phID = %s;"
         cursor.execute(query, (phID,))
         self.conn.commit()
