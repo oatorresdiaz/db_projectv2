@@ -14,8 +14,9 @@ class OrdersHandler:
         result['ordPrice'] = row[6]
         return result
 
-    def build_order_attributes(self, reqID, invID, ordQty, ordDate, ordExpDate, ordType, ordPrice):
+    def build_order_attributes(self, ordID, reqID, invID, ordQty, ordDate, ordExpDate, ordType, ordPrice):
         result = {}
+        result['ordID'] = ordID
         result['reqID'] = reqID
         result['invID'] = invID
         result['ordQty'] = ordQty
@@ -69,14 +70,14 @@ class OrdersHandler:
                 ordPrice = InventoryDAO().getPriceById(invID)[0]
                 if ordPrice > 0:
                     ordType = "Purchase"
-                    ordID = ordDao.insertPurchase(reqID, invID, ordQty)
+                    ordID = ordDao.insertPurchase(reqID, invID, ordQty, ordPrice)
 
                 else:
                     ordType = "Reserve"
-                    ordID = ordDao.insertReserve(reqID, invID, ordQty)
+                    ordID = ordDao.insertReserve(reqID, invID, ordQty, ordPrice)
 
 
-                result = self.build_user_attributes(uID, uFirstName, uLastName, uGender, uBirthDate, addID, city, street, country, zipcode, tID, homeNumber, mobileNumber, workNumber, otherNumber)
-                return jsonify(User=result), 201
+                result = self.build_order_attributes(ordID, reqID, invID, ordQty, ordType, ordPrice)
+                return jsonify(Order=result), 201
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400

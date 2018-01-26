@@ -56,18 +56,18 @@ class OrdersDAO:
             result.append(row)
         return result
 
-    def insertPurchase(self, reqID, invID, ordQty):
+    def insertPurchase(self, reqID, invID, ordQty, ordPrice):
         cursor = self.conn.cursor()
-        query = "insert into users(uFirstName, uLastName, uGender, uBirthDate) values (%s, %s, %s, %s) returning uID;"
-        cursor.execute(query, ()
-        uID = cursor.fetchone()[0]
+        query = "insert into orders(reqid, invid, ordqty, orddate, ordexpdate, ordtype, ordprice) values (%s, %s, %s, current_timestamp, NULL , 'Purchase', %s) returning ordid;"
+        cursor.execute(query, (reqID, invID, ordQty, ordPrice,))
+        ordID = cursor.fetchone()[0]
         self.conn.commit()
-        return uID
+        return ordID
 
-    def insertReserve(self, reqID, invID, ordQty):
+    def insertReserve(self, reqID, invID, ordQty, ordPrice):
         cursor = self.conn.cursor()
-        query = "insert into users(uFirstName, uLastName, uGender, uBirthDate) values (%s, %s, %s, %s) returning uID;"
-        cursor.execute(query, (uFirstName, uLastName, uGender, uBirthDate,))
-        uID = cursor.fetchone()[0]
+        query = "insert into orders(reqid, invid, ordqty, orddate, ordexpdate, ordtype, ordprice) values (%s, %s, %s, current_timestamp, current_timestamp + interval '7 day', 'Reserve', %s) returning ordid;"
+        cursor.execute(query, (reqID, invID, ordQty, ordPrice,))
+        ordID = cursor.fetchone()[0]
         self.conn.commit()
-        return uID
+        return ordID
