@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e1075fe-0f84-4a33-ac70-2c290d1ad2fe" name="Default" comment="Worked on categories and inventory, not finished">
+    <list default="true" id="6e1075fe-0f84-4a33-ac70-2c290d1ad2fe" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dao/categories.py" afterPath="$PROJECT_DIR$/dao/categories.py" />
-      <change beforePath="$PROJECT_DIR$/dao/inventory.py" afterPath="$PROJECT_DIR$/dao/inventory.py" />
       <change beforePath="$PROJECT_DIR$/handler/inventory.py" afterPath="$PROJECT_DIR$/handler/inventory.py" />
-      <change beforePath="$PROJECT_DIR$/handler/orders.py" afterPath="$PROJECT_DIR$/handler/orders.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -127,11 +124,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="inventory.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="inventory.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/handler/inventory.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="157">
-                  <caret line="207" column="98" lean-forward="false" selection-start-line="207" selection-start-column="98" selection-end-line="207" selection-end-column="98" />
+                <state relative-caret-position="82">
+                  <caret line="213" column="44" lean-forward="true" selection-start-line="213" selection-start-column="44" selection-end-line="213" selection-end-column="44" />
                   <folding>
                     <element signature="e#0#25#0" expanded="true" />
                   </folding>
@@ -180,11 +177,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="inventory.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="inventory.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dao/inventory.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="111">
-                  <caret line="171" column="76" lean-forward="false" selection-start-line="171" selection-start-column="76" selection-end-line="171" selection-end-column="76" />
+                <state relative-caret-position="536">
+                  <caret line="176" column="0" lean-forward="true" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
                   <folding>
                     <marker date="1516922272205" expanded="true" signature="415:522" ph="select * fro... inventory" />
                     <marker date="1516922272205" expanded="true" signature="748:872" ph="select * fro... inventory" />
@@ -779,7 +776,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516917880848</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="more updates to inventory and category">
+      <created>1516922863309</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1516922863309</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -819,7 +823,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Included Procfile &amp; requirements.txt for Heroku implementation." />
     <MESSAGE value="Modifiec Procfile to see if it fixes Heroku error." />
     <MESSAGE value="Modified requirements.txt." />
     <MESSAGE value="Setup dbconfig for heroku database access." />
@@ -844,7 +847,8 @@
     <MESSAGE value="Merged Orlando" />
     <MESSAGE value=".." />
     <MESSAGE value="Worked on categories and inventory, not finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Worked on categories and inventory, not finished" />
+    <MESSAGE value="more updates to inventory and category" />
+    <option name="LAST_COMMIT_MESSAGE" value="more updates to inventory and category" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1165,16 +1169,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handler/inventory.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="207" column="98" lean-forward="false" selection-start-line="207" selection-start-column="98" selection-end-line="207" selection-end-column="98" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handler/users.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="956">
@@ -1187,8 +1181,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/inventory.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="171" column="76" lean-forward="false" selection-start-line="171" selection-start-column="76" selection-end-line="171" selection-end-column="76" />
+        <state relative-caret-position="536">
+          <caret line="176" column="0" lean-forward="true" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
           <folding>
             <marker date="1516922272205" expanded="true" signature="415:522" ph="select * fro... inventory" />
             <marker date="1516922272205" expanded="true" signature="748:872" ph="select * fro... inventory" />
@@ -1214,6 +1208,16 @@
             <marker date="1516922272205" expanded="true" signature="7951:7986" ph="select min(i... inventory" />
             <marker date="1516922272205" expanded="true" signature="8215:8346" ph="insert into users... " />
             <marker date="1516922272205" expanded="true" signature="8674:8800" ph="update users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/handler/inventory.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="213" column="44" lean-forward="true" selection-start-line="213" selection-start-column="44" selection-end-line="213" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>

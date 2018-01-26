@@ -208,7 +208,7 @@ class InventoryHandler:
                 invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)
 
                 resDao = ResourcesDAO()
-                resID = resDao.insert(missing)
+                resID = resDao.insert(resName, catID, resspecifications)
 
                 suppDao = SuppliersDAO()
                 suppID = suppDao.insert(missing)
