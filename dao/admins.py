@@ -29,10 +29,10 @@ class AdminsDAO:
         result = cursor.fetchone()
         return result
 
-    def insert(self, uid):
+    def insert(self, uID):
         cursor = self.conn.cursor()
         query = "insert into admins(uID) values (%s) returning adminid;"
-        cursor.execute(query, (uid,))
+        cursor.execute(query, (uID,))
         adminid = cursor.fetchone()[0]
         self.conn.commit()
         return adminid
