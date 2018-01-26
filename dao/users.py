@@ -90,4 +90,19 @@ class UsersDAO:
             result.append(row)
         return result
 
+    def insert(self, uFirstName, uLastName, uGender, uBirthDate):
+        cursor = self.conn.cursor()
+        query = "insert into users(uFirstName, uLastName, uGender, uBirthDate) values (%s, %s, %s, %s) returning uID;"
+        cursor.execute(query, (uFirstName, uLastName, uGender, uBirthDate,))
+        uID = cursor.fetchone()[0]
+        self.conn.commit()
+        return uID
+
+    def update(self, uID, uFirstName, uLastName, uGender, uBirthDate):
+        cursor = self.conn.cursor()
+        query = "update users set uFirstName = %s, uLastName = %s, uGender = %s, uBirthDate = %s where uID = %s;"
+        cursor.execute(query, (uFirstName, uLastName, uGender, uBirthDate, uID,))
+        self.conn.commit()
+        return uID
+
 

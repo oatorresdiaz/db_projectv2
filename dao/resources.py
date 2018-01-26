@@ -59,6 +59,13 @@ class ResourcesDAO:
             result.append(row)
         return result
 
+    def getResourcesByInventoryId(self, invID):
+        cursor = self.conn.cursor()
+        query = "select resID from resources natural inner join inventory where invID = %s;"
+        cursor.execute(query, (invID,))
+        resID = cursor.fetchone()[0]
+        return resID
+
     def searchResourcesByArguments(self, args):
         cursor = self.conn.cursor()
         arguments = ""
@@ -99,3 +106,35 @@ class ResourcesDAO:
         for row in cursor:
             result.append(row)
         return result
+
+    def insert(self, resName, catID, resSpecifications):
+        cursor = self.conn.cursor()
+        query = "insert into resources(resName, catID, resSpecifications) values (%s, %s, %s) returning resID;"
+        cursor.execute(query, (resName, catID, resSpecifications,))
+        resID = cursor.fetchone()[0]
+        self.conn.commit()
+        return resID
+
+    def getResourceId(self, resName, catID, resspecifications):
+        cursor = self.conn.cursor()
+        query = "select resID from inventory natural inner join sells natural inner join resources where resName = %s and catID = %s and resSpecifications = %s;"
+        cursor.execute(query, (resName, catID, resspecifications,))
+        resID = cursor.fetchone()[0]
+        self.conn.commit()
+        return resID
+
+    def getResourceNameByResId(self, resID):
+        cursor = self.conn.cursor()
+        query = "select resName from resources where resID = %s;"
+        cursor.execute(query, (resID,))
+        resName = cursor.fetchone()[0]
+        self.conn.commit()
+        return resName
+
+    def getResourceSpecificationsByResId(self, resID):
+        cursor = self.conn.cursor()
+        query = "select resSpecifications from resources where resID = %s;"
+        cursor.execute(query, (resID,))
+        resSpecifications = cursor.fetchone()[0]
+        self.conn.commit()
+        return resSpecifications

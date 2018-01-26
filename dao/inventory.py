@@ -166,3 +166,68 @@ class InventoryDAO:
         cursor.execute(query)
         result = cursor.fetchone()
         return result
+
+    def getPriceById(self, invID):
+        cursor = self.conn.cursor()
+        query = "select invprice from inventory where invid = %s;"
+        cursor.execute(query, (invID,))
+        result = cursor.fetchone()
+        return result
+
+    def getAvailableById(self, invID):
+        cursor = self.conn.cursor()
+        query = "select invavailable from inventory where invid = %s;"
+        cursor.execute(query, (invID,))
+        result = cursor.fetchone()
+        return result
+
+    def updateAvailablePurchase(self, invID, ordQty):
+        cursor = self.conn.cursor()
+        query = "update inventory set invavailable = (invavailable - %s), invqty = (invqty - %s) where invid = %s;"
+        cursor.execute(query, (int(ordQty), int(ordQty), invID,))
+        self.conn.commit()
+
+    def updateAvailableReserve(self, invID, ordQty):
+        print(ordQty)
+        cursor = self.conn.cursor()
+        query = "update inventory set invavailable = (invavailable - %s), invreserved = (invreserved + %s) where invid = %s;"
+        cursor.execute(query, (int(ordQty), int(ordQty), invID,))
+        print(cursor.query)
+        self.conn.commit()
+
+
+    def insert(self, suppID, invQty, invPrice):
+        cursor = self.conn.cursor()
+        query = "insert into inventory(suppID, invDate, invQty, invReserved, invAvailable, invPrice) values (%s, CURRENT_TIMESTAMP, %s, 0, %s, %s) returning invID;"
+        cursor.execute(query, (suppID, invQty, invQty, invPrice,))
+        invID = cursor.fetchone()[0]
+        self.conn.commit()
+        return invID
+
+    def updatePrice(self, invPrice, invID):
+        cursor = self.conn.cursor()
+        query = "update inventory set invPrice = %s where invID = %s;"
+        cursor.execute(query, (invPrice, invID,))
+        self.conn.commit()
+
+    def updateQtyAvailable(self, invID, invDiff, currInvQty, currInvAva):
+        cursor = self.conn.cursor()
+        print(invDiff)
+        query = "update inventory set invqty = (%s + %s), invavailable = (%s + %s) where invid = %s"
+        cursor.execute(query, (int(currInvQty), int(invDiff), int(currInvAva), int(invDiff), invID))
+        self.conn.commit()
+
+    def getInvDateByInvId(self, invID):
+        cursor = self.conn.cursor()
+        query = "select invDate from inventory where invID = %s;"
+        cursor.execute(query, (invID,))
+        invDate = cursor.fetchone()[0]
+        self.conn.commit()
+        return invDate
+
+    def getQtyById(self, invID):
+        cursor = self.conn.cursor()
+        query = "select invqty from inventory where invid = %s"
+        cursor.execute(query, (invID,))
+        invQty = cursor.fetchone()
+        return invQty

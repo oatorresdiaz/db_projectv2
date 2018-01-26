@@ -10,6 +10,14 @@ class ResourcesHandler:
         result['resSpecifications'] = row[3]
         return result
 
+    def build_resource_attributes(self, resID, resName, catID, resSpecifications):
+        result = {}
+        result['resID'] = resID
+        result['resName'] = resName
+        result['catID'] = catID
+        result['resSpecifications'] = resSpecifications
+        return result
+
     def build_cat_dict(self, row):
         result = {}
         result['resName'] = row[0]
@@ -83,3 +91,19 @@ class ResourcesHandler:
             result = self.build_resource_dict(row)
             result_list.append(result)
         return jsonify(Resources=result_list)
+
+    def insertResource(self, form):
+        if len(form) != 3:
+            return jsonify(Error = "Malformed post request"), 400
+        else:
+            resName = form['resName']
+            catID = form['catID']
+            resSpecifications = form['resSpecifications']
+
+            if resName and catID and resSpecifications:
+                resDao = ResourcesDAO()
+                resID = resDao.insert(resName, catID, resSpecifications)
+                result = self.build_resource_attributes(resID, resName, catID, resSpecifications)
+                return jsonify(Resource=result), 201
+            else:
+                return jsonify(Error="Unexpected attributes in post request"), 400

@@ -62,6 +62,21 @@ class InventoryHandler:
         result['resspecifications'] = resspecifications
         result['catName'] = catName
         return result
+    def build_inventory_attributes2(self, invQty, invPrice):
+        result = {}
+        ##result['catID'] = catID
+        ##result['resID'] = resID
+        ##result['invID'] = invID
+        ##result['suppID'] = suppID
+        ##result['invDate'] = invDate
+        result['invQty'] = invQty
+        ##result['invReserved'] = invReserved
+        ##result['invAvailable'] = invAvailable
+        result['invPrice'] = invPrice
+        ##result['resName'] = resName
+        ##result['resspecifications'] = resspecifications
+        ##result['catName'] = catName
+        return result
 
     def getAllInventory(self):
         dao = InventoryDAO()
@@ -215,6 +230,31 @@ class InventoryHandler:
                 invID = invDao.insert(suppID, invDate, invQty, invReserved, invAvailable, invPrice)
 
                 result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, invReserved, invAvailable, invPrice, resName, resspecifications, catName)
+        if len(form) != 4:
+            return jsonify(Error="Malformed post request"), 400
+        else:
+            invQty = form['invQty']
+            invPrice = form['invPrice']
+            resID = form['resID']
+            suppID = form['suppID']
+
+            if invQty and invPrice and resID and suppID:
+                invDao = InventoryDAO()
+                invID = invDao.insert(suppID, invQty, invPrice)
+                invDate = invDao.getInvDateByInvId(invID)
+
+                catDao = CategoriesDAO()
+                catID = catDao.getCatIdByResId(resID)
+                catName = catDao.getCatNameByResId(resID)
+
+                resDao = ResourcesDAO()
+                resName = resDao.getResourceNameByResId(resID)
+                resspecifications = resDao.getResourceSpecificationsByResId(resID)
+
+                priceHDao = PriceHistoryDAO()
+                priceHDao.insert(invID, invPrice)
+
+                result = self.build_inventory_attributes(catID, resID, invID, suppID, invDate, invQty, 0, invQty, invPrice, resName, resspecifications, catName)
                 return jsonify(Inventory=result), 201
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400
@@ -223,6 +263,11 @@ class InventoryHandler:
         invDao = InventoryDAO()
         catDao = CategoriesDAO()
         resDao = ResourcesDAO()
+
+    def updateInventory(self, invID, form):
+        invDao = InventoryDAO()
+        ##catDao = CategoriesDAO()
+        ##resDao = ResourcesDAO()
         suppDao = SuppliersDAO()
         if not invDao.getInventoryById(invID):
             return jsonify(Error="Inventory not found."), 404
@@ -257,3 +302,49 @@ class InventoryHandler:
                     return jsonify(Inventory=result), 200
                 else:
                     return jsonify(Error="Unexpected attributes in update request"), 400
+            if len(form) != 2:
+                print(len(form))
+                return jsonify(Error="Malformed update request"), 400
+            else:
+               ## invDate = form['invDate']
+                invQty = form['invQty']
+                ## invReserved = form['invReserved']
+                ##invAvailable = form['invAvailable']
+                invPrice = form['invPrice']
+                ##   resName = form['resName']
+                ##   resspecifications = form['resspecifications']
+                ##  catName = form['catName']
+
+                if invQty or invPrice:
+                    ##catID = catDao.getCategoryByInventoryId(invID)
+                    ##resID = resDao.getResourcesByInventoryId(invID)
+                    ##suppID = suppDao.getSupplierByInventoryId(invID)
+                    print(invID)
+                    currentInvPrice = InventoryDAO().getPriceById(invID)[0]
+                    if invPrice:
+                        if invPrice != int(currentInvPrice):
+                            priceHDao = PriceHistoryDAO()
+                            priceHistoryId = priceHDao.findPriceHistoryId(invID)
+                            priceHDao.updateThruDate(priceHistoryId)
+                            priceHDao.insert(invID, invPrice)
+                            InventoryDAO().updatePrice(invPrice, invID)
+                    else:
+                        invPrice = InventoryDAO().getPriceById(invID)[0]
+                    if invQty:
+                        currentInvQty = InventoryDAO().getQtyById(invID)[0]
+                        currentInvAvailable = InventoryDAO().getAvailableById(invID)[0]
+                        invDiff = int(invQty)
+                        if invDiff != currentInvQty:
+                            invDiff = invDiff - currentInvQty
+                            if invDiff < 0:
+                                checkAmount = invDiff * (-1)
+                                if checkAmount > currentInvAvailable:
+                                    return jsonify(Error="Not enough resources to remove"), 200
+                            InventoryDAO().updateQtyAvailable(invID, invDiff, currentInvQty, currentInvAvailable)
+                    else:
+                        InventoryDAO().getQtyById(invID)[0]
+                    result = self.build_inventory_attributes2(invQty, invPrice)
+                    return jsonify(Inventory=result), 200
+                else:
+                    return jsonify(Error="Unexpected attributes in update request"), 400
+
