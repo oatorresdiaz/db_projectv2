@@ -158,7 +158,6 @@ class InventoryHandler:
         result_list.append(result)
         return jsonify(Inventory=result_list)
 
-
     # def getMinPriceInInventory(self):
     #     dao = InventoryDAO()
     #     minPriceInInventory = dao.getMinPriceInInventory()

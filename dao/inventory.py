@@ -167,6 +167,33 @@ class InventoryDAO:
         result = cursor.fetchone()
         return result
 
+    def getPriceById(self, invID):
+        cursor = self.conn.cursor()
+        query = "select invprice from inventory where invid = %s;"
+        cursor.execute(query, (invID,))
+        result = cursor.fetchone()
+        return result
+
+    def getAvailableById(self, invID):
+        cursor = self.conn.cursor()
+        query = "select invavailable from inventory where invid = %s;"
+        cursor.execute(query, (invID,))
+        result = cursor.fetchone()
+        return result
+
+    def updateAvailablePurchase(self, invID, ordQty):
+        cursor = self.conn.cursor()
+        query = "update inventory set invavailable = (invavailable - %s), invqty = (invqty - %s) where invid = %s;"
+        cursor.execute(query, (ordQty, ordQty, invID,))
+        self.conn.commit()
+
+    def updateAvailableReserve(self, invID, ordQty):
+        cursor = self.conn.cursor()
+        query = "update inventory set invavailable = (invavailable - %s), invreserved = (invreserved + %s) where invid = %s;"
+        cursor.execute(query, (ordQty, ordQty, invID,))
+        self.conn.commit()
+
+
     def insert(self, suppID, invDate, invQty, invReserved, invAvailable, invPrice):
         cursor = self.conn.cursor()
         query = "insert into inventory(suppID, invDate, invQty, invReserved, invAvailable, invPrice) values (%s, %s, %s, %s, %s, %s) returning invID;"

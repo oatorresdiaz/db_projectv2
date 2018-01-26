@@ -42,8 +42,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55">
-              <caret line="181" column="25" lean-forward="false" selection-start-line="181" selection-start-column="25" selection-end-line="181" selection-end-column="25" />
+            <state relative-caret-position="-370">
+              <caret line="181" column="24" lean-forward="false" selection-start-line="181" selection-start-column="24" selection-end-line="181" selection-end-column="24" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -69,30 +69,29 @@
             <state relative-caret-position="155">
               <caret line="113" column="33" lean-forward="false" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="33" />
               <folding>
-                <marker date="1516922272205" expanded="true" signature="415:522" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="748:872" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="1074:1115" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="1313:1355" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="1557:1598" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="1802:1848" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="2059:2106" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="2312:2355" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="2559:2930" ph="select uID, users" />
-                <marker date="1516922272205" expanded="true" signature="3135:3562" ph="select uID, users" />
-                <marker date="1516922272205" expanded="true" signature="3782:4097" ph="select catID... addresses" />
-                <marker date="1516922272205" expanded="true" signature="4352:4653" ph="select catID... addresses" />
-                <marker date="1516922272205" expanded="true" signature="4893:5191" ph="select catID... addresses" />
-                <marker date="1516922272205" expanded="true" signature="5642:5756" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="6013:6130" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="6699:6840" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="7122:7284" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="7248:7283" ph="select max(i... inventory" />
-                <marker date="1516922272205" expanded="true" signature="7466:7647" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="7592:7646" ph="select min(i... inventory" />
-                <marker date="1516922272205" expanded="true" signature="7825:7987" ph="select * fro... inventory" />
-                <marker date="1516922272205" expanded="true" signature="7951:7986" ph="select min(i... inventory" />
-                <marker date="1516922272205" expanded="true" signature="8215:8346" ph="insert into users... " />
-                <marker date="1516922272205" expanded="true" signature="8674:8800" ph="update users... " />
+                <marker date="1516940552880" expanded="true" signature="74:8076" ph="..." />
+                <marker date="1516940552880" expanded="true" signature="415:522" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="748:872" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="1074:1115" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="1313:1355" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="1557:1598" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="1802:1848" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="2059:2106" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="2312:2355" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="2559:2930" ph="select uID, users" />
+                <marker date="1516940552880" expanded="true" signature="3135:3562" ph="select uID, users" />
+                <marker date="1516940552880" expanded="true" signature="3782:4097" ph="select catID... addresses" />
+                <marker date="1516940552880" expanded="true" signature="4352:4653" ph="select catID... addresses" />
+                <marker date="1516940552880" expanded="true" signature="4893:5191" ph="select catID... addresses" />
+                <marker date="1516940552880" expanded="true" signature="5642:5756" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="6013:6130" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="6699:6840" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="7122:7284" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="7248:7283" ph="select max(i... inventory" />
+                <marker date="1516940552880" expanded="true" signature="7466:7647" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="7592:7646" ph="select min(i... inventory" />
+                <marker date="1516940552880" expanded="true" signature="7825:7987" ph="select * fro... inventory" />
+                <marker date="1516940552880" expanded="true" signature="7951:7986" ph="select min(i... inventory" />
               </folding>
             </state>
           </provider>
@@ -123,7 +122,7 @@
         <entry file="file://$PROJECT_DIR$/handler/inventory.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="267">
-              <caret line="244" column="56" lean-forward="false" selection-start-line="244" selection-start-column="56" selection-end-line="244" selection-end-column="56" />
+              <caret line="243" column="56" lean-forward="false" selection-start-line="243" selection-start-column="56" selection-end-line="243" selection-end-column="56" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -973,7 +972,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1900">
           <caret line="77" column="102" lean-forward="true" selection-start-line="77" selection-start-column="102" selection-end-line="77" selection-end-column="102" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -989,7 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1018,12 +1015,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
           <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <marker date="1516895660834" expanded="true" signature="409:429" ph="select * fro... orders" />
-            <marker date="1516895660834" expanded="true" signature="867:894" ph="select * fro... orders" />
-            <marker date="1516895660834" expanded="true" signature="1148:1178" ph="select * fro... orders" />
-            <marker date="1516895660834" expanded="true" signature="1744:1798" ph="select * fro... orders" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1058,38 +1050,37 @@
         <state relative-caret-position="155">
           <caret line="113" column="33" lean-forward="false" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="33" />
           <folding>
-            <marker date="1516922272205" expanded="true" signature="415:522" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="748:872" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="1074:1115" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="1313:1355" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="1557:1598" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="1802:1848" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="2059:2106" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="2312:2355" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="2559:2930" ph="select uID, users" />
-            <marker date="1516922272205" expanded="true" signature="3135:3562" ph="select uID, users" />
-            <marker date="1516922272205" expanded="true" signature="3782:4097" ph="select catID... addresses" />
-            <marker date="1516922272205" expanded="true" signature="4352:4653" ph="select catID... addresses" />
-            <marker date="1516922272205" expanded="true" signature="4893:5191" ph="select catID... addresses" />
-            <marker date="1516922272205" expanded="true" signature="5642:5756" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="6013:6130" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="6699:6840" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="7122:7284" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="7248:7283" ph="select max(i... inventory" />
-            <marker date="1516922272205" expanded="true" signature="7466:7647" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="7592:7646" ph="select min(i... inventory" />
-            <marker date="1516922272205" expanded="true" signature="7825:7987" ph="select * fro... inventory" />
-            <marker date="1516922272205" expanded="true" signature="7951:7986" ph="select min(i... inventory" />
-            <marker date="1516922272205" expanded="true" signature="8215:8346" ph="insert into users... " />
-            <marker date="1516922272205" expanded="true" signature="8674:8800" ph="update users... " />
+            <marker date="1516940552880" expanded="true" signature="74:8076" ph="..." />
+            <marker date="1516940552880" expanded="true" signature="415:522" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="748:872" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="1074:1115" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="1313:1355" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="1557:1598" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="1802:1848" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="2059:2106" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="2312:2355" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="2559:2930" ph="select uID, users" />
+            <marker date="1516940552880" expanded="true" signature="3135:3562" ph="select uID, users" />
+            <marker date="1516940552880" expanded="true" signature="3782:4097" ph="select catID... addresses" />
+            <marker date="1516940552880" expanded="true" signature="4352:4653" ph="select catID... addresses" />
+            <marker date="1516940552880" expanded="true" signature="4893:5191" ph="select catID... addresses" />
+            <marker date="1516940552880" expanded="true" signature="5642:5756" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="6013:6130" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="6699:6840" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="7122:7284" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="7248:7283" ph="select max(i... inventory" />
+            <marker date="1516940552880" expanded="true" signature="7466:7647" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="7592:7646" ph="select min(i... inventory" />
+            <marker date="1516940552880" expanded="true" signature="7825:7987" ph="select * fro... inventory" />
+            <marker date="1516940552880" expanded="true" signature="7951:7986" ph="select min(i... inventory" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="181" column="25" lean-forward="false" selection-start-line="181" selection-start-column="25" selection-end-line="181" selection-end-column="25" />
+        <state relative-caret-position="-370">
+          <caret line="181" column="24" lean-forward="false" selection-start-line="181" selection-start-column="24" selection-end-line="181" selection-end-column="24" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -1182,7 +1173,7 @@
     <entry file="file://$PROJECT_DIR$/handler/inventory.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
-          <caret line="244" column="56" lean-forward="false" selection-start-line="244" selection-start-column="56" selection-end-line="244" selection-end-column="56" />
+          <caret line="243" column="56" lean-forward="false" selection-start-line="243" selection-start-column="56" selection-end-line="243" selection-end-column="56" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
