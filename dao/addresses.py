@@ -87,3 +87,4 @@ class AddressesDAO:
         cursor.execute(query, (city, street, country, zipcode, uID, addID, ))
         self.conn.commit()
         return addID
+

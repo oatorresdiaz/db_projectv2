@@ -24,11 +24,11 @@ class RequestersDAO:
 
     def insert(self, uid):
         cursor = self.conn.cursor()
-        query = "insert into requesters(uID) values (%s) returning reqid;"
+        query = "insert into requesters(uID) values (%s) returning reqID;"
         cursor.execute(query, (uid,))
-        reqid = cursor.fetchone()[0]
+        reqID = cursor.fetchone()[0]
         self.conn.commit()
-        return reqid
+        return reqID
 
     def getOrdersByRequesterId(self, reqID):
         cursor = self.conn.cursor()

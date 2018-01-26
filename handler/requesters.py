@@ -1,6 +1,8 @@
 from flask import jsonify
 from dao.requesters import RequestersDAO
 from dao.users import UsersDAO
+from dao.addresses import AddressesDAO
+from dao.telephonenumbers import TelephoneNumbersDAO
 
 class RequestersHandler:
     def build_requester_dict(self, row):
@@ -35,6 +37,12 @@ class RequestersHandler:
         result['resSpecifications'] = row[7]
         return result
 
+    def build_requester_attributes(self, reqID, uID):
+        result = {}
+        result['uID'] = uID
+        result['reqID'] = reqID
+        return result
+
     def getAllRequesters(self):
         dao = RequestersDAO()
         requesters_list = dao.getAllRequesters()
@@ -52,23 +60,6 @@ class RequestersHandler:
         else:
             requester = self.build_requester_dict(row)
             return jsonify(Requester=requester)
-
-    def insertRequester(self, form):
-        if len(form) != 1:
-            return jsonify(Error = "Malformed post request"), 400
-        else:
-            uid = form['uid']
-            row = UsersDAO.getUserById(uid)
-            if not row:
-                return jsonify(Error="User not found"), 404
-            else:
-                if uid:
-                    dao = RequestersDAO()
-                    reqid = dao.insert(uid)
-                    result = self.build_requester_attributes(reqid, uid)    #A~adir buil attributes
-                    return jsonify(Admin=result), 201
-                else:
-                    return jsonify(Error="Unexpected attributes in post request"), 400
 
     def searchRequesters(self, args):
         pass
@@ -95,4 +86,18 @@ class RequestersHandler:
             result = self.build_requester_dict(row)
             result_list.append(result)
         return jsonify(Requesters=result_list)
+
+    def insertRequester(self, form):
+        if len(form) != 1:
+            return jsonify(Error="Malformed post request"), 400
+        else:
+            uID = form['uID']
+            if uID:
+                reqDao = RequestersDAO()
+                reqID = reqDao.insert(uID)
+                result = self.build_requester_attributes(reqID, uID)
+                return jsonify(Requester=result), 201
+            else:
+                return jsonify(Error="Unexpected attributes in post request"), 400
+
 

@@ -10,7 +10,7 @@ create table addresses(addID serial primary key, uID integer references users(uI
 create table credentials(cid serial primary key, uID integer references users(uID), username varchar(20), password varchar(20), email varchar(20));
 
 -- Credit Card table
-create table creditCards(ccID serial primary key, uID integer references users(uID), ccNumber integer, ccExpDate date, ccSecurityCode integer);
+create table creditCards(ccID serial primary key, uID integer references users(uID), ccNumber bigint, ccExpDate date, ccSecurityCode integer);
 
 -- Telephone Numbers table
 create table telephoneNumbers(tID serial primary key, uID integer references users(uID), homeNumber varchar(20), mobileNumber varchar(20), workNumber varchar(20), otherNumber varchar(20));

@@ -12,6 +12,7 @@ from handler.orders import OrdersHandler
 from handler.telephonenumbers import TelephoneNumbersHandler
 from handler.pricehistory import PriceHistoryHandler
 from handler.categories import CategoriesHandler
+from handler.creditcards import CreditCardsHandler
 
 app = Flask(__name__)
 
@@ -41,17 +42,25 @@ def getUserById(uID):
         return jsonify(Error="Method not allowed."), 405
 
 
-@app.route('/db_project/addresses')
+@app.route('/db_project/addresses', methods=['GET', 'POST'])
 def getAllAddresses():
-    if not request.args:
-        return AddressesHandler().getAllAddresses()
+    if request.method == 'POST':
+        return AddressesHandler().insertAddress(request.form)
     else:
-        return AddressesHandler().searchAddressesByArguments(request.args)
+        if not request.args:
+            return AddressesHandler().getAllAddresses()
+        else:
+            return AddressesHandler().searchAddressesByArguments(request.args)
 
 
-@app.route('/db_project/addresses/<int:addID>')
+@app.route('/db_project/addresses/<int:addID>', methods=['GET', 'PUT'])
 def getAddressById(addID):
-    return AddressesHandler().getAddressById(addID)
+    if request.method == 'GET':
+        return AddressesHandler().getAddressById(addID)
+    elif request.method == 'PUT':
+        return AddressesHandler().updateAddress(addID, request.form)
+    else:
+        return jsonify(Error="Method not allowed."), 405
 
 
 @app.route('/db_project/addresses/<int:uID>')
@@ -100,7 +109,7 @@ def getAdminByUserId(uID):
     return AdminsHandler().getAdminByUserId(uID)
 
 
-@app.route('/db_project/suppliers', methods=['GET', 'POST' ])
+@app.route('/db_project/suppliers', methods=['GET', 'POST'])
 def getAllSuppliers():
     if request.method == 'POST':
         return SuppliersHandler().insertSupplier(request.form)
@@ -110,9 +119,11 @@ def getAllSuppliers():
         else:
             return SuppliersHandler().searchSuppliersByArguments(request.args)
 
-@app.route('/db_project/suppliers/<int:suppID>')
+
+@app.route('/db_project/suppliers/<int:suppID>', methods=['GET', 'PUT'])
 def getSupplierById(suppID):
-    return SuppliersHandler().getSupplierById(suppID)
+    if request.method == 'GET':
+        return SuppliersHandler().getSupplierById(suppID)
 
 
 @app.route('/db_project/suppliers/<int:suppID>/inventory')
@@ -125,10 +136,10 @@ def getOrdersBySupplierId(suppID):
     return SuppliersHandler().getOrdersBySupplierId(suppID)
 
 
-@app.route('/db_project/requesters', methods=['GET', 'POST' ])
+@app.route('/db_project/requesters', methods=['GET', 'POST'])
 def getAllRequesters():
     if request.method == 'POST':
-        return RequestersHandler.insertRequester(request.form)
+        return RequestersHandler().insertRequester(request.form)
     else:
         if not request.args:
             return RequestersHandler().getAllRequesters()
@@ -193,7 +204,6 @@ def getSupplierByInventoryId(invID):
     return InventoryHandler().getSupplierByInventoryId(invID)
 
 
-
 @app.route('/db_project/inventory/maxPrice')
 def getMaxPriceInInventory():
     return InventoryHandler().getMaxPriceInInventory()
@@ -214,12 +224,15 @@ def getSuppliersByResourceName(resName):
     return InventoryHandler().getSuppliersByResourceName(resName)
 
 
-@app.route('/db_project/requests')
+@app.route('/db_project/requests', methods=['GET', 'POST'])
 def getAllRequests():
-    if not request.args:
-        return RequestsHandler().getAllRequests()
+    if request.method == 'POST':
+        return RequestsHandler().insertRequest(request.form)
     else:
-        return RequestsHandler().searchRequestsByArguments(request.args)
+        if not request.args:
+            return RequestsHandler().getAllRequests()
+        else:
+            return RequestsHandler().searchRequestsByArguments(request.args)
 
 
 @app.route('/db_project/orders')
@@ -248,12 +261,12 @@ def getCategoryByID(catID):
 
 @app.route('/db_project/categories/<string:catName>/resources')
 def getResourcesByCategoryName(catName):
-        return ResourcesHandler().getResourcesByCategoryName(catName)
+    return ResourcesHandler().getResourcesByCategoryName(catName)
 
 
 @app.route('/db_project/categories/<string:catName>/resources/available')
 def getAvailableResourcesByCategories(catName):
-        return ResourcesHandler().getAvailableResourcesByCategories(catName)
+    return ResourcesHandler().getAvailableResourcesByCategories(catName)
 
 
 @app.route('/db_project/telephoneNumbers')
@@ -268,9 +281,10 @@ def getAllTelephoneNumbers():
 def getTelephoneNumberById(tID):
     return TelephoneNumbersHandler().getTelephoneNumberById(tID)
 
+
 @app.route('/db_project/telephoneNumbers/users/<int:uID>')
 def getTelephoneNumberByUserId(uID):
-        return TelephoneNumbersHandler().getTelephoneNumberByUserId(uID)
+    return TelephoneNumbersHandler().getTelephoneNumberByUserId(uID)
 
 
 @app.route('/db_project/priceHistory')
@@ -284,8 +298,24 @@ def getPriceHistoryById(phID):
 
 @app.route('/db_project/priceHistory/inventory/<int:invID>')
 def getPriceHistoryByUserId(invID):
-        return PriceHistoryHandler().getPriceHistoryByInventoryId(invID)
+    return PriceHistoryHandler().getPriceHistoryByInventoryId(invID)
 
+@app.route('/db_project/creditcards', methods=['GET', 'POST'])
+def getAllCreditCards():
+    if request.method == 'POST':
+        return CreditCardsHandler().insertCreditCard(request.form)
+    else:
+        return CreditCardsHandler().getAllCreditCards()
+
+
+@app.route('/db_project/creditcards/<int:uID>', methods=['GET', 'PUT'])
+def getCreditCardsByUserId(uID):
+    if request.method == 'GET':
+        return CreditCardsHandler().getCreditCardsByUserId(uID)
+    elif request.method == 'PUT':
+        return CreditCardsHandler().updateCreditCard(uID, request.form)
+    else:
+        return jsonify(Error="Method not allowed."), 405
 
 
 #TODO: FOR PHASE 3

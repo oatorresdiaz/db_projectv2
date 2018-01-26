@@ -14,6 +14,16 @@ class AddressesHandler:
         result['ZipCode'] = row[5]
         return result
 
+    def build_address_attributes(self, uID, addID, city, street, country, zipcode):
+        result = {}
+        result['uID'] = uID
+        result['addID'] = addID
+        result['city'] = city
+        result['street'] = street
+        result['country'] = country
+        result['zipcode'] = zipcode
+        return result
+
     def getAllAddresses(self):
         dao = AddressesDAO()
         addresses_list = dao.getAllAddresses()
@@ -85,3 +95,41 @@ class AddressesHandler:
             result = self.build_address_dict(row)
             result_list.append(result)
         return jsonify(Users=result_list)
+
+    def insertAddress(self, form):
+        if len(form) != 5:
+            return jsonify(Error="Malformed post request"), 400
+        else:
+            uID = form['uID']
+            city = form['city']
+            street = form['street']
+            country = form['country']
+            zipcode = form['zipcode']
+            if uID and city and street and country and zipcode:
+                addDao = AddressesDAO()
+                addID = addDao.insert(uID, city, street, country, zipcode)
+                result = self.build_address_attributes(uID, addID, city, street, country, zipcode)
+                return jsonify(Address=result), 201
+            else:
+                return jsonify(Error="Unexpected attributes in post request"), 400
+
+    def updateAddress(self, addID, form):
+        dao = AddressesDAO()
+        if not dao.getAddressById(addID):
+            return jsonify(Error="User not found."), 404
+        else:
+            if len(form) != 5:
+                return jsonify(Error="Malformed update request"), 400
+            else:
+                print("HEEEYYY YOOUUUU GUUUYYYYS!!!")
+                uID = form['uID']
+                city = form['city']
+                street = form['street']
+                country = form['country']
+                zipcode = form['zipcode']
+                if city and street and country and zipcode:
+                    dao.update(addID, uID, city, street, country, zipcode)
+                    result = self.build_address_attributes(uID, addID, city, street, country, zipcode)
+                    return jsonify(Address=result), 200
+                else:
+                    return jsonify(Error="Unexpected attributes in update request"), 400
