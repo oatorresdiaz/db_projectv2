@@ -58,16 +58,27 @@ class OrdersDAO:
 
     def insertPurchase(self, reqID, invID, ordQty, ordPrice):
         cursor = self.conn.cursor()
-        query = "insert into orders(reqid, invid, ordqty, orddate, ordexpdate, ordtype, ordprice) values (%s, %s, %s, current_timestamp, NULL , 'Purchase', %s) returning ordid;"
+        query = "insert into orders(reqid, invid, ordqty, orddate, ordexpdate, ordtype, ordprice) values (%s, %s, %s, current_timestamp, NULL , 'Purchase', %s);"
         cursor.execute(query, (reqID, invID, ordQty, ordPrice,))
-        ordID = cursor.fetchone()[0]
         self.conn.commit()
-        return ordID
 
     def insertReserve(self, reqID, invID, ordQty, ordPrice):
         cursor = self.conn.cursor()
-        query = "insert into orders(reqid, invid, ordqty, orddate, ordexpdate, ordtype, ordprice) values (%s, %s, %s, current_timestamp, current_timestamp + interval '7 day', 'Reserve', %s) returning ordid;"
+        query = "insert into orders(reqid, invid, ordqty, orddate, ordexpdate, ordtype, ordprice) values (%s, %s, %s, current_timestamp, current_timestamp + interval '7 day', 'Reserve', %s);"
         cursor.execute(query, (reqID, invID, ordQty, ordPrice,))
-        ordID = cursor.fetchone()[0]
         self.conn.commit()
-        return ordID
+
+    def getDateByIds(self, reqID, invID):
+        cursor = self.conn.cursor()
+        query = "select ordDate from orders where reqID = %s and invID = %s"
+        cursor.execute(query, (reqID, invID,))
+        result = cursor.fetchone()
+        return result
+
+    def getExpDateByIds(self, reqID, invID):
+        cursor = self.conn.cursor()
+        query = "select ordExpDate from orders where reqID = %s and invID = %s"
+        cursor.execute(query, (reqID, invID,))
+        result = cursor.fetchone()
+        return result
+

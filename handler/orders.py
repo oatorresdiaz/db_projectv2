@@ -14,9 +14,8 @@ class OrdersHandler:
         result['ordPrice'] = row[6]
         return result
 
-    def build_order_attributes(self, ordID, reqID, invID, ordQty, ordDate, ordExpDate, ordType, ordPrice):
+    def build_order_attributes(self, reqID, invID, ordQty, ordDate, ordExpDate, ordType, ordPrice):
         result = {}
-        result['ordID'] = ordID
         result['reqID'] = reqID
         result['invID'] = invID
         result['ordQty'] = ordQty
@@ -50,7 +49,7 @@ class OrdersHandler:
         return jsonify(Orders=result_list)
 
     def insertOrder(self, form):
-        if len(form) != 12:
+        if len(form) != 3:
             return jsonify(Error="Malformed post request"), 400
         else:
             reqID = form['reqID']
@@ -63,21 +62,26 @@ class OrdersHandler:
             if reqID and invID and ordQty:
                 ordDao = OrdersDAO()
 
-                invAvailable = InventoryDAO().getAvailableById(invID)
-                if ordQty > invAvailable:
+                invAvailable = InventoryDAO().getAvailableById(invID)[0]
+                if int(ordQty) > invAvailable:
                     return jsonify(Error="Value out of bounds"), 400
 
                 ordPrice = InventoryDAO().getPriceById(invID)[0]
                 if ordPrice > 0:
                     ordType = "Purchase"
-                    ordID = ordDao.insertPurchase(reqID, invID, ordQty, ordPrice)
+                    ordDao.insertPurchase(reqID, invID, ordQty, ordPrice)
+                    InventoryDAO().updateAvailablePurchase(invID, ordQty)
 
                 else:
                     ordType = "Reserve"
-                    ordID = ordDao.insertReserve(reqID, invID, ordQty, ordPrice)
+                    ordDao.insertReserve(reqID, invID, ordQty, ordPrice)
+                    InventoryDAO().updateAvailableReserve(reqID, ordQty)
+
+                ordDate = ordDao.getDateByIds(reqID, invID)[0]
+                ordExpDate = ordDao.getExpDateByIds(reqID, invID)[0]
 
 
-                result = self.build_order_attributes(ordID, reqID, invID, ordQty, ordType, ordPrice)
+                result = self.build_order_attributes(reqID, invID, ordQty, ordDate, ordExpDate, ordType, ordPrice)
                 return jsonify(Order=result), 201
             else:
                 return jsonify(Error="Unexpected attributes in post request"), 400
