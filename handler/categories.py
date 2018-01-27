@@ -37,12 +37,10 @@ class CategoriesHandler:
         if len(form) != 1:
             return jsonify(Error="Malformed post request"), 400
         else:
-          catName = form['catName']
-
+            catName = form['catName']
             if catName:
                 catDao = CategoriesDAO()
                 catID = catDao.insert(catName)
-
                 result = self.build_categories_attributes(catID, catName)
                 return jsonify(Categories=result), 201
             else:
